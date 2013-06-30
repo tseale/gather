@@ -7,147 +7,171 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9054EDB176D4FDE005254CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EDA176D4FDE005254CF /* Foundation.framework */; };
-		F9054EDD176D4FDE005254CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EDC176D4FDE005254CF /* CoreGraphics.framework */; };
-		F9054EDF176D4FDE005254CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EDE176D4FDE005254CF /* UIKit.framework */; };
-		F9054EE5176D4FDE005254CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9054EE3176D4FDE005254CF /* InfoPlist.strings */; };
-		F9054EE7176D4FDE005254CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9054EE6176D4FDE005254CF /* main.m */; };
-		F9054EEB176D4FDE005254CF /* GatherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9054EEA176D4FDE005254CF /* GatherAppDelegate.m */; };
-		F9054EEE176D4FDE005254CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9054EEC176D4FDE005254CF /* Main.storyboard */; };
-		F9054EF1176D4FDE005254CF /* GatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9054EF0176D4FDE005254CF /* GatherViewController.m */; };
-		F9054EF3176D4FDE005254CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9054EF2176D4FDE005254CF /* Images.xcassets */; };
-		F9054EFA176D4FDE005254CF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EF9176D4FDE005254CF /* XCTest.framework */; };
-		F9054EFB176D4FDE005254CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EDA176D4FDE005254CF /* Foundation.framework */; };
-		F9054EFC176D4FDE005254CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9054EDE176D4FDE005254CF /* UIKit.framework */; };
-		F9054F04176D4FDE005254CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9054F02176D4FDE005254CF /* InfoPlist.strings */; };
-		F9054F06176D4FDE005254CF /* GatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9054F05176D4FDE005254CF /* GatherTests.m */; };
+		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
+		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
+		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
+		F99174DB177D331000E19869 /* GatherCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherCellData.m */; };
+		F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
+		F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1847176FF41800F08900 /* CoreGraphics.framework */; };
+		F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1849176FF41800F08900 /* UIKit.framework */; };
+		F9FD1850176FF41800F08900 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9FD184E176FF41800F08900 /* InfoPlist.strings */; };
+		F9FD1852176FF41800F08900 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1851176FF41800F08900 /* main.m */; };
+		F9FD1856176FF41800F08900 /* GatherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1855176FF41800F08900 /* GatherAppDelegate.m */; };
+		F9FD1859176FF41800F08900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9FD1857176FF41800F08900 /* Main.storyboard */; };
+		F9FD185C176FF41800F08900 /* GatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD185B176FF41800F08900 /* GatherViewController.m */; };
+		F9FD185E176FF41900F08900 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9FD185D176FF41900F08900 /* Images.xcassets */; };
+		F9FD1865176FF41900F08900 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1864176FF41900F08900 /* XCTest.framework */; };
+		F9FD1866176FF41900F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
+		F9FD1867176FF41900F08900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1849176FF41800F08900 /* UIKit.framework */; };
+		F9FD186F176FF41900F08900 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9FD186D176FF41900F08900 /* InfoPlist.strings */; };
+		F9FD1871176FF41900F08900 /* GatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1870176FF41900F08900 /* GatherTests.m */; };
+		F9FD18841770151D00F08900 /* GatherTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1883177011C600F08900 /* GatherTopBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F9054EFD176D4FDE005254CF /* PBXContainerItemProxy */ = {
+		F9FD1868176FF41900F08900 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F9054ECF176D4FDE005254CF /* Project object */;
+			containerPortal = F9FD183A176FF41800F08900 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F9054ED6176D4FDE005254CF;
+			remoteGlobalIDString = F9FD1841176FF41800F08900;
 			remoteInfo = Gather;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F9054ED7176D4FDE005254CF /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9054EDA176D4FDE005254CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F9054EDC176D4FDE005254CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F9054EDE176D4FDE005254CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F9054EE2176D4FDE005254CF /* Gather-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gather-Info.plist"; sourceTree = "<group>"; };
-		F9054EE4176D4FDE005254CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F9054EE6176D4FDE005254CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F9054EE8176D4FDE005254CF /* Gather-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gather-Prefix.pch"; sourceTree = "<group>"; };
-		F9054EE9176D4FDE005254CF /* GatherAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAppDelegate.h; sourceTree = "<group>"; };
-		F9054EEA176D4FDE005254CF /* GatherAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAppDelegate.m; sourceTree = "<group>"; };
-		F9054EED176D4FDE005254CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F9054EEF176D4FDE005254CF /* GatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherViewController.h; sourceTree = "<group>"; };
-		F9054EF0176D4FDE005254CF /* GatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherViewController.m; sourceTree = "<group>"; };
-		F9054EF2176D4FDE005254CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F9054EF8176D4FDE005254CF /* GatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9054EF9176D4FDE005254CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F9054F01176D4FDE005254CF /* GatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GatherTests-Info.plist"; sourceTree = "<group>"; };
-		F9054F03176D4FDE005254CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F9054F05176D4FDE005254CF /* GatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherTests.m; sourceTree = "<group>"; };
+		F95F53E31776B6B0005D957E /* GatherEventsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableView.h; sourceTree = "<group>"; };
+		F95F53E41776B6B0005D957E /* GatherEventsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableView.m; sourceTree = "<group>"; };
+		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
+		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; };
+		F95F53E9177957C4005D957E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F99174D9177D30CA00E19869 /* GatherCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherCellData.h; sourceTree = "<group>"; };
+		F99174DA177D30CA00E19869 /* GatherCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherCellData.m; sourceTree = "<group>"; };
+		F9FD1842176FF41800F08900 /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9FD1845176FF41800F08900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F9FD1847176FF41800F08900 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F9FD1849176FF41800F08900 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F9FD184D176FF41800F08900 /* Gather-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gather-Info.plist"; sourceTree = "<group>"; };
+		F9FD184F176FF41800F08900 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F9FD1851176FF41800F08900 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F9FD1853176FF41800F08900 /* Gather-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gather-Prefix.pch"; sourceTree = "<group>"; };
+		F9FD1854176FF41800F08900 /* GatherAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAppDelegate.h; sourceTree = "<group>"; };
+		F9FD1855176FF41800F08900 /* GatherAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAppDelegate.m; sourceTree = "<group>"; };
+		F9FD1858176FF41800F08900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F9FD185A176FF41800F08900 /* GatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherViewController.h; sourceTree = "<group>"; };
+		F9FD185B176FF41800F08900 /* GatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherViewController.m; sourceTree = "<group>"; };
+		F9FD185D176FF41900F08900 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F9FD1863176FF41900F08900 /* GatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9FD1864176FF41900F08900 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F9FD186C176FF41900F08900 /* GatherTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GatherTests-Info.plist"; sourceTree = "<group>"; };
+		F9FD186E176FF41900F08900 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F9FD1870176FF41900F08900 /* GatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherTests.m; sourceTree = "<group>"; };
+		F9FD1882177011C600F08900 /* GatherTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherTopBar.h; sourceTree = "<group>"; };
+		F9FD1883177011C600F08900 /* GatherTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherTopBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F9054ED4176D4FDE005254CF /* Frameworks */ = {
+		F9FD183F176FF41800F08900 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054EDD176D4FDE005254CF /* CoreGraphics.framework in Frameworks */,
-				F9054EDF176D4FDE005254CF /* UIKit.framework in Frameworks */,
-				F9054EDB176D4FDE005254CF /* Foundation.framework in Frameworks */,
+				F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */,
+				F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */,
+				F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */,
+				F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F9054EF5176D4FDE005254CF /* Frameworks */ = {
+		F9FD1860176FF41900F08900 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054EFA176D4FDE005254CF /* XCTest.framework in Frameworks */,
-				F9054EFC176D4FDE005254CF /* UIKit.framework in Frameworks */,
-				F9054EFB176D4FDE005254CF /* Foundation.framework in Frameworks */,
+				F9FD1865176FF41900F08900 /* XCTest.framework in Frameworks */,
+				F9FD1867176FF41900F08900 /* UIKit.framework in Frameworks */,
+				F9FD1866176FF41900F08900 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F9054ECE176D4FDE005254CF = {
+		F9FD1839176FF41800F08900 = {
 			isa = PBXGroup;
 			children = (
-				F9054EE0176D4FDE005254CF /* Gather */,
-				F9054EFF176D4FDE005254CF /* GatherTests */,
-				F9054ED9176D4FDE005254CF /* Frameworks */,
-				F9054ED8176D4FDE005254CF /* Products */,
+				F9FD184B176FF41800F08900 /* Gather */,
+				F9FD186A176FF41900F08900 /* GatherTests */,
+				F9FD1844176FF41800F08900 /* Frameworks */,
+				F9FD1843176FF41800F08900 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F9054ED8176D4FDE005254CF /* Products */ = {
+		F9FD1843176FF41800F08900 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F9054ED7176D4FDE005254CF /* Gather.app */,
-				F9054EF8176D4FDE005254CF /* GatherTests.xctest */,
+				F9FD1842176FF41800F08900 /* Gather.app */,
+				F9FD1863176FF41900F08900 /* GatherTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F9054ED9176D4FDE005254CF /* Frameworks */ = {
+		F9FD1844176FF41800F08900 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F9054EDA176D4FDE005254CF /* Foundation.framework */,
-				F9054EDC176D4FDE005254CF /* CoreGraphics.framework */,
-				F9054EDE176D4FDE005254CF /* UIKit.framework */,
-				F9054EF9176D4FDE005254CF /* XCTest.framework */,
+				F95F53E9177957C4005D957E /* QuartzCore.framework */,
+				F9FD1845176FF41800F08900 /* Foundation.framework */,
+				F9FD1847176FF41800F08900 /* CoreGraphics.framework */,
+				F9FD1849176FF41800F08900 /* UIKit.framework */,
+				F9FD1864176FF41900F08900 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F9054EE0176D4FDE005254CF /* Gather */ = {
+		F9FD184B176FF41800F08900 /* Gather */ = {
 			isa = PBXGroup;
 			children = (
-				F9054EE9176D4FDE005254CF /* GatherAppDelegate.h */,
-				F9054EEA176D4FDE005254CF /* GatherAppDelegate.m */,
-				F9054EEC176D4FDE005254CF /* Main.storyboard */,
-				F9054EEF176D4FDE005254CF /* GatherViewController.h */,
-				F9054EF0176D4FDE005254CF /* GatherViewController.m */,
-				F9054EF2176D4FDE005254CF /* Images.xcassets */,
-				F9054EE1176D4FDE005254CF /* Supporting Files */,
+				F99174D9177D30CA00E19869 /* GatherCellData.h */,
+				F99174DA177D30CA00E19869 /* GatherCellData.m */,
+				F9FD1882177011C600F08900 /* GatherTopBar.h */,
+				F9FD1883177011C600F08900 /* GatherTopBar.m */,
+				F95F53E31776B6B0005D957E /* GatherEventsTableView.h */,
+				F95F53E41776B6B0005D957E /* GatherEventsTableView.m */,
+				F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */,
+				F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */,
+				F9FD185A176FF41800F08900 /* GatherViewController.h */,
+				F9FD185B176FF41800F08900 /* GatherViewController.m */,
+				F9FD185D176FF41900F08900 /* Images.xcassets */,
+				F9FD184C176FF41800F08900 /* Supporting Files */,
 			);
 			path = Gather;
 			sourceTree = "<group>";
 		};
-		F9054EE1176D4FDE005254CF /* Supporting Files */ = {
+		F9FD184C176FF41800F08900 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F9054EE2176D4FDE005254CF /* Gather-Info.plist */,
-				F9054EE3176D4FDE005254CF /* InfoPlist.strings */,
-				F9054EE6176D4FDE005254CF /* main.m */,
-				F9054EE8176D4FDE005254CF /* Gather-Prefix.pch */,
+				F9FD1854176FF41800F08900 /* GatherAppDelegate.h */,
+				F9FD1855176FF41800F08900 /* GatherAppDelegate.m */,
+				F9FD1857176FF41800F08900 /* Main.storyboard */,
+				F9FD184D176FF41800F08900 /* Gather-Info.plist */,
+				F9FD184E176FF41800F08900 /* InfoPlist.strings */,
+				F9FD1851176FF41800F08900 /* main.m */,
+				F9FD1853176FF41800F08900 /* Gather-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F9054EFF176D4FDE005254CF /* GatherTests */ = {
+		F9FD186A176FF41900F08900 /* GatherTests */ = {
 			isa = PBXGroup;
 			children = (
-				F9054F05176D4FDE005254CF /* GatherTests.m */,
-				F9054F00176D4FDE005254CF /* Supporting Files */,
+				F9FD1870176FF41900F08900 /* GatherTests.m */,
+				F9FD186B176FF41900F08900 /* Supporting Files */,
 			);
 			path = GatherTests;
 			sourceTree = "<group>";
 		};
-		F9054F00176D4FDE005254CF /* Supporting Files */ = {
+		F9FD186B176FF41900F08900 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F9054F01176D4FDE005254CF /* GatherTests-Info.plist */,
-				F9054F02176D4FDE005254CF /* InfoPlist.strings */,
+				F9FD186C176FF41900F08900 /* GatherTests-Info.plist */,
+				F9FD186D176FF41900F08900 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -155,13 +179,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F9054ED6176D4FDE005254CF /* Gather */ = {
+		F9FD1841176FF41800F08900 /* Gather */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9054F09176D4FDE005254CF /* Build configuration list for PBXNativeTarget "Gather" */;
+			buildConfigurationList = F9FD1874176FF41900F08900 /* Build configuration list for PBXNativeTarget "Gather" */;
 			buildPhases = (
-				F9054ED3176D4FDE005254CF /* Sources */,
-				F9054ED4176D4FDE005254CF /* Frameworks */,
-				F9054ED5176D4FDE005254CF /* Resources */,
+				F9FD183E176FF41800F08900 /* Sources */,
+				F9FD183F176FF41800F08900 /* Frameworks */,
+				F9FD1840176FF41800F08900 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -169,43 +193,43 @@
 			);
 			name = Gather;
 			productName = Gather;
-			productReference = F9054ED7176D4FDE005254CF /* Gather.app */;
+			productReference = F9FD1842176FF41800F08900 /* Gather.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F9054EF7176D4FDE005254CF /* GatherTests */ = {
+		F9FD1862176FF41900F08900 /* GatherTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9054F0C176D4FDE005254CF /* Build configuration list for PBXNativeTarget "GatherTests" */;
+			buildConfigurationList = F9FD1877176FF41900F08900 /* Build configuration list for PBXNativeTarget "GatherTests" */;
 			buildPhases = (
-				F9054EF4176D4FDE005254CF /* Sources */,
-				F9054EF5176D4FDE005254CF /* Frameworks */,
-				F9054EF6176D4FDE005254CF /* Resources */,
+				F9FD185F176FF41900F08900 /* Sources */,
+				F9FD1860176FF41900F08900 /* Frameworks */,
+				F9FD1861176FF41900F08900 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F9054EFE176D4FDE005254CF /* PBXTargetDependency */,
+				F9FD1869176FF41900F08900 /* PBXTargetDependency */,
 			);
 			name = GatherTests;
 			productName = GatherTests;
-			productReference = F9054EF8176D4FDE005254CF /* GatherTests.xctest */;
+			productReference = F9FD1863176FF41900F08900 /* GatherTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F9054ECF176D4FDE005254CF /* Project object */ = {
+		F9FD183A176FF41800F08900 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Gather;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = tseale;
 				TargetAttributes = {
-					F9054EF7176D4FDE005254CF = {
-						TestTargetID = F9054ED6176D4FDE005254CF;
+					F9FD1862176FF41900F08900 = {
+						TestTargetID = F9FD1841176FF41800F08900;
 					};
 				};
 			};
-			buildConfigurationList = F9054ED2176D4FDE005254CF /* Build configuration list for PBXProject "Gather" */;
+			buildConfigurationList = F9FD183D176FF41800F08900 /* Build configuration list for PBXProject "Gather" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -213,88 +237,92 @@
 				en,
 				Base,
 			);
-			mainGroup = F9054ECE176D4FDE005254CF;
-			productRefGroup = F9054ED8176D4FDE005254CF /* Products */;
+			mainGroup = F9FD1839176FF41800F08900;
+			productRefGroup = F9FD1843176FF41800F08900 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F9054ED6176D4FDE005254CF /* Gather */,
-				F9054EF7176D4FDE005254CF /* GatherTests */,
+				F9FD1841176FF41800F08900 /* Gather */,
+				F9FD1862176FF41900F08900 /* GatherTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F9054ED5176D4FDE005254CF /* Resources */ = {
+		F9FD1840176FF41800F08900 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054EF3176D4FDE005254CF /* Images.xcassets in Resources */,
-				F9054EE5176D4FDE005254CF /* InfoPlist.strings in Resources */,
-				F9054EEE176D4FDE005254CF /* Main.storyboard in Resources */,
+				F9FD185E176FF41900F08900 /* Images.xcassets in Resources */,
+				F9FD1850176FF41800F08900 /* InfoPlist.strings in Resources */,
+				F9FD1859176FF41800F08900 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F9054EF6176D4FDE005254CF /* Resources */ = {
+		F9FD1861176FF41900F08900 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054F04176D4FDE005254CF /* InfoPlist.strings in Resources */,
+				F9FD186F176FF41900F08900 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F9054ED3176D4FDE005254CF /* Sources */ = {
+		F9FD183E176FF41800F08900 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054EE7176D4FDE005254CF /* main.m in Sources */,
-				F9054EF1176D4FDE005254CF /* GatherViewController.m in Sources */,
-				F9054EEB176D4FDE005254CF /* GatherAppDelegate.m in Sources */,
+				F99174DB177D331000E19869 /* GatherCellData.m in Sources */,
+				F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */,
+				F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */,
+				F9FD18841770151D00F08900 /* GatherTopBar.m in Sources */,
+				F9FD1852176FF41800F08900 /* main.m in Sources */,
+				F9FD185C176FF41800F08900 /* GatherViewController.m in Sources */,
+				F9FD1856176FF41800F08900 /* GatherAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F9054EF4176D4FDE005254CF /* Sources */ = {
+		F9FD185F176FF41900F08900 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9054F06176D4FDE005254CF /* GatherTests.m in Sources */,
+				F9FD1871176FF41900F08900 /* GatherTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F9054EFE176D4FDE005254CF /* PBXTargetDependency */ = {
+		F9FD1869176FF41900F08900 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F9054ED6176D4FDE005254CF /* Gather */;
-			targetProxy = F9054EFD176D4FDE005254CF /* PBXContainerItemProxy */;
+			target = F9FD1841176FF41800F08900 /* Gather */;
+			targetProxy = F9FD1868176FF41900F08900 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F9054EE3176D4FDE005254CF /* InfoPlist.strings */ = {
+		F9FD184E176FF41800F08900 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F9054EE4176D4FDE005254CF /* en */,
+				F9FD184F176FF41800F08900 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F9054EEC176D4FDE005254CF /* Main.storyboard */ = {
+		F9FD1857176FF41800F08900 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F9054EED176D4FDE005254CF /* Base */,
+				F9FD1858176FF41800F08900 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F9054F02176D4FDE005254CF /* InfoPlist.strings */ = {
+		F9FD186D176FF41900F08900 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F9054F03176D4FDE005254CF /* en */,
+				F9FD186E176FF41900F08900 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -302,7 +330,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F9054F07176D4FDE005254CF /* Debug */ = {
+		F9FD1872176FF41900F08900 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -339,7 +367,7 @@
 			};
 			name = Debug;
 		};
-		F9054F08176D4FDE005254CF /* Release */ = {
+		F9FD1873176FF41900F08900 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -370,7 +398,7 @@
 			};
 			name = Release;
 		};
-		F9054F0A176D4FDE005254CF /* Debug */ = {
+		F9FD1875176FF41900F08900 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -383,7 +411,7 @@
 			};
 			name = Debug;
 		};
-		F9054F0B176D4FDE005254CF /* Release */ = {
+		F9FD1876176FF41900F08900 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -396,7 +424,7 @@
 			};
 			name = Release;
 		};
-		F9054F0D176D4FDE005254CF /* Debug */ = {
+		F9FD1878176FF41900F08900 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gather.app/Gather";
@@ -418,7 +446,7 @@
 			};
 			name = Debug;
 		};
-		F9054F0E176D4FDE005254CF /* Release */ = {
+		F9FD1879176FF41900F08900 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Gather.app/Gather";
@@ -439,32 +467,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F9054ED2176D4FDE005254CF /* Build configuration list for PBXProject "Gather" */ = {
+		F9FD183D176FF41800F08900 /* Build configuration list for PBXProject "Gather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F9054F07176D4FDE005254CF /* Debug */,
-				F9054F08176D4FDE005254CF /* Release */,
+				F9FD1872176FF41900F08900 /* Debug */,
+				F9FD1873176FF41900F08900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F9054F09176D4FDE005254CF /* Build configuration list for PBXNativeTarget "Gather" */ = {
+		F9FD1874176FF41900F08900 /* Build configuration list for PBXNativeTarget "Gather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F9054F0A176D4FDE005254CF /* Debug */,
-				F9054F0B176D4FDE005254CF /* Release */,
+				F9FD1875176FF41900F08900 /* Debug */,
+				F9FD1876176FF41900F08900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		F9054F0C176D4FDE005254CF /* Build configuration list for PBXNativeTarget "GatherTests" */ = {
+		F9FD1877176FF41900F08900 /* Build configuration list for PBXNativeTarget "GatherTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F9054F0D176D4FDE005254CF /* Debug */,
-				F9054F0E176D4FDE005254CF /* Release */,
+				F9FD1878176FF41900F08900 /* Debug */,
+				F9FD1879176FF41900F08900 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F9054ECF176D4FDE005254CF /* Project object */;
+	rootObject = F9FD183A176FF41800F08900 /* Project object */;
 }

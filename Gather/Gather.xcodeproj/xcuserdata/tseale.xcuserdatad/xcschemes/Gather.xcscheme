@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F9054ED6176D4FDE005254CF"
+               BlueprintIdentifier = "F9FD1841176FF41800F08900"
                BuildableName = "Gather.app"
                BlueprintName = "Gather"
                ReferencedContainer = "container:Gather.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F9054EF7176D4FDE005254CF"
+               BlueprintIdentifier = "F9FD1862176FF41900F08900"
                BuildableName = "GatherTests.xctest"
                BlueprintName = "GatherTests"
                ReferencedContainer = "container:Gather.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F9054ED6176D4FDE005254CF"
+            BlueprintIdentifier = "F9FD1841176FF41800F08900"
             BuildableName = "Gather.app"
             BlueprintName = "Gather"
             ReferencedContainer = "container:Gather.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F9054ED6176D4FDE005254CF"
+            BlueprintIdentifier = "F9FD1841176FF41800F08900"
             BuildableName = "Gather.app"
             BlueprintName = "Gather"
             ReferencedContainer = "container:Gather.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F9054ED6176D4FDE005254CF"
+            BlueprintIdentifier = "F9FD1841176FF41800F08900"
             BuildableName = "Gather.app"
             BlueprintName = "Gather"
             ReferencedContainer = "container:Gather.xcodeproj">

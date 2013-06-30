@@ -2,7 +2,7 @@
 //  GatherAppDelegate.m
 //  Gather
 //
-//  Created by Taylor Seale on 6/15/13.
+//  Created by Taylor Seale on 6/17/13.
 //  Copyright (c) 2013 tseale. All rights reserved.
 //
 
@@ -12,7 +12,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     return YES;
 }
 							
