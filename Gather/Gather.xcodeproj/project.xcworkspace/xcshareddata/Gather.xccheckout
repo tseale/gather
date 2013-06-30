@@ -8,6 +8,8 @@
 	<string>Gather</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>7743B2D1-505B-4AC7-9D0D-0EB38DF98492</key>
+		<string>git://github.com/RestKit/RestKit.git</string>
 		<key>B56497E0-46F7-459D-A71A-98CD5B418016</key>
 		<string>https://github.com/tseale/gather.git</string>
 	</dict>
@@ -15,6 +17,8 @@
 	<string>Gather/Gather.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>7743B2D1-505B-4AC7-9D0D-0EB38DF98492</key>
+		<string>../../../RestKit</string>
 		<key>B56497E0-46F7-459D-A71A-98CD5B418016</key>
 		<string>../../..</string>
 	</dict>
@@ -33,6 +37,14 @@
 			<string>B56497E0-46F7-459D-A71A-98CD5B418016</string>
 			<key>IDESourceControlWCCName</key>
 			<string>gather</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7743B2D1-505B-4AC7-9D0D-0EB38DF98492</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RestKit</string>
 		</dict>
 	</array>
 </dict>
