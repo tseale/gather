@@ -112,10 +112,12 @@
 	UITextField *eventName = [[UITextField alloc] initWithFrame:CGRectMake(15, 10, 50, 20)];
 	[eventName setBackgroundColor:[UIColor colorWithRed:0.91f green:0.91f blue:0.91f alpha:1.00f]];
 	[eventName setPlaceholder:@" Event Name "];
+	/*
 	CGSize newSize = [@" Event Name " sizeWithFont: [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 	CGRect textFrame = eventName.frame;
 	textFrame.size.width  = newSize.width;
 	eventName.frame = textFrame;
+	 */
 	[eventName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 	[eventName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 	[eventName setTextAlignment:NSTextAlignmentLeft];
