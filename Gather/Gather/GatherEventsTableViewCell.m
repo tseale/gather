@@ -19,7 +19,7 @@
 		[self setFrame:CGRectMake(0, 0, self.bounds.size.width, 75)];
 		
 		UIView *greenBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[greenBackground setBackgroundColor:[UIColor greenColor]];
+		[greenBackground setBackgroundColor:GREEN_COLOR];
 		[self addSubview:greenBackground];
 		UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/4.0, self.frame.size.height)];
 		[yesLabel setText:@"Yes"];
@@ -29,7 +29,7 @@
 		[self addSubview:yesLabel];
 		
 		UIView *redBackground = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2.0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[redBackground setBackgroundColor:[UIColor redColor]];
+		[redBackground setBackgroundColor:RED_COLOR];
 		[self addSubview:redBackground];
 		UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-self.frame.size.width/4.0, 0, self.frame.size.width/4.0, self.frame.size.height)];
 		[noLabel setText:@"No"];
@@ -79,7 +79,7 @@
 		}else if (_response==-1){
 			[_responseLabel setText:@"Not Attending"];
 		}else if (_response==0){
-			[_responseLabel setText:@"N/A"];
+			[_responseLabel setText:@"No Response"];
 		}
 		[_responseLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f]];
 		[_responseLabel setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
@@ -95,10 +95,10 @@
 		[_progressLine setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
 		[_cellOverlay addSubview:_progressLine];
 		_acceptLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _increment*_accepts, 2)];
-		[_acceptLine setBackgroundColor:[UIColor greenColor]];
+		[_acceptLine setBackgroundColor:GREEN_COLOR];
 		[_progressLine addSubview:_acceptLine];
 		_rejectLine = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width-(_increment*_rejects)-20, 0,_increment*_rejects, 2)];
-		[_rejectLine setBackgroundColor:[UIColor redColor]];
+		[_rejectLine setBackgroundColor:RED_COLOR];
 		[_progressLine addSubview:_rejectLine];
 		[_cellOverlay addSubview:_progressLine];
 		[self addSubview:_cellOverlay];

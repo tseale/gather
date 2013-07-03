@@ -11,12 +11,18 @@
 #import "GatherEventsTableView.h"
 #import "GatherEventsTableViewCell.h"
 #import "GatherCellData.h"
+#import "GatherServerConnection.h"
 
-@interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,NSXMLParserDelegate>
 
 @property (nonatomic,strong) GatherTopBar *topBar;
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;
+@property (nonatomic,strong) GatherServerConnection	*connection;
 
-@property (nonatomic,retain) NSMutableArray *tableData;
+// these will be made global with GCD
+@property (nonatomic,retain) NSMutableDictionary *tableData;
+@property (nonatomic,retain) NSMutableArray *acceptEvents;
+@property (nonatomic,retain) NSMutableArray *rejectEvents;
+@property (nonatomic,retain) NSMutableArray *noResponseEvents;
 
 @end

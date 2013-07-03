@@ -24,10 +24,10 @@
 		[gatherText setBackgroundColor:[UIColor clearColor]];
 		[_gatherLogo addSubview:gatherText];
 		UIView *greenLine = [[UIView alloc] initWithFrame:CGRectMake(0, 24, 60, 1)];
-		[greenLine setBackgroundColor:[UIColor greenColor]];
+		[greenLine setBackgroundColor:GREEN_COLOR];
 		[_gatherLogo addSubview:greenLine];
 		UIView *redLine = [[UIView alloc] initWithFrame:CGRectMake(60, 24, 22, 1)];
-		[redLine setBackgroundColor:[UIColor redColor]];
+		[redLine setBackgroundColor:RED_COLOR];
 		[_gatherLogo addSubview:redLine];
 		UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-2, self.frame.size.width, 1)];
 		[line1 setBackgroundColor:[UIColor colorWithRed:0.91f green:0.91f blue:0.91f alpha:1.00f]];

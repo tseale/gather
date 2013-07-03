@@ -11,19 +11,16 @@
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
 		F99174DB177D331000E19869 /* GatherCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherCellData.m */; };
-		F991750D1780FAFB00E19869 /* libRestKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175041780FA2600E19869 /* libRestKit.a */; };
-		F991750F1780FB2800E19869 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F991750E1780FB2800E19869 /* CFNetwork.framework */; };
 		F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175101780FB3C00E19869 /* CoreData.framework */; };
-		F99175131780FB4200E19869 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175121780FB4200E19869 /* MobileCoreServices.framework */; };
-		F99175151780FB4C00E19869 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175141780FB4C00E19869 /* Security.framework */; };
-		F99175171780FB5500E19869 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175161780FB5500E19869 /* SystemConfiguration.framework */; };
+		F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F991751D1783CB4800E19869 /* GatherServerConnection.m */; };
+		F99175211783D15800E19869 /* GatherXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F99175201783D0B700E19869 /* GatherXMLParser.m */; };
+		F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99175241783D61200E19869 /* GatherGlobalData.m */; };
 		F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
 		F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1847176FF41800F08900 /* CoreGraphics.framework */; };
 		F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1849176FF41800F08900 /* UIKit.framework */; };
 		F9FD1850176FF41800F08900 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9FD184E176FF41800F08900 /* InfoPlist.strings */; };
 		F9FD1852176FF41800F08900 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1851176FF41800F08900 /* main.m */; };
 		F9FD1856176FF41800F08900 /* GatherAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD1855176FF41800F08900 /* GatherAppDelegate.m */; };
-		F9FD1859176FF41800F08900 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9FD1857176FF41800F08900 /* Main.storyboard */; };
 		F9FD185C176FF41800F08900 /* GatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FD185B176FF41800F08900 /* GatherViewController.m */; };
 		F9FD185E176FF41900F08900 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9FD185D176FF41900F08900 /* Images.xcassets */; };
 		F9FD1865176FF41900F08900 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1864176FF41900F08900 /* XCTest.framework */; };
@@ -35,41 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F99175031780FA2600E19869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D1614564E810060A5C5;
-			remoteInfo = RestKit;
-		};
-		F99175051780FA2600E19869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160D2614564E820060A5C5;
-			remoteInfo = RestKitTests;
-		};
-		F99175071780FA2600E19869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E62145651060060A5C5;
-			remoteInfo = RestKitFramework;
-		};
-		F99175091780FA2600E19869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 25160E78145651060060A5C5;
-			remoteInfo = RestKitFrameworkTests;
-		};
-		F991750B1780FAD400E19869 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 25160D1514564E810060A5C5;
-			remoteInfo = RestKit;
-		};
 		F9FD1868176FF41900F08900 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F9FD183A176FF41800F08900 /* Project object */;
@@ -83,16 +45,21 @@
 		F95F53E31776B6B0005D957E /* GatherEventsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableView.h; sourceTree = "<group>"; };
 		F95F53E41776B6B0005D957E /* GatherEventsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableView.m; sourceTree = "<group>"; };
 		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
-		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; };
+		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F95F53E9177957C4005D957E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F99174D9177D30CA00E19869 /* GatherCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherCellData.h; sourceTree = "<group>"; };
 		F99174DA177D30CA00E19869 /* GatherCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherCellData.m; sourceTree = "<group>"; };
-		F99174FC1780FA2600E19869 /* RestKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RestKit.xcodeproj; path = RestKit/RestKit.xcodeproj; sourceTree = "<group>"; };
 		F991750E1780FB2800E19869 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F99175101780FB3C00E19869 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F99175121780FB4200E19869 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F99175141780FB4C00E19869 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F99175161780FB5500E19869 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F991751C1783CB4800E19869 /* GatherServerConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherServerConnection.h; sourceTree = "<group>"; };
+		F991751D1783CB4800E19869 /* GatherServerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherServerConnection.m; sourceTree = "<group>"; };
+		F991751F1783D0B700E19869 /* GatherXMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherXMLParser.h; sourceTree = "<group>"; };
+		F99175201783D0B700E19869 /* GatherXMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherXMLParser.m; sourceTree = "<group>"; };
+		F99175231783D61200E19869 /* GatherGlobalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGlobalData.h; sourceTree = "<group>"; };
+		F99175241783D61200E19869 /* GatherGlobalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGlobalData.m; sourceTree = "<group>"; };
 		F9FD1842176FF41800F08900 /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9FD1845176FF41800F08900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9FD1847176FF41800F08900 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,7 +80,7 @@
 		F9FD186E176FF41900F08900 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F9FD1870176FF41900F08900 /* GatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherTests.m; sourceTree = "<group>"; };
 		F9FD1882177011C600F08900 /* GatherTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherTopBar.h; sourceTree = "<group>"; };
-		F9FD1883177011C600F08900 /* GatherTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherTopBar.m; sourceTree = "<group>"; };
+		F9FD1883177011C600F08900 /* GatherTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GatherTopBar.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F99175171780FB5500E19869 /* SystemConfiguration.framework in Frameworks */,
-				F99175151780FB4C00E19869 /* Security.framework in Frameworks */,
-				F99175131780FB4200E19869 /* MobileCoreServices.framework in Frameworks */,
 				F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */,
-				F991750F1780FB2800E19869 /* CFNetwork.framework in Frameworks */,
-				F991750D1780FAFB00E19869 /* libRestKit.a in Frameworks */,
 				F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */,
 				F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */,
 				F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */,
@@ -147,21 +109,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F99174FD1780FA2600E19869 /* Products */ = {
+		F99175221783D30F00E19869 /* Back End Stuff */ = {
 			isa = PBXGroup;
 			children = (
-				F99175041780FA2600E19869 /* libRestKit.a */,
-				F99175061780FA2600E19869 /* RestKitTests.octest */,
-				F99175081780FA2600E19869 /* RestKit.framework */,
-				F991750A1780FA2600E19869 /* RestKitFrameworkTests.octest */,
+				F991751C1783CB4800E19869 /* GatherServerConnection.h */,
+				F991751D1783CB4800E19869 /* GatherServerConnection.m */,
+				F991751F1783D0B700E19869 /* GatherXMLParser.h */,
+				F99175201783D0B700E19869 /* GatherXMLParser.m */,
+				F99175231783D61200E19869 /* GatherGlobalData.h */,
+				F99175241783D61200E19869 /* GatherGlobalData.m */,
 			);
-			name = Products;
+			name = "Back End Stuff";
 			sourceTree = "<group>";
 		};
 		F9FD1839176FF41800F08900 = {
 			isa = PBXGroup;
 			children = (
-				F99174FC1780FA2600E19869 /* RestKit.xcodeproj */,
 				F9FD184B176FF41800F08900 /* Gather */,
 				F9FD186A176FF41900F08900 /* GatherTests */,
 				F9FD1844176FF41800F08900 /* Frameworks */,
@@ -198,6 +161,7 @@
 		F9FD184B176FF41800F08900 /* Gather */ = {
 			isa = PBXGroup;
 			children = (
+				F99175221783D30F00E19869 /* Back End Stuff */,
 				F99174D9177D30CA00E19869 /* GatherCellData.h */,
 				F99174DA177D30CA00E19869 /* GatherCellData.m */,
 				F9FD1882177011C600F08900 /* GatherTopBar.h */,
@@ -260,7 +224,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F991750C1780FAD400E19869 /* PBXTargetDependency */,
 			);
 			name = Gather;
 			productName = Gather;
@@ -311,12 +274,6 @@
 			mainGroup = F9FD1839176FF41800F08900;
 			productRefGroup = F9FD1843176FF41800F08900 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = F99174FD1780FA2600E19869 /* Products */;
-					ProjectRef = F99174FC1780FA2600E19869 /* RestKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F9FD1841176FF41800F08900 /* Gather */,
@@ -325,37 +282,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		F99175041780FA2600E19869 /* libRestKit.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRestKit.a;
-			remoteRef = F99175031780FA2600E19869 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F99175061780FA2600E19869 /* RestKitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitTests.octest;
-			remoteRef = F99175051780FA2600E19869 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F99175081780FA2600E19869 /* RestKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = RestKit.framework;
-			remoteRef = F99175071780FA2600E19869 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F991750A1780FA2600E19869 /* RestKitFrameworkTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RestKitFrameworkTests.octest;
-			remoteRef = F99175091780FA2600E19869 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		F9FD1840176FF41800F08900 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -363,7 +289,6 @@
 			files = (
 				F9FD185E176FF41900F08900 /* Images.xcassets in Resources */,
 				F9FD1850176FF41800F08900 /* InfoPlist.strings in Resources */,
-				F9FD1859176FF41800F08900 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +307,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */,
+				F99175211783D15800E19869 /* GatherXMLParser.m in Sources */,
+				F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */,
 				F99174DB177D331000E19869 /* GatherCellData.m in Sources */,
 				F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */,
 				F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */,
@@ -403,11 +331,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F991750C1780FAD400E19869 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RestKit;
-			targetProxy = F991750B1780FAD400E19869 /* PBXContainerItemProxy */;
-		};
 		F9FD1869176FF41900F08900 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F9FD1841176FF41800F08900 /* Gather */;
@@ -518,12 +441,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gather/Gather-Prefix.pch";
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Gather/Gather-Info.plist";
-				"OTHER_LDFLAGS[arch=*]" = (
-					"-ObjC",
-					"-all_load",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -536,12 +454,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gather/Gather-Prefix.pch";
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"$(BUILT_PRODUCTS_DIR)/../../Headers\"";
 				INFOPLIST_FILE = "Gather/Gather-Info.plist";
-				"OTHER_LDFLAGS[arch=*]" = (
-					"-ObjC",
-					"-all_load",
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

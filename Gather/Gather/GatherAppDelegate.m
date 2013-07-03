@@ -7,7 +7,6 @@
 //
 
 #import "GatherAppDelegate.h"
-#import <RestKit/RestKit.h>
 
 @implementation GatherAppDelegate
 
