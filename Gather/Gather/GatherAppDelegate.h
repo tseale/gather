@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GatherViewController.h"
+#import "GatherGlobalData.h"
 
 @interface GatherAppDelegate : UIResponder <UIApplicationDelegate>
 

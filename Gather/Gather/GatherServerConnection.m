@@ -23,10 +23,26 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	// Notify the XML parser that data is downloaded and ready to be parsed
-	NSDictionary* xmlDataDict = [NSDictionary dictionaryWithObject:_xmlData
-													 forKey:@"xmlData"];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"xmlDownloaded" object:self userInfo:xmlDataDict];
+	// create and init NSXMLParser object
+	NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:_xmlData];
+	
+	// create and init our delegate
+	GatherXMLParser *parser = [[GatherXMLParser alloc] init];
+	
+	// set delegate
+	[xmlParser setDelegate:parser];
+	
+	// parsing...
+	BOOL success = [xmlParser parse];
+	
+	// test the result
+	if (success) {
+		//NSLog(@"No errors - user count : %i", [parser [users count]]);
+		// get array of users here
+		//  NSMutableArray *users = [parser users];
+	} else {
+		NSLog(@"Error parsing document!");
+	}
 }
 
 -(void)connectToURL:(NSString*)url
@@ -40,11 +56,6 @@
 		NSLog(@"Connection is NULL");
 	}
 	//return [[NSString alloc] initWithBytes: [_xmlData mutableBytes] length:[_xmlData length] encoding:NSUTF8StringEncoding];
-}
-
--(NSString*)getXML
-{
-	return [[NSString alloc] initWithBytes: [_xmlData mutableBytes] length:[_xmlData length] encoding:NSUTF8StringEncoding];
 }
 
 

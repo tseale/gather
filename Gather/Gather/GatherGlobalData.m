@@ -10,4 +10,26 @@
 
 @implementation GatherGlobalData
 
++ (GatherGlobalData *)sharedInstance
+{
+    static GatherGlobalData *sharedInstance = nil;
+    @synchronized(self) {
+        if (sharedInstance == nil)
+		{
+			sharedInstance.userID=1;
+			sharedInstance = [[GatherGlobalData alloc] init];
+			sharedInstance.acceptEvents = [[NSMutableArray alloc] init];
+			sharedInstance.rejectEvents = [[NSMutableArray alloc] init];
+			sharedInstance.noResponseEvents = [[NSMutableArray alloc] init];
+			sharedInstance.tableData = [[NSMutableDictionary alloc] initWithObjects:@[sharedInstance.noResponseEvents,
+																					  sharedInstance.acceptEvents,
+																					  sharedInstance.rejectEvents]
+																			forKeys:@[@"No Response",
+																					  @"Attending",
+																					  @"Not Attending"]];
+		}
+    }
+    return sharedInstance;
+}
+
 @end

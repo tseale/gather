@@ -19,10 +19,4 @@
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;
 @property (nonatomic,strong) GatherServerConnection	*connection;
 
-// these will be made global with GCD
-@property (nonatomic,retain) NSMutableDictionary *tableData;
-@property (nonatomic,retain) NSMutableArray *acceptEvents;
-@property (nonatomic,retain) NSMutableArray *rejectEvents;
-@property (nonatomic,retain) NSMutableArray *noResponseEvents;
-
 @end

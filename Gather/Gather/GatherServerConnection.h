@@ -18,6 +18,5 @@
 
 -(id)init;
 -(void)connectToURL:(NSString*)url;
--(NSString*)getXML;
 
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GatherCellData.h"
 
-@interface GatherXMLParser : NSXMLParser
+@interface GatherXMLParser : NSObject <NSXMLParserDelegate>
 
--(id)init;
-@property(nonatomic, retain) NSMutableData *xmlData;
+@property (nonatomic,retain) NSMutableString *currentElementValue;
+
+@property (nonatomic,strong) GatherCellData *eventData;
 
 @end
