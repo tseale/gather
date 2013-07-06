@@ -23,6 +23,29 @@
 	[_connection connectToURL:@"http://198.58.109.224:3000/events.xml"];
 }
 
+-(void)showTable:(NSNotification*)notification
+{
+	[_loadingView removeFromSuperview];
+	if ([[notification name] isEqualToString:@"dataLoadSuccess"]) {
+		if (TABLE_DATA.count!=0){
+			[_eventsTable reloadData];
+			[_statusLabel setHidden:YES];
+		}else{
+			[_statusLabel setText:@"No Events"];
+			[_statusLabel setHidden:NO];
+			[_eventsTable reloadData];
+		}
+	}else if ([[notification name] isEqualToString:@"dataLoadFailure"]){
+		[_statusLabel setText:@"Data Retrieval Failure"];
+		[_statusLabel setHidden:NO];
+		[_eventsTable reloadData];
+	}else if ([[notification name] isEqualToString:@"connectionFailure"]){
+		[_statusLabel setText:@"Connection Failure :("];
+		[_statusLabel setHidden:NO];
+		[_eventsTable reloadData];
+	}
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -30,18 +53,59 @@
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
 	
+	_initialView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
+	[_initialView setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[self.view addSubview:_initialView];
+	
+	_loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[_loadingView setBackgroundColor:[UIColor clearColor]];
+	[_loadingView setFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT-30)];
+	[_loadingView startAnimating];
+	[self.view addSubview:_loadingView];
+	
 	_eventsTable = [[GatherEventsTableView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
 	[_eventsTable setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 	[_eventsTable setDelegate:self];
 	[_eventsTable setDataSource:self];
 	[_eventsTable setBounces:YES];
 	[_eventsTable setShowsVerticalScrollIndicator:NO];
-	[_eventsTable reloadData];
+	_pullToRefresh = [[UIRefreshControl alloc] init];
+	[_pullToRefresh addTarget:self action:@selector(refreshFromConnection) forControlEvents:UIControlEventValueChanged];
+	[_eventsTable addSubview:_pullToRefresh];
 	[self.view addSubview:_eventsTable];
+	
+	_statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height/2.0-100, self.view.bounds.size.width, 30)];
+	[_statusLabel setBackgroundColor:[UIColor clearColor]];
+	[_statusLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0f]];
+	[_statusLabel setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_statusLabel setTextAlignment:NSTextAlignmentCenter];
+	[_statusLabel setHidden:YES];
+	[_eventsTable addSubview:_statusLabel];
+	
+	_loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[_loadingView setBackgroundColor:[UIColor clearColor]];
+	[_loadingView setFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
+	[_loadingView startAnimating];
+	[self.view addSubview:_loadingView];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(addEventToTable:)
 												 name:@"addEvent"
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(showTable:)
+												 name:@"dataLoadSuccess"
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(showTable:)
+												 name:@"dataLoadFailure"
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(showTable:)
+												 name:@"connectionFailure"
 											   object:nil];
 }
 
@@ -94,10 +158,17 @@
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger) section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-	UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 75)];
+	UIView *sectionHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 22)];
 	[sectionHeader setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	UILabel *sectionTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 22)];
+	[sectionTitle setText:[self returnKey:section]];
+	[sectionTitle setBackgroundColor:[UIColor clearColor]];
+	[sectionTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[sectionTitle setTextColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
+	[sectionTitle setTextAlignment:NSTextAlignmentCenter];
+	[sectionHeader addSubview:sectionTitle];
 	return sectionHeader;
 }
 
@@ -106,7 +177,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	if (section==0){
+	if ([[TABLE_DATA objectForKey:[self returnKey:section]] count]==0){
 		return 0;
 	}else{
 		return 22;
@@ -150,6 +221,9 @@
 	];
 	[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
 	[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] addAccept];
+	[[TABLE_DATA objectForKey:@"Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
+												  atIndex:0];
+	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
 }
 
 -(void)shiftCellOverlayReject:(UILongPressGestureRecognizer*)recognizer
@@ -168,6 +242,9 @@
 	 ];
 	[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
 	[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] addReject];
+	[[TABLE_DATA objectForKey:@"Not Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
+													  atIndex:0];
+	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
 }
 
 -(void)returnCell:(GatherEventsTableViewCell*)cell
@@ -182,12 +259,19 @@
 					 }
 					 completion:^(BOOL finished){}
 	 ];
-	[self performSelector:@selector(refresh) withObject:cell afterDelay:0.4];
+	[self performSelector:@selector(refreshFromData) withObject:nil afterDelay:0.4];
 }
 
--(void)refresh
+-(void)refreshFromData
 {
 	[_eventsTable reloadData];
+}
+
+-(void)refreshFromConnection
+{
+	[_pullToRefresh beginRefreshing];
+	[_connection connectToURL:@"http://198.58.109.224:3000/events.xml"];
+	[_pullToRefresh endRefreshing];
 }
 
 @end

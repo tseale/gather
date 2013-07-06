@@ -16,6 +16,21 @@
 	return self;
 }
 
+- (BOOL)isDataSourceAvailable
+{
+	BOOL dataSourceAvailable = NO;
+		
+        Boolean success;
+        const char *host_name = "198.58.109.224"; // your data source host name
+		
+        SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
+        SCNetworkReachabilityFlags flags;
+        success = SCNetworkReachabilityGetFlags(reachability, &flags);
+        dataSourceAvailable = success && (flags & kSCNetworkFlagsReachable) && !(flags & kSCNetworkFlagsConnectionRequired);
+        CFRelease(reachability);
+    return dataSourceAvailable;
+}
+
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
 	[_xmlData appendData:data];
@@ -37,11 +52,13 @@
 	
 	// test the result
 	if (success) {
-		//NSLog(@"No errors - user count : %i", [parser [users count]]);
-		// get array of users here
-		//  NSMutableArray *users = [parser users];
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"dataLoadSuccess"
+		 object:self];
 	} else {
-		NSLog(@"Error parsing document!");
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"dataLoadFailure"
+		 object:self];
 	}
 }
 
@@ -50,12 +67,22 @@
 	_url=[NSURL URLWithString:url];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_url];
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-	if (connection){
+	if (connection && [self isDataSourceAvailable]){
+		[self flushGlobalData];
 		_xmlData=[[NSMutableData alloc] init];
 	}else{
-		NSLog(@"Connection is NULL");
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"connectionFailure"
+		 object:self];
 	}
-	//return [[NSString alloc] initWithBytes: [_xmlData mutableBytes] length:[_xmlData length] encoding:NSUTF8StringEncoding];
+}
+
+-(void)flushGlobalData
+{
+	[TABLE_DATA removeAllObjects];
+	[NO_RESPONSE_EVENTS removeAllObjects];
+	[ACCEPTED_EVENTS removeAllObjects];
+	[REJECTED_EVENTS removeAllObjects];
 }
 
 

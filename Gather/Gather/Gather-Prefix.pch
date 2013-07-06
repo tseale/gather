@@ -23,7 +23,7 @@
 	#define USER_ID [GatherGlobalData sharedInstance].userID
 
 	#define TABLE_DATA [GatherGlobalData sharedInstance].tableData
-	#define NO_RESPONSE_EVENTS [GatherGlobalData sharedInstance].noReponseEvents
+	#define NO_RESPONSE_EVENTS [GatherGlobalData sharedInstance].noResponseEvents
 	#define ACCEPTED_EVENTS [GatherGlobalData sharedInstance].acceptEvents
 	#define REJECTED_EVENTS [GatherGlobalData sharedInstance].rejectEvents
 #endif

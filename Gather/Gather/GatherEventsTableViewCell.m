@@ -51,6 +51,7 @@
 		
 		_increment = (self.frame.size.width-20)/_participants;
 		
+		NSLog(@"name: %@ location:%@",_eventName,_eventLocation);
 		NSString *title = _eventName;
 		title = [title stringByAppendingString:@" @ "];
 		title = [title stringByAppendingString:_eventLocation];
@@ -62,7 +63,6 @@
 		_cellOverlay = [[UIView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
 		[_cellOverlay setBackgroundColor:[UIColor whiteColor]];
 				
-		
 		_eventTitle = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, self.frame.size.width-15, 20)];
 		[_eventTitle setText:title];
 		[_eventTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];

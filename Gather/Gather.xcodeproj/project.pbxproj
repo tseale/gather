@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9414F8C1787E495001A8AEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175161780FB5500E19869 /* SystemConfiguration.framework */; };
 		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
@@ -88,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9414F8C1787E495001A8AEF /* SystemConfiguration.framework in Frameworks */,
 				F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */,
 				F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */,
 				F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */,

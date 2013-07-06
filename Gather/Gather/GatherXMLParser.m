@@ -37,31 +37,34 @@ didStartElement:(NSString *)elementName
  qualifiedName:(NSString *)qName {
 	if ([elementName isEqualToString:@"events"]) {
 		// We reached the end of the XML document
+		[TABLE_DATA setObject:NO_RESPONSE_EVENTS forKey:@"No Response"];
 		[TABLE_DATA setObject:ACCEPTED_EVENTS forKey:@"Attending"];
+		[TABLE_DATA setObject:REJECTED_EVENTS forKey:@"Not Attending"];
 		return;
 	}
 	
 	if ([elementName isEqualToString:@"event"]) {
-		[ACCEPTED_EVENTS addObject:_eventData];
+		[NO_RESPONSE_EVENTS addObject:_eventData];
 		_eventData=nil;
 	} else {
+		//NSString *element =[_currentElementValue stringByReplacingOccurrencesOfString:@" " withString:@""];
+		NSString *element = [_currentElementValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		if ([elementName isEqualToString:@"eventName"]){
-			[_eventData setEventName:_currentElementValue];
+			[_eventData setEventName:element];
 		}else if ([elementName isEqualToString:@"eventLocation"]){
-			[_eventData setEventLocation:_currentElementValue];
+			[_eventData setEventLocation:element];
 		}else if ([elementName isEqualToString:@"eventTime"]){
-			[_eventData setEventTime:_currentElementValue];
+			[_eventData setEventTime:element];
 		}else if ([elementName isEqualToString:@"eventGroup"]){
-			[_eventData setEventGroup:_currentElementValue];
+			[_eventData setEventGroup:element];
 		}else if ([elementName isEqualToString:@"accepts"]){
-			[_eventData setAccepts:(int)_currentElementValue];
+			[_eventData setAccepts:[element intValue]];
 		}else if ([elementName isEqualToString:@"rejects"]){
-			[_eventData setRejects:(int)_currentElementValue];
+			[_eventData setRejects:[element intValue]];
 		}else if ([elementName isEqualToString:@"participants"]){
-			[_eventData setParticipants:(int)_currentElementValue];
+			[_eventData setParticipants:[element intValue]];
 		}
 	}
-	
 	_currentElementValue = nil;
 }
 

@@ -19,4 +19,10 @@
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;
 @property (nonatomic,strong) GatherServerConnection	*connection;
 
+@property (nonatomic,strong) UIView *initialView;
+@property (nonatomic,strong) UILabel *statusLabel;
+
+@property (nonatomic,strong) UIActivityIndicatorView *loadingView;
+@property (nonatomic,strong) UIRefreshControl *pullToRefresh;
+
 @end
