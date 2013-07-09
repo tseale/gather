@@ -32,6 +32,8 @@
 @property (nonatomic,strong) UIView *rejectLine;
 @property (nonatomic,strong) UIView *progressLine;
 
+@property (nonatomic,strong) UIView *responseTab;
+
 -(id)initWithData:(GatherCellData*)data;
 
 -(void)addText;

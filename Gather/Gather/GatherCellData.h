@@ -10,10 +10,10 @@
 
 @interface GatherCellData : NSObject
 
-@property (nonatomic,retain) NSString *eventName;
-@property (nonatomic,retain) NSString *eventLocation;
-@property (nonatomic,retain) NSString *eventTime;
-@property (nonatomic,retain) NSString *eventGroup;
+@property (nonatomic,retain) NSString *name;
+@property (nonatomic,retain) NSString *location;
+@property (nonatomic,retain) NSString *time;
+@property (nonatomic,retain) NSString *group;
 @property (nonatomic,assign) int accepts;
 @property (nonatomic,assign) int rejects;
 @property (nonatomic,assign) int participants;
@@ -24,6 +24,8 @@
 			 time:(NSString*)time
 			group:(NSString*)group
   numParticipants:(int)participants
+		  accepts:(int)accepts
+		  rejects:(int)rejects
 		 response:(int)response;
 
 -(void)addAccept;

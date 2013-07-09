@@ -15,14 +15,18 @@
 			 time:(NSString*)time
 			group:(NSString*)group
   numParticipants:(int)participants
-		 response:(int)response
+		  accepts:(int)accepts
+		  rejects:(int)rejects
+		 response:(int)response;
 {
-	self.eventName=name;
-	self.eventLocation=location;
-	self.eventTime=time;
-	self.eventGroup=group;
-	self.participants=participants;
-	self.response=response;
+	_name=name;
+	_location=location;
+	_time=time;
+	_group=group;
+	_participants=participants;
+	_accepts=accepts;
+	_rejects=rejects;
+	_response=1;
 	return self;
 }
 

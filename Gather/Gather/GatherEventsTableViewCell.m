@@ -15,7 +15,7 @@
     self = [super init];
     if (self) {
         // Initialization code
-		[self setBackgroundColor:[UIColor whiteColor]];
+		[self setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 		[self setFrame:CGRectMake(0, 0, self.bounds.size.width, 75)];
 		
 		UIView *greenBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2.0, self.frame.size.height)];
@@ -38,10 +38,10 @@
 		[noLabel setTextAlignment:NSTextAlignmentCenter];
 		[self addSubview:noLabel];
 		
-		_eventName=data.eventName;
-		_eventLocation=data.eventLocation;
-		_eventTime=data.eventTime;
-		_eventGroup=data.eventGroup;
+		_eventName=data.name;
+		_eventLocation=data.location;
+		_eventTime=data.time;
+		_eventGroup=data.group;
 		
 		_participants=data.participants;
 		_accepts=data.accepts;
@@ -50,8 +50,7 @@
 		_response=data.response;
 		
 		_increment = (self.frame.size.width-20)/_participants;
-		
-		NSLog(@"name: %@ location:%@",_eventName,_eventLocation);
+
 		NSString *title = _eventName;
 		title = [title stringByAppendingString:@" @ "];
 		title = [title stringByAppendingString:_eventLocation];
@@ -74,24 +73,30 @@
 		[_eventSubtitle setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		
 		_responseLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-115,self.frame.size.height-22, 100, 20)];
-		if (_response==1){
-			[_responseLabel setText:@"Attending"];
-		}else if (_response==-1){
-			[_responseLabel setText:@"Not Attending"];
-		}else if (_response==0){
-			[_responseLabel setText:@"No Response"];
-		}
 		[_responseLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12.0f]];
 		[_responseLabel setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		[_responseLabel setTextAlignment:NSTextAlignmentRight];
 		
+		_responseTab = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width-10,-10, 20, 20)];
+		CGAffineTransform transform = CGAffineTransformMakeRotation(3*M_PI_4);
+		_responseTab.transform = transform;
+		if (_response==1){
+			[_responseTab setBackgroundColor:GREEN_COLOR];
+		}else if (_response==-1){
+			[_responseTab setBackgroundColor:RED_COLOR];
+		}else if (_response==0){
+			[_responseTab setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
+		}
+
+		[_cellOverlay addSubview:_responseTab];
 		
+		[_cellOverlay setClipsToBounds:YES];
 		[_cellOverlay addSubview:_eventTitle];
 		[_cellOverlay addSubview:_eventSubtitle];
-		[_cellOverlay addSubview:_responseLabel];
+		//[_cellOverlay addSubview:_responseLabel];
 		 
 		
-		_progressLine = [[UIView alloc] initWithFrame:CGRectMake(10, self.frame.size.height-3, self.frame.size.width-20, 2)];
+		_progressLine = [[UIView alloc] initWithFrame:CGRectMake(10, self.frame.size.height-8, self.frame.size.width-20, 2)];
 		[_progressLine setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
 		[_cellOverlay addSubview:_progressLine];
 		_acceptLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _increment*_accepts, 2)];

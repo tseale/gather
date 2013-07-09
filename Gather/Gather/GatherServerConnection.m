@@ -38,6 +38,28 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+	NSArray *eventsJSON = [[NSArray alloc] init];
+	GatherCellData *eventObject = [[GatherCellData alloc] init];
+	eventsJSON = [NSJSONSerialization JSONObjectWithData:_xmlData options:0 error:nil];
+	NSLog(@"events JSON: %@",eventsJSON);
+	for (NSMutableDictionary* eventJSON in eventsJSON){
+		NSLog(@"Here");
+		for (NSString* key in eventJSON){
+			if (![key isEqualToString:@"_id"]){
+				NSLog(@"key: %@ value: %@",key,[eventJSON valueForKey:key]);
+				[eventObject setValue:[eventJSON valueForKey:key] forKey:key];
+			}
+		}
+		[NO_RESPONSE_EVENTS addObject:eventObject];
+		eventObject=nil;
+	}
+	[TABLE_DATA setObject:NO_RESPONSE_EVENTS forKey:@"No Response"];
+	
+	[[NSNotificationCenter defaultCenter]
+	 postNotificationName:@"dataLoadSuccess"
+	 object:self];
+	
+	/*
 	// create and init NSXMLParser object
 	NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:_xmlData];
 	
@@ -49,7 +71,7 @@
 	
 	// parsing...
 	BOOL success = [xmlParser parse];
-	
+	 
 	// test the result
 	if (success) {
 		[[NSNotificationCenter defaultCenter]
@@ -60,6 +82,7 @@
 		 postNotificationName:@"dataLoadFailure"
 		 object:self];
 	}
+	 */
 }
 
 -(void)connectToURL:(NSString*)url

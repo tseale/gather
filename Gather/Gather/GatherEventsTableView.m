@@ -15,7 +15,6 @@
     self = [super initWithFrame:frame];
     if (self) {
 		[self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-		[self setRowHeight:75];
     }
     return self;
 }

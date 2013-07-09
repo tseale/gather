@@ -9,7 +9,7 @@
 #import "GatherViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define TOP_BAR_HEIGHT 66
+#define TOP_BAR_HEIGHT 64
 
 @interface GatherViewController ()
 
@@ -20,7 +20,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	_connection = [[GatherServerConnection alloc] init];
-	[_connection connectToURL:@"http://198.58.109.224:3000/events.xml"];
+	[_connection connectToURL:@"http://198.58.109.224:8002/events/"];
 }
 
 -(void)showTable:(NSNotification*)notification
@@ -165,8 +165,14 @@
 	UILabel *sectionTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 22)];
 	[sectionTitle setText:[self returnKey:section]];
 	[sectionTitle setBackgroundColor:[UIColor clearColor]];
-	[sectionTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[sectionTitle setTextColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
+	[sectionTitle setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
+	if (section==0){
+		[sectionTitle setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:0.5f]];
+	}else if (section==1){
+		[sectionTitle setTextColor:[UIColor colorWithRed:0.16f green:0.77f blue:0.09f alpha:0.5f]];
+	}else if (section==2){
+		[sectionTitle setTextColor:[UIColor colorWithRed:1.00f green:0.23f blue:0.19f alpha:0.5f]];
+	}
 	[sectionTitle setTextAlignment:NSTextAlignmentCenter];
 	[sectionHeader addSubview:sectionTitle];
 	return sectionHeader;
@@ -181,6 +187,15 @@
 		return 0;
 	}else{
 		return 22;
+	}
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row==([[TABLE_DATA objectForKey:[self returnKey:indexPath.section]] count]-1)){
+		return 75.0f;
+	}else{
+		return 76.0f;
 	}
 }
 
@@ -270,7 +285,7 @@
 -(void)refreshFromConnection
 {
 	[_pullToRefresh beginRefreshing];
-	[_connection connectToURL:@"http://198.58.109.224:3000/events.xml"];
+	[_connection connectToURL:@"http://198.58.109.224:8002/events/"];
 	[_pullToRefresh endRefreshing];
 }
 

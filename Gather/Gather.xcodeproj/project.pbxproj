@@ -120,6 +120,8 @@
 				F99175201783D0B700E19869 /* GatherXMLParser.m */,
 				F99175231783D61200E19869 /* GatherGlobalData.h */,
 				F99175241783D61200E19869 /* GatherGlobalData.m */,
+				F99174D9177D30CA00E19869 /* GatherCellData.h */,
+				F99174DA177D30CA00E19869 /* GatherCellData.m */,
 			);
 			name = "Back End Stuff";
 			sourceTree = "<group>";
@@ -164,8 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				F99175221783D30F00E19869 /* Back End Stuff */,
-				F99174D9177D30CA00E19869 /* GatherCellData.h */,
-				F99174DA177D30CA00E19869 /* GatherCellData.m */,
 				F9FD1882177011C600F08900 /* GatherTopBar.h */,
 				F9FD1883177011C600F08900 /* GatherTopBar.m */,
 				F95F53E31776B6B0005D957E /* GatherEventsTableView.h */,

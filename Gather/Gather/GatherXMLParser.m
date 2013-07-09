@@ -50,13 +50,13 @@ didStartElement:(NSString *)elementName
 		//NSString *element =[_currentElementValue stringByReplacingOccurrencesOfString:@" " withString:@""];
 		NSString *element = [_currentElementValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		if ([elementName isEqualToString:@"eventName"]){
-			[_eventData setEventName:element];
+			[_eventData setName:element];
 		}else if ([elementName isEqualToString:@"eventLocation"]){
-			[_eventData setEventLocation:element];
+			[_eventData setLocation:element];
 		}else if ([elementName isEqualToString:@"eventTime"]){
-			[_eventData setEventTime:element];
+			[_eventData setTime:element];
 		}else if ([elementName isEqualToString:@"eventGroup"]){
-			[_eventData setEventGroup:element];
+			[_eventData setGroup:element];
 		}else if ([elementName isEqualToString:@"accepts"]){
 			[_eventData setAccepts:[element intValue]];
 		}else if ([elementName isEqualToString:@"rejects"]){
