@@ -1,0 +1,220 @@
+========================================================================================
+=  Please ensure that you set the default write concern for the database by setting    =
+=   one of the options                                                                 =
+=                                                                                      =
+=     w: (value of > -1 or the string 'majority'), where < 1 means                     =
+=        no write acknowlegement                                                       =
+=     journal: true/false, wait for flush to journal before acknowlegement             =
+=     fsync: true/false, wait for flush to file system before acknowlegement           =
+=                                                                                      =
+=  For backward compatibility safe is still supported and                              =
+=   allows values of [true | false | {j:true} | {w:n, wtimeout:n} | {fsync:true}]      =
+=   the default value is false which means the driver receives does not                =
+=   return the information of the success/error of the insert/update/remove            =
+=                                                                                      =
+=   ex: new Db(new Server('localhost', 27017), {safe:false})                           =
+=                                                                                      =
+=   http://www.mongodb.org/display/DOCS/getLastError+Command                           =
+=                                                                                      =
+=  The default of no acknowlegement will change in the very near future                =
+=                                                                                      =
+=  This message will disappear when the default safe is set on the driver Db           =
+========================================================================================
+Listening on port 8002
+Connected to 'eventdb' database
+[90mGET /events [32m200 [90m7ms - 472b[0m
+[90mGET /events [32m200 [90m2ms - 472b[0m
+[90mGET /events [32m200 [90m1ms - 472b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m4ms - 221b[0m
+[90mGET / [33m404 [90m1ms[0m
+[90mGET /favicon.ico [33m404 [90m1ms[0m
+[90mGET /events [32m200 [90m1ms - 472b[0m
+[90mGET /events [32m200 [90m3ms - 472b[0m
+[90mGET /events [32m200 [90m2ms - 472b[0m
+[90mGET /events [32m200 [90m2ms - 472b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m4ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m3ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m5ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 221b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 221b[0m
+[90mGET /events/ [32m200 [90m3ms - 472b[0m
+[90mGET /events/ [32m200 [90m2ms - 472b[0m
+[90mGET /events/ [32m200 [90m2ms - 472b[0m
+[90mGET /events/ [32m200 [90m1ms - 472b[0m
+[90mGET /events [32m200 [90m1ms - 472b[0m
+[90mGET /events/ [32m200 [90m2ms - 472b[0m
+[90mGET /events/ [32m200 [90m1ms - 472b[0m
+[90mGET /events/ [32m200 [90m1ms - 472b[0m
+Updating event: 51da29540be7d1a243000002
+{"name":"Dinner","location":"Ian's","time":"7:42","group":"Interns","accepts":"5","rejects":"3","participants":"15","_id":"51da29540be7d1a243000002"}
+Error updating event: MongoError: cannot change _id of a document old:{ name: "Dinner", location: "Ian's", time: "7:42", group: "Interns", accepts: "5", rejects: "3", participants: "15", response: "8", _id: ObjectId('51da29540be7d1a243000002') } new:{ name: "Dinner", location: "Ian's", time: "7:42", group: "Interns", accepts: "5", rejects: "3", participants: "15", _id: "51da29540be7d1a243000002" }
+[90mPUT /events/51da29540be7d1a243000002 [32m200 [90m286ms - 38b[0m
+SyntaxError: Unexpected token }
+    at Object.parse (native)
+    at IncomingMessage.<anonymous> (/home/cjhin/gather/node_modules/express/node_modules/connect/lib/middleware/json.js:76:27)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:910:16
+    at process._tickCallback (node.js:415:13)
+Updating event: 51da29540be7d1a243000002
+{"name":"Dinner","location":"Ian's","time":"7:42","group":"Interns","accepts":"5","rejects":"3","participants":"15"}
+1 document(s) updated
+[90mPUT /events/51da29540be7d1a243000002 [32m200 [90m2ms - 145b[0m
+[90mGET /events [32m200 [90m1ms - 451b[0m
+[90mGET /events/ [32m200 [90m3ms - 451b[0m
+[90mGET /events/ [32m200 [90m1ms - 451b[0m
+Updating event: 51da28fa0be7d1a243000001
+{"name":"test_name","location":"test_location","time":"test_time","group":"test_group","accepts":"0","rejects":"0","participants":"10"}
+1 document(s) updated
+[90mPUT /events/51da28fa0be7d1a243000001 [32m200 [90m1ms - 164b[0m
+[90mGET /events [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m3ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m2ms - 429b[0m
+[90mGET /events/ [32m200 [90m5ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+[90mGET /events/ [32m200 [90m1ms - 429b[0m
+SyntaxError: Unexpected token {
+    at Object.parse (native)
+    at IncomingMessage.<anonymous> (/home/cjhin/gather/node_modules/express/node_modules/connect/lib/middleware/json.js:76:27)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:910:16
+    at process._tickCallback (node.js:415:13)
+Adding event: [{"what":"Dinner","when":"6:30","where":"Lucky's","accepts":"1","rejects":"1","total":"3","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","accepts":"1","rejects":"0"},{"what":"NULL","when":"NULL","where":"Jordan's","accepts":"1","rejects":"0"}]}]
+Success: {"what":"Dinner","when":"6:30","where":"Lucky's","accepts":"1","rejects":"1","total":"3","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","accepts":"1","rejects":"0"},{"what":"NULL","when":"NULL","where":"Jordan's","accepts":"1","rejects":"0"}],"_id":"51db866bd44840d643000001"}
+[90mPOST /events [32m200 [90m4ms - 777b[0m
+[90mGET /events [32m200 [90m2ms - 1.26kb[0m
+Deleting event: 51da28fa0be7d1a243000001
+1 document(s) deleted
+[90mDELETE /events/51da28fa0be7d1a243000001 [32m200 [90m3ms - 828b[0m
+Retrieving event: 51da28fa0be7d1a243000001
+[90mGET /events/51da28fa0be7d1a243000001 [32m200 [90m2ms - 0b[0m
+[90mGET /events [32m200 [90m4ms - 1.05kb[0m
+Deleting event: 51da29540be7d1a243000002
+1 document(s) deleted
+[90mDELETE /events/51da29540be7d1a243000002 [32m200 [90m1ms - 828b[0m
+[90mGET /events [32m200 [90m1ms - 867b[0m
+[90mGET /events [32m200 [90m1ms - 867b[0m
+[90mGET /events [32m200 [90m2ms - 867b[0m
+[90mPOST /events/51da29540be7d1a243000002 [33m404 [90m0ms[0m
+[90mPOST /events/51db866bd44840d643000001 [33m404 [90m0ms[0m
+Updating event: 51db866bd44840d643000001
+[{"what":"Dinner","when":"6:30","where":"Lucky's","accepts":"1","rejects":"1","total":"3","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","accepts":"1","rejects":"0"},{"what":"NULL","when":"NULL","where":"Jordan's","accepts":"2","rejects":"0"}],"_id":"51db866bd44840d643000001"}]
+1 document(s) updated
+[90mPUT /events/51db866bd44840d643000001 [32m200 [90m3ms - 867b[0m
+[90mGET /events [32m200 [90m1ms - 1005b[0m
+[90mGET /events [32m200 [90m1ms - 1005b[0m
+[90mGET /events [32m200 [90m2ms - 1005b[0m
+[90mGET /events [32m200 [90m1ms - 1005b[0m
+Deleting event: 51db866bd44840d643000001
+1 document(s) deleted
+[90mDELETE /events/51db866bd44840d643000001 [32m200 [90m2ms - 867b[0m
+[90mGET /events [32m200 [90m1ms - 2b[0m
+[90mGET /events/ [32m200 [90m1ms - 2b[0m
+Adding event: {"what":"Dinner","when":"6:30","where":"Lucky's","accepts":"1","rejects":"1","total":"3","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","accepts":"1","rejects":"0"},{"what":"NULL","when":"NULL","where":"Jordan's","accepts":"2","rejects":"0"}]}
+Success: {"what":"Dinner","when":"6:30","where":"Lucky's","accepts":"1","rejects":"1","total":"3","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","accepts":"1","rejects":"0"},{"what":"NULL","when":"NULL","where":"Jordan's","accepts":"2","rejects":"0"}],"_id":"51db87aed44840d643000002"}
+[90mPOST /events [32m200 [90m2ms - 777b[0m
+[90mGET /events/ [32m200 [90m1ms - 867b[0m
+[90mGET /events [32m200 [90m1ms - 867b[0m
+Adding event: {"what":"Slay Zombies","when":"3:15","where":"416 Regent St Apartment","accepts":"2","rejects":"1","total":"5","group":"Cool Kids","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"1as12487234947e","user_name":"Akum Gill","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"},{"user_id":"614920355b47f","user_name":"Brendan Ryan","response":"0"}],"suggestions":[{"what":"WTF DUDE","when":"NULL","where":"NULL","accepts":"3","rejects":"1"},{"what":"NULL","when":"NULL","where":"417 Regent (Akum's Pad)","accepts":"1","rejects":"3"}]}
+Success: {"what":"Slay Zombies","when":"3:15","where":"416 Regent St Apartment","accepts":"2","rejects":"1","total":"5","group":"Cool Kids","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"1as12487234947e","user_name":"Akum Gill","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"},{"user_id":"614920355b47f","user_name":"Brendan Ryan","response":"0"}],"suggestions":[{"what":"WTF DUDE","when":"NULL","where":"NULL","accepts":"3","rejects":"1"},{"what":"NULL","when":"NULL","where":"417 Regent (Akum's Pad)","accepts":"1","rejects":"3"}],"_id":"51db88bdd44840d643000003"}
+[90mPOST /events [32m200 [90m2ms - 1kb[0m
+[90mGET /events [32m200 [90m1ms - 1.96kb[0m
+[90mGET /events [32m200 [90m1ms - 1.96kb[0m
+[90mGET /events/ [32m200 [90m2ms - 1.96kb[0m
+Updating event: 51db87aed44840d643000002
+{"what":"Dinner","when":"Wednesday, 6:30","where":"Lucky's","group":"Interns","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}],"suggestions":[{"what":"NULL","when":"6:45","where":"NULL","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"0"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"}]},{"what":"NULL","when":"NULL","where":"Jordan's","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"-1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"1"}]}]}
+1 document(s) updated
+[90mPUT /events/51db87aed44840d643000002 [32m200 [90m2ms - 1.38kb[0m
+[90mGET /events [32m200 [90m2ms - 2.66kb[0m
+SyntaxError: Unexpected token }
+    at Object.parse (native)
+    at IncomingMessage.<anonymous> (/home/cjhin/gather/node_modules/express/node_modules/connect/lib/middleware/json.js:76:27)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:910:16
+    at process._tickCallback (node.js:415:13)
+SyntaxError: Unexpected token }
+    at Object.parse (native)
+    at IncomingMessage.<anonymous> (/home/cjhin/gather/node_modules/express/node_modules/connect/lib/middleware/json.js:76:27)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:910:16
+    at process._tickCallback (node.js:415:13)
+[90mGET /events [32m200 [90m1ms - 2.66kb[0m
+[90mGET /events [32m200 [90m1ms - 2.66kb[0m
+SyntaxError: Unexpected end of input
+    at Object.parse (native)
+    at IncomingMessage.<anonymous> (/home/cjhin/gather/node_modules/express/node_modules/connect/lib/middleware/json.js:76:27)
+    at IncomingMessage.EventEmitter.emit (events.js:92:17)
+    at _stream_readable.js:910:16
+    at process._tickCallback (node.js:415:13)
+Updating event: 51db88bdd44840d643000003
+{"what":"Slay Zombies","when":"3:15","where":"416 Regent St Apartment","group":"Cool Kids","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"1"},{"user_id":"1as12487234947e","user_name":"Akum Gill","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"0"},{"user_id":"614920355b47f","user_name":"Brendan Ryan","response":"0"}],"suggestions":[{"what":"WTF DUDE","when":"NULL","where":"NULL","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"0"},{"user_id":"1as12487234947e","user_name":"Akum Gill","response":"-1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"1"},{"user_id":"614920355b47f","user_name":"Brendan Ryan","response":"1"}]},{"what":"NULL","when":"NULL","where":"417 Regent (Akum's Pad)","who":[{"user_id":"1as12487123947b","user_name":"Chas Jhin","response":"0"},{"user_id":"1as12487234947e","user_name":"Akum Gill","response":"1"},{"user_id":"2a21393bc12341","user_name":"Jeremy Vercillo","response":"-1"},{"user_id":"514120398a43a","user_name":"Taylor Seale","response":"1"},{"user_id":"614920355b47f","user_name":"Brendan Ryan","response":"-1"}]}]}
+1 document(s) updated
+[90mPUT /events/51db88bdd44840d643000003 [32m200 [90m31ms - 2.09kb[0m
+[90mGET /events [32m200 [90m2ms - 3.88kb[0m
+[90mGET /events [32m200 [90m5ms - 3.88kb[0m
+[90mGET /events/ [32m200 [90m2ms - 3.88kb[0m
+[90mGET /events/ [32m200 [90m1ms - 3.88kb[0m
+[90mGET /events/ [32m200 [90m2ms - 3.88kb[0m
+[90mGET /events/ [36m304 [90m3ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m3ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m3ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
+[90mGET /events/ [36m304 [90m2ms[0m
