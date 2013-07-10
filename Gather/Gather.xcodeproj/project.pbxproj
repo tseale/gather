@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F919E2A1178CE395009FFE3E /* GatherUserResponseData.m in Sources */ = {isa = PBXBuildFile; fileRef = F919E29E178CDADA009FFE3E /* GatherUserResponseData.m */; };
+		F919E2A2178CE399009FFE3E /* GatherSuggestionData.m in Sources */ = {isa = PBXBuildFile; fileRef = F919E2A0178CDC74009FFE3E /* GatherSuggestionData.m */; };
 		F9414F8C1787E495001A8AEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175161780FB5500E19869 /* SystemConfiguration.framework */; };
 		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
-		F99174DB177D331000E19869 /* GatherCellData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherCellData.m */; };
+		F99174DB177D331000E19869 /* GatherEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherEventData.m */; };
 		F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175101780FB3C00E19869 /* CoreData.framework */; };
 		F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F991751D1783CB4800E19869 /* GatherServerConnection.m */; };
-		F99175211783D15800E19869 /* GatherXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F99175201783D0B700E19869 /* GatherXMLParser.m */; };
 		F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99175241783D61200E19869 /* GatherGlobalData.m */; };
 		F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
 		F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1847176FF41800F08900 /* CoreGraphics.framework */; };
@@ -43,13 +44,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F919E29D178CDADA009FFE3E /* GatherUserResponseData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherUserResponseData.h; sourceTree = "<group>"; };
+		F919E29E178CDADA009FFE3E /* GatherUserResponseData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherUserResponseData.m; sourceTree = "<group>"; };
+		F919E29F178CDC74009FFE3E /* GatherSuggestionData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherSuggestionData.h; sourceTree = "<group>"; };
+		F919E2A0178CDC74009FFE3E /* GatherSuggestionData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherSuggestionData.m; sourceTree = "<group>"; };
 		F95F53E31776B6B0005D957E /* GatherEventsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableView.h; sourceTree = "<group>"; };
 		F95F53E41776B6B0005D957E /* GatherEventsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableView.m; sourceTree = "<group>"; };
 		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
 		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F95F53E9177957C4005D957E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F99174D9177D30CA00E19869 /* GatherCellData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherCellData.h; sourceTree = "<group>"; };
-		F99174DA177D30CA00E19869 /* GatherCellData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherCellData.m; sourceTree = "<group>"; };
+		F99174D9177D30CA00E19869 /* GatherEventData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventData.h; sourceTree = "<group>"; };
+		F99174DA177D30CA00E19869 /* GatherEventData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventData.m; sourceTree = "<group>"; };
 		F991750E1780FB2800E19869 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F99175101780FB3C00E19869 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F99175121780FB4200E19869 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -57,8 +62,6 @@
 		F99175161780FB5500E19869 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F991751C1783CB4800E19869 /* GatherServerConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherServerConnection.h; sourceTree = "<group>"; };
 		F991751D1783CB4800E19869 /* GatherServerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherServerConnection.m; sourceTree = "<group>"; };
-		F991751F1783D0B700E19869 /* GatherXMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherXMLParser.h; sourceTree = "<group>"; };
-		F99175201783D0B700E19869 /* GatherXMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherXMLParser.m; sourceTree = "<group>"; };
 		F99175231783D61200E19869 /* GatherGlobalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGlobalData.h; sourceTree = "<group>"; };
 		F99175241783D61200E19869 /* GatherGlobalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGlobalData.m; sourceTree = "<group>"; };
 		F9FD1842176FF41800F08900 /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,12 +119,14 @@
 			children = (
 				F991751C1783CB4800E19869 /* GatherServerConnection.h */,
 				F991751D1783CB4800E19869 /* GatherServerConnection.m */,
-				F991751F1783D0B700E19869 /* GatherXMLParser.h */,
-				F99175201783D0B700E19869 /* GatherXMLParser.m */,
 				F99175231783D61200E19869 /* GatherGlobalData.h */,
 				F99175241783D61200E19869 /* GatherGlobalData.m */,
-				F99174D9177D30CA00E19869 /* GatherCellData.h */,
-				F99174DA177D30CA00E19869 /* GatherCellData.m */,
+				F99174D9177D30CA00E19869 /* GatherEventData.h */,
+				F99174DA177D30CA00E19869 /* GatherEventData.m */,
+				F919E29D178CDADA009FFE3E /* GatherUserResponseData.h */,
+				F919E29E178CDADA009FFE3E /* GatherUserResponseData.m */,
+				F919E29F178CDC74009FFE3E /* GatherSuggestionData.h */,
+				F919E2A0178CDC74009FFE3E /* GatherSuggestionData.m */,
 			);
 			name = "Back End Stuff";
 			sourceTree = "<group>";
@@ -309,10 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F919E2A2178CE399009FFE3E /* GatherSuggestionData.m in Sources */,
+				F919E2A1178CE395009FFE3E /* GatherUserResponseData.m in Sources */,
 				F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */,
-				F99175211783D15800E19869 /* GatherXMLParser.m in Sources */,
 				F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */,
-				F99174DB177D331000E19869 /* GatherCellData.m in Sources */,
+				F99174DB177D331000E19869 /* GatherEventData.m in Sources */,
 				F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */,
 				F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */,
 				F9FD18841770151D00F08900 /* GatherTopBar.m in Sources */,

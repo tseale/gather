@@ -113,7 +113,7 @@
 {
 	[_eventsTable reloadData];
 	/*
-	GatherCellData *data = [[GatherCellData alloc] initWithName:@"Beer & Bacon"
+	GatherEventData *data = [[GatherEventData alloc] initWithName:@"Beer & Bacon"
 													   location:@"Wando's Bar"
 														   time:@"Tuesday 9:00 PM"
 														  group:@"Da Crew"
@@ -224,42 +224,46 @@
 {
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
-	CGRect shiftCellFrame = cell.cellOverlay.frame;
-	shiftCellFrame.origin.x=cell.frame.size.width/4.0;
-	[UIView animateWithDuration:0.3f
-							delay:0.0
-						options:UIViewAnimationOptionCurveEaseIn
-					 animations:^{
-						 cell.cellOverlay.frame=shiftCellFrame;
-					 }
-					 completion:^(BOOL finished){}
-	];
-	[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
-	[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] addAccept];
-	[[TABLE_DATA objectForKey:@"Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
-												  atIndex:0];
-	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	if (index.section!=1){
+		CGRect shiftCellFrame = cell.cellOverlay.frame;
+		shiftCellFrame.origin.x=cell.frame.size.width/4.0;
+		[UIView animateWithDuration:0.3f
+							  delay:0.0
+							options:UIViewAnimationOptionCurveEaseIn
+						 animations:^{
+							 cell.cellOverlay.frame=shiftCellFrame;
+						 }
+						 completion:^(BOOL finished){}
+		 ];
+		[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
+		[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] accept];
+		[[TABLE_DATA objectForKey:@"Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
+													 atIndex:0];
+		[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	}
 }
 
 -(void)shiftCellOverlayReject:(UILongPressGestureRecognizer*)recognizer
 {
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
-	CGRect shiftCellFrame = cell.cellOverlay.frame;
-	shiftCellFrame.origin.x=-1*(cell.frame.size.width/4.0);
-	[UIView animateWithDuration:0.3f
-						  delay:0.0
-						options:UIViewAnimationOptionCurveEaseIn
-					 animations:^{
-						 cell.cellOverlay.frame=shiftCellFrame;
-					 }
-					 completion:^(BOOL finished){}
-	 ];
-	[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
-	[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] addReject];
-	[[TABLE_DATA objectForKey:@"Not Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
-													  atIndex:0];
-	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	if (index.section!=2){
+		CGRect shiftCellFrame = cell.cellOverlay.frame;
+		shiftCellFrame.origin.x=-1*(cell.frame.size.width/4.0);
+		[UIView animateWithDuration:0.3f
+							  delay:0.0
+							options:UIViewAnimationOptionCurveEaseIn
+						 animations:^{
+							 cell.cellOverlay.frame=shiftCellFrame;
+						 }
+						 completion:^(BOOL finished){}
+		 ];
+		[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
+		[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] reject];
+		[[TABLE_DATA objectForKey:@"Not Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
+														 atIndex:0];
+		[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	}
 }
 
 -(void)returnCell:(GatherEventsTableViewCell*)cell

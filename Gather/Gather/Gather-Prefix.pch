@@ -20,7 +20,7 @@
 	#define GREEN_COLOR [UIColor colorWithRed:0.16f green:0.77f blue:0.09f alpha:1.00f]
 	#define RED_COLOR [UIColor colorWithRed:1.00f green:0.23f blue:0.19f alpha:1.00f]
 
-	#define USER_ID [GatherGlobalData sharedInstance].userID
+	#define USER_ID [GatherGlobalData sharedInstance].user_id
 
 	#define TABLE_DATA [GatherGlobalData sharedInstance].tableData
 	#define NO_RESPONSE_EVENTS [GatherGlobalData sharedInstance].noResponseEvents

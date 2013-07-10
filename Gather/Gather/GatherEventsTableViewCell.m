@@ -7,10 +7,11 @@
 //
 
 #import "GatherEventsTableViewCell.h"
+#import "GatherUserResponseData.h"
 
 @implementation GatherEventsTableViewCell
 
-- (id)initWithData:(GatherCellData*)data
+- (id)initWithData:(GatherEventData*)data
 {
     self = [super init];
     if (self) {
@@ -38,16 +39,17 @@
 		[noLabel setTextAlignment:NSTextAlignmentCenter];
 		[self addSubview:noLabel];
 		
-		_eventName=data.name;
-		_eventLocation=data.location;
-		_eventTime=data.time;
+		_eventName=data.what;
+		_eventLocation=data.where;
+		_eventTime=data.when;
 		_eventGroup=data.group;
 		
-		_participants=data.participants;
+		_participants=data.total;
 		_accepts=data.accepts;
 		_rejects=data.rejects;
 		
-		_response=data.response;
+		GatherUserResponseData *user = [data.who objectForKey:USER_ID];
+		_response=user.user_response;
 		
 		_increment = (self.frame.size.width-20)/_participants;
 
