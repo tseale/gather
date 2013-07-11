@@ -23,19 +23,12 @@
 		[_background setBackgroundColor:[UIColor clearColor]];
 		[self addSubview:_background];
 		
-		_yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[_yesLabel setText:@"\u2713"];
-		[_yesLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
-		[_yesLabel setTextColor:[UIColor whiteColor]];
-		[_yesLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:_yesLabel];
-		
-		_noLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-self.frame.size.width/4.0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[_noLabel setText:@"X"];
-		[_noLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
-		[_noLabel setTextColor:[UIColor whiteColor]];
-		[_noLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:_noLabel];
+		_quickResponseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+		[_quickResponseLabel setText:@"\u2713"];
+		[_quickResponseLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
+		[_quickResponseLabel setTextColor:[UIColor whiteColor]];
+		[_quickResponseLabel setTextAlignment:NSTextAlignmentCenter];
+		[self addSubview:_quickResponseLabel];
 		
 		_eventName=data.what;
 		_eventLocation=data.where;

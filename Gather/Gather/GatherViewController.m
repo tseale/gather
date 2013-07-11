@@ -111,6 +111,7 @@
 
 - (void) addEventToTable:(NSNotification *) notification
 {
+	/*
 	GatherEventData *data = [[GatherEventData alloc] init];
 	//[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
 	//[_eventsTable reloadData];
@@ -118,6 +119,7 @@
 	[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
 	[_eventsTable numberOfRowsInSection:1];
 	[_eventsTable insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	 */
 }
 
 
@@ -222,7 +224,6 @@
 	if (index.section!=1){
 	// shift and delete original cell
 	[cell.background setBackgroundColor:GREEN_COLOR];
-	[cell.noLabel setHidden:YES];
 	CGRect shiftCellFrame = cell.cellOverlay.frame;
 	shiftCellFrame.origin.x=cell.frame.size.width;
 	[UIView animateWithDuration:0.3f
@@ -262,7 +263,7 @@
 	if(index.section!=2){
 	// shift and delete original cell
 	[cell.background setBackgroundColor:RED_COLOR];
-	[cell.yesLabel setHidden:YES];
+	[cell.quickResponseLabel setText:@"x"];
 	CGRect shiftCellFrame = cell.cellOverlay.frame;
 	shiftCellFrame.origin.x=-1*cell.frame.size.width;
 	[UIView animateWithDuration:0.3f

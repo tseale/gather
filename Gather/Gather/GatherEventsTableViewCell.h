@@ -35,8 +35,7 @@
 @property (nonatomic,strong) UIView *responseTab;
 
 @property (nonatomic,strong) UIView *background;
-@property (nonatomic,strong) UILabel *yesLabel;
-@property (nonatomic,strong) UILabel *noLabel;
+@property (nonatomic,strong) UILabel *quickResponseLabel;
 
 -(id)initWithData:(GatherEventData*)data;
 
