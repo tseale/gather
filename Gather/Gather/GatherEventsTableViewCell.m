@@ -19,25 +19,23 @@
 		[self setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 		[self setFrame:CGRectMake(0, 0, self.bounds.size.width, 75)];
 		
-		UIView *greenBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[greenBackground setBackgroundColor:GREEN_COLOR];
-		[self addSubview:greenBackground];
-		UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[yesLabel setText:@"Yes"];
-		[yesLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
-		[yesLabel setTextColor:[UIColor whiteColor]];
-		[yesLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:yesLabel];
+		_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+		[_background setBackgroundColor:[UIColor clearColor]];
+		[self addSubview:_background];
 		
-		UIView *redBackground = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2.0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[redBackground setBackgroundColor:RED_COLOR];
-		[self addSubview:redBackground];
-		UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-self.frame.size.width/4.0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[noLabel setText:@"No"];
-		[noLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
-		[noLabel setTextColor:[UIColor whiteColor]];
-		[noLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:noLabel];
+		_yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/4.0, self.frame.size.height)];
+		[_yesLabel setText:@"\u2713"];
+		[_yesLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
+		[_yesLabel setTextColor:[UIColor whiteColor]];
+		[_yesLabel setTextAlignment:NSTextAlignmentCenter];
+		[self addSubview:_yesLabel];
+		
+		_noLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-self.frame.size.width/4.0, 0, self.frame.size.width/4.0, self.frame.size.height)];
+		[_noLabel setText:@"X"];
+		[_noLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
+		[_noLabel setTextColor:[UIColor whiteColor]];
+		[_noLabel setTextAlignment:NSTextAlignmentCenter];
+		[self addSubview:_noLabel];
 		
 		_eventName=data.what;
 		_eventLocation=data.where;

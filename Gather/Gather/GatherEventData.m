@@ -22,27 +22,21 @@
 -(void)accept
 {
 	GatherUserResponseData *user = CURRENT_USER;
-	NSLog(@"%d",user.user_response);
 	if (user.user_response==-1){
-		NSLog(@"accept");
 		_rejects-=1;
 	}
 	_accepts+=1;
 	[user setUser_response:1];
-	NSLog(@"%d",user.user_response);
 }
 
 -(void)reject
 {
 	GatherUserResponseData *user = CURRENT_USER;
-	NSLog(@"%d",user.user_response);
 	if(user.user_response==1){
-		NSLog(@"reject");
 		_accepts-=1;
 	}
 	_rejects+=1;
 	[user setUser_response:-1];
-	NSLog(@"%d",user.user_response);
 }
 
 @end

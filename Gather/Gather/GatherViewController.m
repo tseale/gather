@@ -111,26 +111,19 @@
 
 - (void) addEventToTable:(NSNotification *) notification
 {
-	[_eventsTable reloadData];
-	/*
-	GatherEventData *data = [[GatherEventData alloc] initWithName:@"Beer & Bacon"
-													   location:@"Wando's Bar"
-														   time:@"Tuesday 9:00 PM"
-														  group:@"Da Crew"
-												numParticipants:10
-													   response:0];
-	[[TABLE_DATA	objectForKey:@"No Response"] insertObject:data atIndex:0];
-	[_eventsTable reloadData];
-	[_eventsTable setContentOffset:CGPointMake(0, 75) animated:NO];
-	[_eventsTable setContentOffset:CGPointMake(0, 0) animated:YES];
-	 */
-	
+	GatherEventData *data = [[GatherEventData alloc] init];
+	//[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
+	//[_eventsTable reloadData];
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+	[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
+	[_eventsTable numberOfRowsInSection:1];
+	[_eventsTable insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 
 -(void)addEvent
 {
-	//[_eventsTable insertRowsAtIndexPaths:@[@0] withRowAnimation:UITableViewRowAnimationNone];
+	NSLog(@"Here");
 }
 
 -(NSString*)returnKey:(NSInteger)section
@@ -175,6 +168,10 @@
 	}
 	[sectionTitle setTextAlignment:NSTextAlignmentCenter];
 	[sectionHeader addSubview:sectionTitle];
+	
+	UIView *separatorLine = [[UIView alloc] initWithFrame:CGRectMake(0, 21, self.view.bounds.size.width, 1)];
+	[separatorLine setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
+	[sectionHeader addSubview:separatorLine];
 	return sectionHeader;
 }
 
@@ -183,11 +180,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	if ([[TABLE_DATA objectForKey:[self returnKey:section]] count]==0){
-		return 0;
-	}else{
-		return 22;
-	}
+	return 22;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -220,50 +213,84 @@
 }
 
 
--(void)shiftCellOverlayAccept:(UILongPressGestureRecognizer*)recognizer
+-(void)shiftCellOverlayAccept:(UISwipeGestureRecognizer*)recognizer
 {
+	// cell information
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	
 	if (index.section!=1){
-		CGRect shiftCellFrame = cell.cellOverlay.frame;
-		shiftCellFrame.origin.x=cell.frame.size.width/4.0;
-		[UIView animateWithDuration:0.3f
-							  delay:0.0
-							options:UIViewAnimationOptionCurveEaseIn
-						 animations:^{
-							 cell.cellOverlay.frame=shiftCellFrame;
-						 }
-						 completion:^(BOOL finished){}
-		 ];
-		[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
-		[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] accept];
-		[[TABLE_DATA objectForKey:@"Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
-													 atIndex:0];
-		[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	// shift and delete original cell
+	[cell.background setBackgroundColor:GREEN_COLOR];
+	[cell.noLabel setHidden:YES];
+	CGRect shiftCellFrame = cell.cellOverlay.frame;
+	shiftCellFrame.origin.x=cell.frame.size.width;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationOptionCurveEaseIn
+					 animations:^{
+						 cell.cellOverlay.frame=shiftCellFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+	[self performSelector:@selector(deleteCellAccept:) withObject:cell afterDelay:0.4];
 	}
 }
 
--(void)shiftCellOverlayReject:(UILongPressGestureRecognizer*)recognizer
+-(void)deleteCellAccept:(GatherEventsTableViewCell*)cell
 {
+	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	GatherEventData *data=[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row];
+	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	[_eventsTable numberOfRowsInSection:index.section];
+	[_eventsTable deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
+	
+	// add new cell
+	[[TABLE_DATA objectForKey:@"Attending"] addObject:data];
+	[_eventsTable numberOfRowsInSection:1];
+	NSIndexPath *addIndex = [NSIndexPath indexPathForRow:[[TABLE_DATA objectForKey:@"Attending"] count]-1 inSection:1];
+	[[[TABLE_DATA objectForKey:@"Attending"] objectAtIndex:[[TABLE_DATA objectForKey:@"Attending"] count]-1] accept];
+	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationTop];
+}
+
+-(void)shiftCellOverlayReject:(UISwipeGestureRecognizer*)recognizer
+{
+	// cell information
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
-	if (index.section!=2){
-		CGRect shiftCellFrame = cell.cellOverlay.frame;
-		shiftCellFrame.origin.x=-1*(cell.frame.size.width/4.0);
-		[UIView animateWithDuration:0.3f
-							  delay:0.0
-							options:UIViewAnimationOptionCurveEaseIn
-						 animations:^{
-							 cell.cellOverlay.frame=shiftCellFrame;
-						 }
-						 completion:^(BOOL finished){}
-		 ];
-		[self performSelector:@selector(returnCell:) withObject:cell afterDelay:0.3];
-		[[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row] reject];
-		[[TABLE_DATA objectForKey:@"Not Attending"] insertObject:[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row]
-														 atIndex:0];
-		[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	
+	if(index.section!=2){
+	// shift and delete original cell
+	[cell.background setBackgroundColor:RED_COLOR];
+	[cell.yesLabel setHidden:YES];
+	CGRect shiftCellFrame = cell.cellOverlay.frame;
+	shiftCellFrame.origin.x=-1*cell.frame.size.width;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationOptionCurveEaseIn
+					 animations:^{
+						 cell.cellOverlay.frame=shiftCellFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+	[self performSelector:@selector(deleteCellReject:) withObject:cell afterDelay:0.3];
 	}
+}
+
+-(void)deleteCellReject:(GatherEventsTableViewCell*)cell
+{
+	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	GatherEventData *data=[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row];
+	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
+	[_eventsTable numberOfRowsInSection:index.section];
+	[_eventsTable deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
+	
+	// add new cell
+	[[TABLE_DATA objectForKey:@"Not Attending"] addObject:data];
+	[_eventsTable numberOfRowsInSection:2];
+	NSIndexPath *addIndex = [NSIndexPath indexPathForRow:[[TABLE_DATA objectForKey:@"Not Attending"] count]-1 inSection:2];
+	[[[TABLE_DATA objectForKey:@"Not Attending"] objectAtIndex:[[TABLE_DATA objectForKey:@"Not Attending"] count]-1] reject];
+	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 -(void)returnCell:(GatherEventsTableViewCell*)cell

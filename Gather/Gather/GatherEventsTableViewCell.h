@@ -34,6 +34,10 @@
 
 @property (nonatomic,strong) UIView *responseTab;
 
+@property (nonatomic,strong) UIView *background;
+@property (nonatomic,strong) UILabel *yesLabel;
+@property (nonatomic,strong) UILabel *noLabel;
+
 -(id)initWithData:(GatherEventData*)data;
 
 -(void)addText;
