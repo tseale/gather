@@ -20,7 +20,7 @@
 	BOOL dataSourceAvailable = NO;
 		
         Boolean success;
-        const char *host_name = "198.58.109.224"; // your data source host name
+        const char *host_name = HOST_NAME; // your data source host name
 		
         SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
         SCNetworkReachabilityFlags flags;
@@ -126,7 +126,7 @@
 	 object:self];
 }
 
--(void)connectToURL:(NSString*)url
+-(void)getUserEventsDataFromURL:(NSString*)url
 {
 	_url=[NSURL URLWithString:url];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_url];

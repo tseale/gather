@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GatherViewController.h"
+#import "SSKeychain.h"
 #import <AddressBook/AddressBook.h>
 #import <Security/Security.h>
 
@@ -23,5 +24,11 @@
 @property (nonatomic,strong) UITextField *phoneNumber;
 @property (nonatomic,strong) UITextField *password;
 @property (nonatomic,strong) UITextField *confirmPassword;
+
+@property (nonatomic,strong) NSString *firstNameText;
+@property (nonatomic,strong) NSString *lastNameText;
+@property (nonatomic,strong) NSString *phoneNumberText;
+@property (nonatomic,strong) NSString *passwordText;
+@property (nonatomic,strong) NSString *confirmedPasswordText;
 
 @end

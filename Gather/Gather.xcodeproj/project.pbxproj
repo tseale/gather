@@ -13,6 +13,7 @@
 		F919E2A61790CA26009FFE3E /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F919E2A51790CA26009FFE3E /* AddressBookUI.framework */; };
 		F919E2AC1792FF4A009FFE3E /* GatherLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F919E2AB1792FF41009FFE3E /* GatherLoginViewController.m */; };
 		F919E2B317930517009FFE3E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175141780FB4C00E19869 /* Security.framework */; };
+		F919E3341794E1D9009FFE3E /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F919E3331794E1D9009FFE3E /* SSKeychain.m */; };
 		F9414F8C1787E495001A8AEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175161780FB5500E19869 /* SystemConfiguration.framework */; };
 		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
@@ -56,6 +57,8 @@
 		F919E2A51790CA26009FFE3E /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		F919E2AA1792FF41009FFE3E /* GatherLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherLoginViewController.h; sourceTree = "<group>"; };
 		F919E2AB1792FF41009FFE3E /* GatherLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherLoginViewController.m; sourceTree = "<group>"; };
+		F919E3321794E1D9009FFE3E /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		F919E3331794E1D9009FFE3E /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		F95F53E31776B6B0005D957E /* GatherEventsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableView.h; sourceTree = "<group>"; };
 		F95F53E41776B6B0005D957E /* GatherEventsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableView.m; sourceTree = "<group>"; };
 		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		F919E2AD179304BA009FFE3E /* Login Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				F919E3321794E1D9009FFE3E /* SSKeychain.h */,
+				F919E3331794E1D9009FFE3E /* SSKeychain.m */,
 				F919E2AA1792FF41009FFE3E /* GatherLoginViewController.h */,
 				F919E2AB1792FF41009FFE3E /* GatherLoginViewController.m */,
 			);
@@ -350,6 +355,7 @@
 				F919E2A1178CE395009FFE3E /* GatherUserResponseData.m in Sources */,
 				F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */,
 				F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */,
+				F919E3341794E1D9009FFE3E /* SSKeychain.m in Sources */,
 				F99174DB177D331000E19869 /* GatherEventData.m in Sources */,
 				F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */,
 				F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */,

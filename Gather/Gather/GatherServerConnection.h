@@ -18,6 +18,6 @@
 @property (nonatomic, retain) NSURL *url;
 
 -(id)init;
--(void)connectToURL:(NSString*)url;
+-(void)getUserEventsDataFromURL:(NSString*)url;
 
 @end

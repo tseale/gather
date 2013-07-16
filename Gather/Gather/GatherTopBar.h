@@ -12,6 +12,7 @@
 
 @property (nonatomic,strong) UIView *gatherLogo;
 @property (nonatomic,strong) UILabel *addEventButton;
+@property (nonatomic,strong) UILabel *alterViewButton;
 @property (nonatomic,strong) UIView *separatorLine;
 
 @end

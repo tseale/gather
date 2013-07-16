@@ -11,6 +11,8 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
+#import "SSKeychain.h"
+
 #define TOP_BAR_HEIGHT 64
 
 @interface GatherViewController ()
@@ -22,7 +24,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	_connection = [[GatherServerConnection alloc] init];
-	[_connection connectToURL:@"http://198.58.109.224:8002/events/"];
+	NSString *connectionURL = @"http://";
+	connectionURL = [connectionURL stringByAppendingString:@HOST_NAME];
+	connectionURL = [connectionURL stringByAppendingString:@":8002"];
+	connectionURL = [connectionURL stringByAppendingString:@"/events/"];
+	[_connection getUserEventsDataFromURL:connectionURL];
 }
 
 -(void)showTable:(NSNotification*)notification
@@ -48,16 +54,9 @@
 	}
 }
 
--(void)getUserInfo
-{
-
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-	[self getUserInfo];
 	
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
@@ -120,6 +119,8 @@
 
 - (void) addEventToTable:(NSNotification *) notification
 {
+	[SSKeychain deletePasswordForService:SERVICE_NAME account:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+	NSLog(@"Password removed from keychain");
 	/*
 	GatherEventData *data = [[GatherEventData alloc] init];
 	//[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
@@ -349,7 +350,7 @@
 -(void)refreshFromConnection
 {
 	[_pullToRefresh beginRefreshing];
-	[_connection connectToURL:@"http://198.58.109.224:8002/events/"];
+	[_connection getUserEventsDataFromURL:@"http://198.58.109.224:8002/events/"];
 	[_pullToRefresh endRefreshing];
 }
 

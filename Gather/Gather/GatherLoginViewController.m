@@ -7,12 +7,29 @@
 //
 
 #import "GatherLoginViewController.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @interface GatherLoginViewController ()
 
 @end
 
 @implementation GatherLoginViewController
+
+- (NSString *)sha1:(NSString *)str{
+	const char *cStr = [str UTF8String];
+	unsigned char result[CC_SHA1_DIGEST_LENGTH];
+	CC_SHA1(cStr, strlen(cStr), result);
+	NSString *s = [NSString  stringWithFormat:
+				   @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+				   result[0], result[1], result[2], result[3], result[4],
+				   result[5], result[6], result[7],
+				   result[8], result[9], result[10], result[11], result[12],
+				   result[13], result[14], result[15],
+				   result[16], result[17], result[18], result[19]
+				   ];
+	
+    return s;
+}
 
 - (void)viewDidLoad
 {
@@ -52,7 +69,7 @@
 	[self.view addSubview:_loadingView];
 	
 	
-	BOOL hasAccount=NO;
+	BOOL hasAccount=[self confirmUserLogin];
 	
 	if (hasAccount){
 		[self performSelector:@selector(loginSuccess) withObject:nil afterDelay:1.0];
@@ -187,65 +204,65 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField*)textField;
 {
-	/*
-	NSInteger nextTag = textField.tag + 1;
-	// Try to find next responder
-	UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
-	if (nextResponder) {
-		// Found next responder, so set it.
-		[self processLogin];
-	} else {
-		// Not found, so remove keyboard.
-		[self processLogin];
-	}
-	 */
 	[self processLogin];
-	return NO; // We do not want UITextField to insert line-breaks.
-
+	return NO;
 }
 
 -(void)processLogin
 {
-	NSString *firstName=[_firstName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	NSString *lastName=[_lastName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	NSString *phoneNumber=[_phoneNumber.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	NSString *password=[_password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	NSString *confirmedPassword=[_confirmPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	_firstNameText=[_firstName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	_lastNameText=[_lastName.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	_phoneNumberText=[_phoneNumber.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	_passwordText=[_password.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	_confirmedPasswordText=[_confirmPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
 	BOOL loginSuccess=YES;
 	
-	if ([firstName isEqualToString:@""]) {
+	if ([_firstNameText isEqualToString:@""]) {
 		[_firstName setValue:RED_COLOR
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
 	}
 	
-	if ([lastName isEqualToString:@""]) {
+	if ([_lastNameText isEqualToString:@""]) {
 		[_lastName setValue:RED_COLOR
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
 	}
 	
-	if ([phoneNumber isEqualToString:@""]){
+	if ([_phoneNumberText isEqualToString:@""]){
 		[_phoneNumber setValue:RED_COLOR
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
+	}else if ([_phoneNumberText length]!=10){
+		loginSuccess=NO;
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Bro, gimme ur full number"
+															message:@"dat's 10 digits"
+														   delegate:self
+												  cancelButtonTitle:@"will do brah"
+												  otherButtonTitles:nil];
+		[alertView show];
+		_phoneNumber.text=@"";
+		[_phoneNumber setValue:RED_COLOR
+					forKeyPath:@"_placeholderLabel.textColor"];
+		loginSuccess=NO;
 	}
 	
-	if ([password isEqualToString:@""]){
+	if ([_passwordText isEqualToString:@""]){
 		[_password setValue:RED_COLOR
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
 	}
 	
-	if ([confirmedPassword isEqualToString:@""]) {
+	if ([_confirmedPasswordText isEqualToString:@""]) {
 		[_confirmPassword setValue:RED_COLOR
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
 	}
 	
-	if ([password isEqualToString:confirmedPassword] && loginSuccess){
-		[self loginSuccess];
+	if ([_passwordText isEqualToString:_confirmedPasswordText] && loginSuccess){
+		_confirmedPasswordText=nil;
+		_passwordText = [[self sha1:_passwordText] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	}else{
 		_password.text=@"";
 		[_password setValue:RED_COLOR
@@ -255,6 +272,35 @@
 				 forKeyPath:@"_placeholderLabel.textColor"];
 		loginSuccess=NO;
 	}
+	
+	if (loginSuccess){
+		[self postLoginInfo];
+	}
+}
+
+-(void)postLoginInfo
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *name = [_firstNameText stringByAppendingString:[NSString stringWithFormat:@" %@",_lastNameText]];
+	[defaults setObject:name forKey:@"name"];
+	[defaults setObject:_phoneNumberText forKey:@"phoneNumber"];
+	[defaults setObject:_passwordText forKey:@"password"];
+	
+	[SSKeychain setPassword:_passwordText forService:SERVICE_NAME account:name];
+	[self loginSuccess];
+}
+
+-(BOOL)confirmUserLogin
+{
+	NSError *error = nil;
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSString *username = [defaults objectForKey:@"name"];
+	NSString *passwordFromKeychain = [SSKeychain passwordForService:SERVICE_NAME account:username error:&error];
+	if (passwordFromKeychain!=nil){
+		//NSLog(@"User Name: %@\nPhone Number: %@\nKeychain Password: %@",username,phone,passwordFromKeychain);
+		return YES;
+	}
+	return NO;
 }
 
 -(void)loginSuccess
