@@ -8,6 +8,8 @@
 
 #import "GatherViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 #define TOP_BAR_HEIGHT 64
 
@@ -46,9 +48,16 @@
 	}
 }
 
+-(void)getUserInfo
+{
+
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+	[self getUserInfo];
 	
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
@@ -208,10 +217,29 @@
 		[shiftCellOverlayReject setNumberOfTouchesRequired:1];
 		[shiftCellOverlayReject setDirection:UISwipeGestureRecognizerDirectionLeft];
 		[cell addGestureRecognizer:shiftCellOverlayReject];
+		
+		/*
+		UILongPressGestureRecognizer *showEvent = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showEvent:)];
+		[showEvent setMinimumPressDuration:0.0f];
+		[cell addGestureRecognizer:showEvent];
+		*/
+		
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
 	return cell;
 	
+}
+
+-(void)showEvent:(UILongPressGestureRecognizer*)recognizer
+{
+	//GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
+	if(recognizer.state==UIGestureRecognizerStateBegan){
+		NSLog(@"Start");
+		//[cell setBackgroundColor:[UIColor colorWithRed:0.91f green:0.91f blue:0.91f alpha:1.00f]];
+	}else if(recognizer.state==UIGestureRecognizerStateEnded){
+		NSLog(@"Ended");
+		//[cell setBackgroundColor:[UIColor whiteColor]];
+	}
 }
 
 
@@ -246,12 +274,14 @@
 	[_eventsTable numberOfRowsInSection:index.section];
 	[_eventsTable deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
 	
+	usleep(1000);
+	
 	// add new cell
 	[[TABLE_DATA objectForKey:@"Attending"] addObject:data];
 	[_eventsTable numberOfRowsInSection:1];
 	NSIndexPath *addIndex = [NSIndexPath indexPathForRow:[[TABLE_DATA objectForKey:@"Attending"] count]-1 inSection:1];
 	[[[TABLE_DATA objectForKey:@"Attending"] objectAtIndex:[[TABLE_DATA objectForKey:@"Attending"] count]-1] accept];
-	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationTop];
+	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 -(void)shiftCellOverlayReject:(UISwipeGestureRecognizer*)recognizer
@@ -285,6 +315,8 @@
 	[[TABLE_DATA objectForKey:[self returnKey:index.section]] removeObjectAtIndex:index.row];
 	[_eventsTable numberOfRowsInSection:index.section];
 	[_eventsTable deleteRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationFade];
+	
+	usleep(1000);
 	
 	// add new cell
 	[[TABLE_DATA objectForKey:@"Not Attending"] addObject:data];

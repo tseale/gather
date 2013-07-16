@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GatherLoginViewController.h"
 #import "GatherViewController.h"
 #import "GatherGlobalData.h"
 
 @interface GatherAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) GatherLoginViewController *loginController;
 @property (strong, nonatomic) GatherViewController *viewController;
 
 @end
