@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GatherCellData.h"
+#import "GatherEventData.h"
 
 @interface GatherEventsTableViewCell : UITableViewCell
 
@@ -34,7 +34,10 @@
 
 @property (nonatomic,strong) UIView *responseTab;
 
--(id)initWithData:(GatherCellData*)data;
+@property (nonatomic,strong) UIView *background;
+@property (nonatomic,strong) UILabel *quickResponseLabel;
+
+-(id)initWithData:(GatherEventData*)data;
 
 -(void)addText;
 

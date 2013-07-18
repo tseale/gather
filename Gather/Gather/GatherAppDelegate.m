@@ -12,6 +12,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	_loginController = [[GatherLoginViewController alloc] init];
+	UINavigationController * navigationController = [[UINavigationController alloc]initWithRootViewController:_loginController];
+	[navigationController setNavigationBarHidden:YES];
+	_window.rootViewController = navigationController;
     return YES;
 }
 							

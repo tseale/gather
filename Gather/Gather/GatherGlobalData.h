@@ -16,7 +16,6 @@
 @property (nonatomic,retain) NSMutableArray *acceptEvents;
 @property (nonatomic,retain) NSMutableArray *rejectEvents;
 @property (nonatomic,retain) NSMutableArray *noResponseEvents;
-
-@property (nonatomic,assign) int userID;
+@property (nonatomic,assign) NSString *user_id;
 
 @end

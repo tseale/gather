@@ -10,10 +10,10 @@
 #import "GatherTopBar.h"
 #import "GatherEventsTableView.h"
 #import "GatherEventsTableViewCell.h"
-#import "GatherCellData.h"
+#import "GatherEventData.h"
 #import "GatherServerConnection.h"
 
-@interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,NSXMLParserDelegate>
+@interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) GatherTopBar *topBar;
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;

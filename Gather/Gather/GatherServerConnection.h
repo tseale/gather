@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GatherXMLParser.h"
+#import "GatherEventData.h"
+#import "GatherUserResponseData.h"
+#import "GatherSuggestionData.h"
+#import "GatherGlobalData.h"
 
 @interface GatherServerConnection : NSObject
 
-@property (nonatomic, retain) NSMutableData *xmlData;
+@property (nonatomic, retain) NSMutableData *jsonData;
 @property (nonatomic, retain) NSURL *url;
 
-@property (nonatomic,strong) GatherXMLParser *xmlParser;
-
 -(id)init;
--(void)connectToURL:(NSString*)url;
+-(void)getUserEventsDataFromURL:(NSString*)url;
 
 @end

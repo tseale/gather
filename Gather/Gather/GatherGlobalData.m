@@ -16,8 +16,8 @@
     @synchronized(self) {
         if (sharedInstance == nil)
 		{
-			sharedInstance.userID=1;
 			sharedInstance = [[GatherGlobalData alloc] init];
+			sharedInstance.user_id=@"514120398a43a";
 			sharedInstance.acceptEvents = [[NSMutableArray alloc] init];
 			sharedInstance.rejectEvents = [[NSMutableArray alloc] init];
 			sharedInstance.noResponseEvents = [[NSMutableArray alloc] init];

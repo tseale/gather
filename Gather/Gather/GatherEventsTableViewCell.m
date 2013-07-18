@@ -7,10 +7,11 @@
 //
 
 #import "GatherEventsTableViewCell.h"
+#import "GatherUserResponseData.h"
 
 @implementation GatherEventsTableViewCell
 
-- (id)initWithData:(GatherCellData*)data
+- (id)initWithData:(GatherEventData*)data
 {
     self = [super init];
     if (self) {
@@ -18,36 +19,28 @@
 		[self setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 		[self setFrame:CGRectMake(0, 0, self.bounds.size.width, 75)];
 		
-		UIView *greenBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[greenBackground setBackgroundColor:GREEN_COLOR];
-		[self addSubview:greenBackground];
-		UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[yesLabel setText:@"Yes"];
-		[yesLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
-		[yesLabel setTextColor:[UIColor whiteColor]];
-		[yesLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:yesLabel];
+		_background = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+		[_background setBackgroundColor:[UIColor clearColor]];
+		[self addSubview:_background];
 		
-		UIView *redBackground = [[UIView alloc] initWithFrame:CGRectMake(self.frame.size.width/2.0, 0, self.frame.size.width/2.0, self.frame.size.height)];
-		[redBackground setBackgroundColor:RED_COLOR];
-		[self addSubview:redBackground];
-		UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-self.frame.size.width/4.0, 0, self.frame.size.width/4.0, self.frame.size.height)];
-		[noLabel setText:@"No"];
-		[noLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
-		[noLabel setTextColor:[UIColor whiteColor]];
-		[noLabel setTextAlignment:NSTextAlignmentCenter];
-		[self addSubview:noLabel];
+		_quickResponseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+		[_quickResponseLabel setText:@"\u2713"];
+		[_quickResponseLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
+		[_quickResponseLabel setTextColor:[UIColor whiteColor]];
+		[_quickResponseLabel setTextAlignment:NSTextAlignmentCenter];
+		[self addSubview:_quickResponseLabel];
 		
-		_eventName=data.name;
-		_eventLocation=data.location;
-		_eventTime=data.time;
+		_eventName=data.what;
+		_eventLocation=data.where;
+		_eventTime=data.when;
 		_eventGroup=data.group;
 		
-		_participants=data.participants;
+		_participants=data.total;
 		_accepts=data.accepts;
 		_rejects=data.rejects;
 		
-		_response=data.response;
+		GatherUserResponseData *user = [data.who objectForKey:USER_ID];
+		_response=user.user_response;
 		
 		_increment = (self.frame.size.width-20)/_participants;
 
