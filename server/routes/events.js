@@ -5,23 +5,26 @@ var Server = mongo.Server,
 		BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db('eventdb', server);
+db = new Db('gather', server);
  
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'eventdb' database");
+        console.log("Connected to 'gather' database");
         db.collection('events', {strict:true}, function(err, collection) {
             if (err) {
                 console.log("The 'events' collection doesn't exist. Creating an empty copy...");
 								var event_empty = [{
-										name : "test_name",
-										location : "test_location",
-										time : "test_time",
-										group : "test_group",
-										accepts : "0",
-										rejects : "0",
-										participants: "10",
-										response : "10"
+										what : "Dinner",
+										when : "6:30pm Wednesday",
+										where : "Ian's",
+										group : "Interns",
+										who: [
+											
+										],
+										suggestions : [
+
+
+										]
 								}];
 								db.collection('events', function(err, collection) {
 										collection.insert(event_empty, {safe:true}, function(err, result) {} );
