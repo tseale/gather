@@ -286,6 +286,28 @@
 	[defaults setObject:_phoneNumberText forKey:@"phoneNumber"];
 	[defaults setObject:_passwordText forKey:@"password"];
 	
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://198.58.109.224:8002/"]];
+	[httpClient setParameterEncoding:AFJSONParameterEncoding];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+															path:@"http://198.58.109.224:8002/users/"
+													  parameters:@{@"user_name":name,
+																   @"phone_number":_phoneNumberText,
+																   @"password":_passwordText,
+																   @"events":@[]}];
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// Print the response body in text
+		NSArray *usersJSON = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+		NSDictionary *userInfo = [usersJSON objectAtIndex:0];
+		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+		NSLog(@"id: %@",[userInfo objectForKey:@"_id"]);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
+
+	
 	[SSKeychain setPassword:_passwordText forService:SERVICE_NAME account:name];
 	[self loginSuccess];
 }
