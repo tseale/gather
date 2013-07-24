@@ -18,6 +18,7 @@
 	#import <MobileCoreServices/MobileCoreServices.h>
 
 	#define HOST_NAME "198.58.109.224"
+	#define BASE_URL @"http://198.58.109.224:8002/"
 
 	#define SERVICE_NAME [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]
 
@@ -25,6 +26,8 @@
 	#define RED_COLOR [UIColor colorWithRed:1.00f green:0.23f blue:0.19f alpha:1.00f]
 
 	#define USER_ID [GatherGlobalData sharedInstance].user_id
+	#define USER_PASSWORD [GatherGlobalData sharedInstance].user_password
+	#define USER_AUTHENTICATION @{@"password":USER_PASSWORD,@"_id":USER_ID}
 
 	#define TABLE_DATA [GatherGlobalData sharedInstance].tableData
 	#define NO_RESPONSE_EVENTS [GatherGlobalData sharedInstance].noResponseEvents

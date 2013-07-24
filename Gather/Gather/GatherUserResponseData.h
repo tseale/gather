@@ -10,7 +10,7 @@
 
 @interface GatherUserResponseData : NSObject
 
-@property (nonatomic,retain) NSString *user_name;
+@property (nonatomic,strong) NSString *user_id;
 @property (nonatomic,assign) int user_response;
 
 @end

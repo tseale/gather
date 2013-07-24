@@ -280,11 +280,8 @@
 
 -(void)postLoginInfo
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
 	NSString *name = [_firstNameText stringByAppendingString:[NSString stringWithFormat:@" %@",_lastNameText]];
-	[defaults setObject:name forKey:@"name"];
-	[defaults setObject:_phoneNumberText forKey:@"phoneNumber"];
-	[defaults setObject:_passwordText forKey:@"password"];
 	
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://198.58.109.224:8002/"]];
 	[httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -297,18 +294,25 @@
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-		// Print the response body in text
-		NSArray *usersJSON = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-		NSDictionary *userInfo = [usersJSON objectAtIndex:0];
-		NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-		NSLog(@"id: %@",[userInfo objectForKey:@"_id"]);
+		SBJsonParser *parser = [[SBJsonParser alloc] init];
+		NSDictionary *userInfo = [parser objectWithData:responseObject];
+		
+		USER_ID=[userInfo objectForKey:@"_id"];
+		USER_PASSWORD=[userInfo objectForKey:@"password"];
+		
+		[SSKeychain setPassword:USER_PASSWORD forService:SERVICE_NAME account:USER_ID];
+		
+		
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults removePersistentDomainForName:SERVICE_NAME];
+		[defaults setObject:USER_ID forKey:@"user_id"];
+		[defaults setObject:USER_PASSWORD forKey:@"password"];
+				 
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
 	}];
 	[operation start];
 
-	
-	[SSKeychain setPassword:_passwordText forService:SERVICE_NAME account:name];
 	[self loginSuccess];
 }
 
@@ -316,10 +320,10 @@
 {
 	NSError *error = nil;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSString *username = [defaults objectForKey:@"name"];
-	NSString *passwordFromKeychain = [SSKeychain passwordForService:SERVICE_NAME account:username error:&error];
+	NSString *passwordFromKeychain = [SSKeychain passwordForService:SERVICE_NAME account:[defaults objectForKey:@"user_id"] error:&error];
 	if (passwordFromKeychain!=nil){
-		//NSLog(@"User Name: %@\nPhone Number: %@\nKeychain Password: %@",username,phone,passwordFromKeychain);
+		USER_ID=[defaults objectForKey:@"user_id"];
+		USER_PASSWORD=[defaults objectForKey:@"password"];
 		return YES;
 	}
 	return NO;

@@ -17,7 +17,8 @@
         if (sharedInstance == nil)
 		{
 			sharedInstance = [[GatherGlobalData alloc] init];
-			sharedInstance.user_id=@"514120398a43a";
+			sharedInstance.user_id=@"";
+			sharedInstance.user_password=@"";
 			sharedInstance.acceptEvents = [[NSMutableArray alloc] init];
 			sharedInstance.rejectEvents = [[NSMutableArray alloc] init];
 			sharedInstance.noResponseEvents = [[NSMutableArray alloc] init];

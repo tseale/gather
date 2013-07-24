@@ -24,11 +24,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 	_connection = [[GatherServerConnection alloc] init];
-	NSString *connectionURL = @"http://";
-	connectionURL = [connectionURL stringByAppendingString:@HOST_NAME];
-	connectionURL = [connectionURL stringByAppendingString:@":8002"];
-	connectionURL = [connectionURL stringByAppendingString:@"/events/"];
-	[_connection getUserEventsDataFromURL:connectionURL];
+	[_connection getAllEventsForUser];
 }
 
 -(void)showTable:(NSNotification*)notification
@@ -48,7 +44,7 @@
 		[_statusLabel setHidden:NO];
 		[_eventsTable reloadData];
 	}else if ([[notification name] isEqualToString:@"connectionFailure"]){
-		[_statusLabel setText:@"Connection Failure :("];
+		[_statusLabel setText:@"Connection\nFailure :("];
 		[_statusLabel setHidden:NO];
 		[_eventsTable reloadData];
 	}
@@ -82,8 +78,8 @@
 	[_eventsTable addSubview:_pullToRefresh];
 	[self.view addSubview:_eventsTable];
 	
-	_statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height/2.0-100, self.view.bounds.size.width, 30)];
-	[_statusLabel setBackgroundColor:[UIColor clearColor]];
+	_statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0-self.view.bounds.size.width/4.0, self.view.bounds.size.height/2.0-150, self.view.bounds.size.width/2.0, 100)];
+	[_statusLabel setBackgroundColor:[UIColor lightGrayColor]];
 	[_statusLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0f]];
 	[_statusLabel setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 	[_statusLabel setTextAlignment:NSTextAlignmentCenter];
@@ -119,7 +115,7 @@
 
 - (void) addEventToTable:(NSNotification *) notification
 {
-	[SSKeychain deletePasswordForService:SERVICE_NAME account:[[NSUserDefaults standardUserDefaults] objectForKey:@"name"]];
+	[SSKeychain deletePasswordForService:SERVICE_NAME account:USER_ID];
 	NSLog(@"Password removed from keychain");
 	/*
 	GatherEventData *data = [[GatherEventData alloc] init];
@@ -350,7 +346,7 @@
 -(void)refreshFromConnection
 {
 	[_pullToRefresh beginRefreshing];
-	[_connection getUserEventsDataFromURL:@"http://198.58.109.224:8002/events/"];
+	[_connection getAllEventsForUser];
 	[_pullToRefresh endRefreshing];
 }
 
