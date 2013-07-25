@@ -3,8 +3,7 @@ var express = require('express'),
 		events = require('./routes/events'),
 		users = require('./routes/users'),
 		getevents = require('./routes/getevents'),
-		response = require('./routes/response'),
-		api = require('./docs/api');
+		response = require('./routes/response');
 
 app.configure(function () {
 	app.use(express.bodyParser());
@@ -27,8 +26,6 @@ app.del('/users/:id', users.deleteUser);
 app.post('/getevents', getevents.getUserEvents);
 
 app.post('/response', response.respondToEvent);
-
-app.get('/api', api.getApi);
 
 var port = 8002;
 app.listen(port);
