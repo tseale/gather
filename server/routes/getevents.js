@@ -53,7 +53,7 @@ exports.getUserEvents = function(req, res) {
 					});
 				}
 				else {
-					res.send('ERROR: no user');
+					res.send({'error':'no user'});
 				}
 			}
 		});
