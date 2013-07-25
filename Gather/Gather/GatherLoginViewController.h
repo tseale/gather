@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "GatherViewController.h"
 #import "SSKeychain.h"
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "SBJson.h"
 #import <AddressBook/AddressBook.h>
 #import <Security/Security.h>
 

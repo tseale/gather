@@ -10,9 +10,9 @@
 
 @interface GatherSuggestionData : NSObject
 
-@property (nonatomic,retain) NSString *what;
-@property (nonatomic,retain) NSString *where;
-@property (nonatomic,retain) NSString *when;
-@property (nonatomic,retain) NSMutableArray *who;
+@property (nonatomic,strong) NSString *what;
+@property (nonatomic,strong) NSString *where;
+@property (nonatomic,strong) NSString *when;
+@property (nonatomic,strong) NSMutableArray *who;
 
 @end

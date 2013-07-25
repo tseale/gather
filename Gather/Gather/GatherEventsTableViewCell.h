@@ -13,10 +13,10 @@
 
 @property (nonatomic,strong) UIView *cellOverlay;
 
-@property (nonatomic,retain) NSString *eventName;
-@property (nonatomic,retain) NSString *eventLocation;
-@property (nonatomic,retain) NSString *eventTime;
-@property (nonatomic,retain) NSString *eventGroup;
+@property (nonatomic,strong) NSString *eventName;
+@property (nonatomic,strong) NSString *eventLocation;
+@property (nonatomic,strong) NSString *eventTime;
+@property (nonatomic,strong) NSString *eventGroup;
 @property (nonatomic,assign) int accepts;
 @property (nonatomic,assign) int rejects;
 @property (nonatomic,assign) int participants;

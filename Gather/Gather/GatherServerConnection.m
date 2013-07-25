@@ -30,29 +30,43 @@
     return dataSourceAvailable;
 }
 
--(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+-(BOOL)connectionMade
 {
-	[_jsonData appendData:data];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:BASE_URL]];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	if (connection && [self isDataSourceAvailable]){
+		return YES;
+	}else{
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"connectionFailure"
+		 object:self];
+		return NO;
+	}
 }
 
--(void)connectionDidFinishLoading:(NSURLConnection *)connection
+-(void)flushGlobalData
 {
-	// this is an array to hold dictionaries
-	NSArray *eventsJSON = [NSJSONSerialization JSONObjectWithData:_jsonData options:0 error:nil];
-	for (NSMutableDictionary* eventJSON in eventsJSON){
+	[TABLE_DATA removeAllObjects];
+	[NO_RESPONSE_EVENTS removeAllObjects];
+	[ACCEPTED_EVENTS removeAllObjects];
+	[REJECTED_EVENTS removeAllObjects];
+}
+
+-(void)parseEventsJSON:(NSArray*)eventsJSON
+{
+	[self flushGlobalData];
+	for (NSDictionary* event in eventsJSON){
 		// new event data object
 		GatherEventData *eventObject = [[GatherEventData alloc] init];
 		// these are for each object
 		int accepts=0;
 		int rejects=0;
 		int total=0;
-		// loop through and store information based on the keys
-		for (NSString* event_key in eventJSON){
-			// who and suggestions are arrays so we need to handle them accordingly
-			if ([event_key isEqualToString:@"who"]){
-				for (NSMutableDictionary* user_dict in [eventJSON objectForKey:@"who"]){
+		for (NSString* key in [event allKeys]){
+			if ([key isEqualToString:@"who"]){
+				for (NSMutableDictionary* user_dict in [event objectForKey:@"who"]){
 					GatherUserResponseData *user = [[GatherUserResponseData alloc] init];
-					[user setUser_name:[user_dict valueForKey:@"user_name"]];
+					[user setUser_id:[user_dict valueForKey:@"user_id"]];
 					[user setUser_response:[[user_dict valueForKey:@"response"] intValue]];
 					
 					[eventObject.who setObject:user forKey:[user_dict valueForKey:@"user_id"]];
@@ -64,38 +78,14 @@
 					}
 					total+=1;
 				}
-			}else if([event_key isEqualToString:@"suggestions"]){
-				// take the json just from the suggestions
-				NSMutableData* suggestionData=[[NSMutableData alloc] init];
-				NSArray *suggestionJSON = [NSJSONSerialization JSONObjectWithData:suggestionData options:0 error:nil];
-				// loop through all suggestions
-				for (NSMutableDictionary* sugg in [eventJSON objectForKey:@"suggestions"]){
-					GatherSuggestionData *suggestion = [[GatherSuggestionData alloc] init];
-					for (NSString* sugg_key in sugg){
-						if ([sugg_key isEqualToString:@"who"]){
-							// take the json just from the who array
-							NSMutableData* whoData=[[NSMutableData alloc] init];
-							NSArray *whoJSON = [NSJSONSerialization JSONObjectWithData:whoData options:0 error:nil];
-							// loop through all these peeps
-							for (NSMutableDictionary* who in whoJSON){
-								// object to store user responses
-								GatherUserResponseData *user = [[GatherUserResponseData alloc] init];
-								for (NSString* who_key in who){
-									// map all these values
-									[user setValue:[who valueForKey:who_key] forKey:who_key];
-								}
-								[suggestion.who addObject:user];
-							}
-						}else{
-							[suggestion setValue:[suggestionJSON valueForKey:sugg_key] forKey:sugg_key];
-						}
-					}
-					[eventObject.suggestions addObject:suggestion];
-				}
-			}else{
+			}
+			else if ([key isEqualToString:@"suggestions"]){
+				
+			}
+			else{
 				// otherwise we can just go ahead and set the value for the key!
 				// probs need to do some cleanup? idk we will see
-				[eventObject setValue:[eventJSON valueForKey:event_key] forKey:event_key];
+				[eventObject setValue:[event valueForKey:key] forKey:key];
 			}
 		}
 		[eventObject setAccepts:accepts];
@@ -116,7 +106,6 @@
 				break;
 		}
 	}
-	
 	[TABLE_DATA setObject:ACCEPTED_EVENTS forKey:@"Attending"];
 	[TABLE_DATA setObject:REJECTED_EVENTS forKey:@"Not Attending"];
 	[TABLE_DATA setObject:NO_RESPONSE_EVENTS forKey:@"No Response"];
@@ -126,27 +115,30 @@
 	 object:self];
 }
 
--(void)getUserEventsDataFromURL:(NSString*)url
+-(BOOL)getAllEventsForUser
 {
-	_url=[NSURL URLWithString:url];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_url];
-	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-	if (connection && [self isDataSourceAvailable]){
-		[self flushGlobalData];
-		_jsonData=[[NSMutableData alloc] init];
-	}else{
+	// ensure connection can be made before we do anything, leave if it cannot
+	if (![self connectionMade]){return NO;}
+	
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+	[httpClient setParameterEncoding:AFJSONParameterEncoding];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+															path:[BASE_URL stringByAppendingString:@"getevents/"]
+													  parameters:USER_AUTHENTICATION];
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		SBJsonParser *parser = [[SBJsonParser alloc] init];
+		NSArray *userEvents = [parser objectWithData:responseObject];
+		[self parseEventsJSON:userEvents];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
 		[[NSNotificationCenter defaultCenter]
 		 postNotificationName:@"connectionFailure"
 		 object:self];
-	}
-}
-
--(void)flushGlobalData
-{
-	[TABLE_DATA removeAllObjects];
-	[NO_RESPONSE_EVENTS removeAllObjects];
-	[ACCEPTED_EVENTS removeAllObjects];
-	[REJECTED_EVENTS removeAllObjects];
+	}];
+	[operation start];
+	return YES;
 }
 
 

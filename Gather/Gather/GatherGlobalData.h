@@ -12,10 +12,11 @@
 
 +(GatherGlobalData *)sharedInstance;
 
-@property (nonatomic,retain) NSMutableDictionary *tableData;
-@property (nonatomic,retain) NSMutableArray *acceptEvents;
-@property (nonatomic,retain) NSMutableArray *rejectEvents;
-@property (nonatomic,retain) NSMutableArray *noResponseEvents;
-@property (nonatomic,assign) NSString *user_id;
+@property (nonatomic,strong) NSMutableDictionary *tableData;
+@property (nonatomic,strong) NSMutableArray *acceptEvents;
+@property (nonatomic,strong) NSMutableArray *rejectEvents;
+@property (nonatomic,strong) NSMutableArray *noResponseEvents;
+@property (nonatomic,strong) NSString *user_id;
+@property (nonatomic,strong) NSString *user_password;
 
 @end

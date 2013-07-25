@@ -7,6 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperation.h"
+#import "SBJson.h"
+
 #import "GatherEventData.h"
 #import "GatherUserResponseData.h"
 #import "GatherSuggestionData.h"
@@ -14,10 +19,7 @@
 
 @interface GatherServerConnection : NSObject
 
-@property (nonatomic, retain) NSMutableData *jsonData;
-@property (nonatomic, retain) NSURL *url;
-
 -(id)init;
--(void)getUserEventsDataFromURL:(NSString*)url;
+-(BOOL)getAllEventsForUser;
 
 @end
