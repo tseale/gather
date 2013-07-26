@@ -16,7 +16,10 @@ db.open(function(err, db) {
     }
 });
 
-
+/*
+* GET /users/:id
+* @param :id == user_id
+*/
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving user: ' + id);

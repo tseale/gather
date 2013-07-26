@@ -1,26 +1,19 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
 
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="./parse_json.js"></script>
 	</head>
 	<body>
-		Herro Prease!
+		<div id="header">
+			Gather App
+		</div>
 
-		This is the API
+		<div id="main">
+			<div id="method_table" class="box"></div>
 
-		<div>
-			<h1>Events</h1>
-			<h2>/events<h2>
-
-			<h3>GET /events</h3>
-			<p>Get all events as a JSON array</p>
-			<h3>GET /events/:id</h3>
-			<p>Get event with ID of :id</p>
-			<h3>POST /events</h3>
-			<p>Add an event</p>
-			<h3>PUT /events/:id</h3>
-			<p>Update event with ID of :id</p>
-			<h3>DELETE /events/:id</h3>
-			<p>Delete an event with ID of :id</p>
+			<div id="method_description" class="box"></div>
 		</div>
 	</body>
 </html>

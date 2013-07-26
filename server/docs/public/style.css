@@ -1,0 +1,36 @@
+body {
+	font-family: "HelveticaNeue-Light";
+}
+
+#header {
+	color:#FFF;
+	background-color: #000;
+
+	padding:10px;
+	border-radius:5px;
+	margin-bottom:10px;
+}
+
+#main {
+	position:relative;
+	width:960px;
+	margin: 0 auto;
+}
+
+.box {
+	position:relative;
+	background-color: #eeeeee;
+	padding:10px;
+	border-radius:5px;
+}
+
+#method_table {
+	font-size:20pt;
+	width:200px;
+	float:left;
+}
+
+#method_description {
+	left:10px;
+	float:right;
+}
