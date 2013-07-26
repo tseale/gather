@@ -19,9 +19,11 @@
 @property (nonatomic,assign) int total;
 @property (nonatomic,strong) NSMutableDictionary *who;
 @property (nonatomic,strong) NSMutableArray *suggestions;
-@property (nonatomic,assign) int _id;
+@property (nonatomic,strong) NSString* _id;
 
 -(void)accept;
 -(void)reject;
+
+-(int)userResponse;
 
 @end

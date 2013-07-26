@@ -39,4 +39,10 @@
 	[user setUser_response:-1];
 }
 
+-(int)userResponse
+{
+	GatherUserResponseData *user = CURRENT_USER;
+	return user.user_response;
+}
+
 @end

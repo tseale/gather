@@ -283,10 +283,10 @@
 	
 	NSString *name = [_firstNameText stringByAppendingString:[NSString stringWithFormat:@" %@",_lastNameText]];
 	
-	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"http://198.58.109.224:8002/"]];
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
 	[httpClient setParameterEncoding:AFJSONParameterEncoding];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
-															path:@"http://198.58.109.224:8002/users/"
+															path:[BASE_URL stringByAppendingString:@"users/"]
 													  parameters:@{@"user_name":name,
 																   @"phone_number":_phoneNumberText,
 																   @"password":_passwordText,
@@ -294,6 +294,9 @@
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		
+		// check if there is an error key (to authenticate sign in)
+		
 		SBJsonParser *parser = [[SBJsonParser alloc] init];
 		NSDictionary *userInfo = [parser objectWithData:responseObject];
 		

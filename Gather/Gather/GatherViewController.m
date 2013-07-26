@@ -44,7 +44,7 @@
 		[_statusLabel setHidden:NO];
 		[_eventsTable reloadData];
 	}else if ([[notification name] isEqualToString:@"connectionFailure"]){
-		[_statusLabel setText:@"Connection\nFailure :("];
+		[_statusLabel setText:@"Connection Failure :("];
 		[_statusLabel setHidden:NO];
 		[_eventsTable reloadData];
 	}
@@ -115,8 +115,8 @@
 
 - (void) addEventToTable:(NSNotification *) notification
 {
-	[SSKeychain deletePasswordForService:SERVICE_NAME account:USER_ID];
-	NSLog(@"Password removed from keychain");
+	//[SSKeychain deletePasswordForService:SERVICE_NAME account:USER_ID];
+	//NSLog(@"Password removed from keychain");
 	/*
 	GatherEventData *data = [[GatherEventData alloc] init];
 	//[[TABLE_DATA objectForKey:@"Attending"] insertObject:data atIndex:0];
@@ -215,11 +215,11 @@
 		[shiftCellOverlayReject setDirection:UISwipeGestureRecognizerDirectionLeft];
 		[cell addGestureRecognizer:shiftCellOverlayReject];
 		
-		/*
-		UILongPressGestureRecognizer *showEvent = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(showEvent:)];
-		[showEvent setMinimumPressDuration:0.0f];
+		
+		UITapGestureRecognizer *showEvent = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showEvent:)];
+		[showEvent setNumberOfTapsRequired:1];
 		[cell addGestureRecognizer:showEvent];
-		*/
+		
 		
 		[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
@@ -229,14 +229,13 @@
 
 -(void)showEvent:(UILongPressGestureRecognizer*)recognizer
 {
-	//GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
-	if(recognizer.state==UIGestureRecognizerStateBegan){
-		NSLog(@"Start");
-		//[cell setBackgroundColor:[UIColor colorWithRed:0.91f green:0.91f blue:0.91f alpha:1.00f]];
-	}else if(recognizer.state==UIGestureRecognizerStateEnded){
-		NSLog(@"Ended");
-		//[cell setBackgroundColor:[UIColor whiteColor]];
-	}
+	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
+	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	GatherEventData *data=[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row];
+	
+	GatherEventViewController *eventViewController = [[GatherEventViewController alloc] initWithEvent:data];
+    [self.navigationController pushViewController:eventViewController animated:YES];
+
 }
 
 
@@ -245,6 +244,9 @@
 	// cell information
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	
+	GatherEventData *data=[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row];
+	[_connection respondToEvent:data._id response:[NSNumber numberWithInt:1]];
 	
 	if (index.section!=1){
 	// shift and delete original cell
@@ -279,6 +281,8 @@
 	NSIndexPath *addIndex = [NSIndexPath indexPathForRow:[[TABLE_DATA objectForKey:@"Attending"] count]-1 inSection:1];
 	[[[TABLE_DATA objectForKey:@"Attending"] objectAtIndex:[[TABLE_DATA objectForKey:@"Attending"] count]-1] accept];
 	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationBottom];
+	
+	//[self refreshFromConnection];
 }
 
 -(void)shiftCellOverlayReject:(UISwipeGestureRecognizer*)recognizer
@@ -286,6 +290,9 @@
 	// cell information
 	GatherEventsTableViewCell *cell = (GatherEventsTableViewCell *)recognizer.view;
 	NSIndexPath *index = [_eventsTable indexPathForCell:cell];
+	
+	GatherEventData *data=[[TABLE_DATA objectForKey:[self returnKey:index.section]] objectAtIndex:index.row];
+	[_connection respondToEvent:data._id response:[NSNumber numberWithInt:-1]];
 	
 	if(index.section!=2){
 	// shift and delete original cell
@@ -321,21 +328,8 @@
 	NSIndexPath *addIndex = [NSIndexPath indexPathForRow:[[TABLE_DATA objectForKey:@"Not Attending"] count]-1 inSection:2];
 	[[[TABLE_DATA objectForKey:@"Not Attending"] objectAtIndex:[[TABLE_DATA objectForKey:@"Not Attending"] count]-1] reject];
 	[_eventsTable insertRowsAtIndexPaths:@[addIndex] withRowAnimation:UITableViewRowAnimationTop];
-}
-
--(void)returnCell:(GatherEventsTableViewCell*)cell
-{
-	CGRect shiftCellFrame = cell.cellOverlay.frame;
-	shiftCellFrame.origin.x=0;
-	[UIView animateWithDuration:0.3f
-						  delay:0.1
-						options:UIViewAnimationOptionCurveEaseIn
-					 animations:^{
-						 cell.cellOverlay.frame=shiftCellFrame;
-					 }
-					 completion:^(BOOL finished){}
-	 ];
-	[self performSelector:@selector(refreshFromData) withObject:nil afterDelay:0.4];
+	
+	//[self refreshFromConnection];
 }
 
 -(void)refreshFromData

@@ -10,17 +10,12 @@
 
 @implementation GatherServerConnection
 
--(id)init
-{
-	return self;
-}
-
 - (BOOL)isDataSourceAvailable
 {
 	BOOL dataSourceAvailable = NO;
 		
         Boolean success;
-        const char *host_name = HOST_NAME; // your data source host name
+        const char *host_name = HOST_NAME;
 		
         SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, host_name);
         SCNetworkReachabilityFlags flags;
@@ -118,7 +113,12 @@
 -(BOOL)getAllEventsForUser
 {
 	// ensure connection can be made before we do anything, leave if it cannot
-	if (![self connectionMade]){return NO;}
+	if (![self connectionMade]){
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"connectionFailure"
+		 object:self];
+		return NO;
+	}
 	
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
 	[httpClient setParameterEncoding:AFJSONParameterEncoding];
@@ -128,16 +128,47 @@
 	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
 	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		// need to add code to handle login verification
 		SBJsonParser *parser = [[SBJsonParser alloc] init];
 		NSArray *userEvents = [parser objectWithData:responseObject];
 		[self parseEventsJSON:userEvents];
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
+	return YES;
+}
+
+-(void)respondToEvent:(NSString*)eventID
+			 response:(NSNumber*)response
+{
+	// ensure connection can be made before we do anything, leave if it cannot
+	if (![self connectionMade]){
 		[[NSNotificationCenter defaultCenter]
 		 postNotificationName:@"connectionFailure"
 		 object:self];
+		return;
+	}
+	
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+	[httpClient setParameterEncoding:AFJSONParameterEncoding];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+															path:[BASE_URL stringByAppendingString:@"response/"]
+													  parameters:@{@"_id": eventID,
+																   @"user_id": USER_ID,
+																   @"response": response
+																   }];
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
 	}];
 	[operation start];
+}
+
+-(BOOL)registerNewUser
+{
 	return YES;
 }
 

@@ -24,6 +24,7 @@
 		F93246C9179F5E86008B4135 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FE5179ED28C004C5F46 /* SBJsonStreamWriterAccumulator.m */; };
 		F93246CA179F5E8A008B4135 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FE7179ED28C004C5F46 /* SBJsonStreamWriterState.m */; };
 		F93246CB179F5E8E008B4135 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FE9179ED28C004C5F46 /* SBJsonWriter.m */; };
+		F93246D217A0E317008B4135 /* GatherEventTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F93246D117A0E07C008B4135 /* GatherEventTopBar.m */; };
 		F93F6FCA179E147D004C5F46 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FB8179E1225004C5F46 /* AFHTTPClient.m */; };
 		F93F6FCB179E1485004C5F46 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FBA179E1225004C5F46 /* AFHTTPRequestOperation.m */; };
 		F93F6FCC179E1491004C5F46 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FBC179E1225004C5F46 /* AFImageRequestOperation.m */; };
@@ -38,6 +39,7 @@
 		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
+		F96B4DBC17A1F17B00372857 /* GatherEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */; };
 		F99174DB177D331000E19869 /* GatherEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherEventData.m */; };
 		F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175101780FB3C00E19869 /* CoreData.framework */; };
 		F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F991751D1783CB4800E19869 /* GatherServerConnection.m */; };
@@ -79,6 +81,9 @@
 		F919E2AB1792FF41009FFE3E /* GatherLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherLoginViewController.m; sourceTree = "<group>"; };
 		F919E3321794E1D9009FFE3E /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		F919E3331794E1D9009FFE3E /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		F93246CD17A09AB4008B4135 /* GatherEventViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventViewController.h; sourceTree = "<group>"; };
+		F93246D017A0E07C008B4135 /* GatherEventTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventTopBar.h; sourceTree = "<group>"; };
+		F93246D117A0E07C008B4135 /* GatherEventTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventTopBar.m; sourceTree = "<group>"; };
 		F93F6FB7179E1225004C5F46 /* AFHTTPClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		F93F6FB8179E1225004C5F46 /* AFHTTPClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		F93F6FB9179E1225004C5F46 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -124,6 +129,7 @@
 		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
 		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F95F53E9177957C4005D957E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatherEventViewController.m; sourceTree = "<group>"; };
 		F99174D9177D30CA00E19869 /* GatherEventData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventData.h; sourceTree = "<group>"; };
 		F99174DA177D30CA00E19869 /* GatherEventData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventData.m; sourceTree = "<group>"; };
 		F991750E1780FB2800E19869 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -213,6 +219,17 @@
 				F9FD185B176FF41800F08900 /* GatherViewController.m */,
 			);
 			name = "Main View Stuff";
+			sourceTree = "<group>";
+		};
+		F93246CC17A09A64008B4135 /* Event View Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F93246D017A0E07C008B4135 /* GatherEventTopBar.h */,
+				F93246D117A0E07C008B4135 /* GatherEventTopBar.m */,
+				F93246CD17A09AB4008B4135 /* GatherEventViewController.h */,
+				F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */,
+			);
+			name = "Event View Stuff";
 			sourceTree = "<group>";
 		};
 		F93F6FB6179E1225004C5F46 /* AFNetworking */ = {
@@ -333,7 +350,7 @@
 				F99175221783D30F00E19869 /* Back End Stuff */,
 				F919E2AD179304BA009FFE3E /* Login Stuff */,
 				F919E2AE179304CB009FFE3E /* Main View Stuff */,
-				F9FD185D176FF41900F08900 /* Images.xcassets */,
+				F93246CC17A09A64008B4135 /* Event View Stuff */,
 				F9FD184C176FF41800F08900 /* Supporting Files */,
 			);
 			path = Gather;
@@ -349,6 +366,7 @@
 				F9FD184E176FF41800F08900 /* InfoPlist.strings */,
 				F9FD1851176FF41800F08900 /* main.m */,
 				F9FD1853176FF41800F08900 /* Gather-Prefix.pch */,
+				F9FD185D176FF41900F08900 /* Images.xcassets */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -468,9 +486,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F93246D217A0E317008B4135 /* GatherEventTopBar.m in Sources */,
 				F93246CB179F5E8E008B4135 /* SBJsonWriter.m in Sources */,
 				F93246CA179F5E8A008B4135 /* SBJsonStreamWriterState.m in Sources */,
 				F93246C9179F5E86008B4135 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				F96B4DBC17A1F17B00372857 /* GatherEventViewController.m in Sources */,
 				F93246C8179F5E81008B4135 /* SBJsonStreamWriter.m in Sources */,
 				F93246C7179F5E7C008B4135 /* SBJsonStreamTokeniser.m in Sources */,
 				F93246C6179F5E77008B4135 /* SBJsonStreamParserState.m in Sources */,

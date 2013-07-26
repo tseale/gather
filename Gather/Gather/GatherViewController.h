@@ -12,6 +12,7 @@
 #import "GatherEventsTableViewCell.h"
 #import "GatherEventData.h"
 #import "GatherServerConnection.h"
+#import "GatherEventViewController.h"
 
 @interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 

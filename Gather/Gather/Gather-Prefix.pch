@@ -33,4 +33,5 @@
 	#define NO_RESPONSE_EVENTS [GatherGlobalData sharedInstance].noResponseEvents
 	#define ACCEPTED_EVENTS [GatherGlobalData sharedInstance].acceptEvents
 	#define REJECTED_EVENTS [GatherGlobalData sharedInstance].rejectEvents
+
 #endif
