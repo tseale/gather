@@ -1,4 +1,8 @@
 body {
+	position:relative;
+	width:960px;
+	margin: 0 auto;
+
 	font-family: "HelveticaNeue-Light";
 }
 
@@ -7,21 +11,16 @@ body {
 	background-color: #000;
 
 	padding:10px;
-	border-radius:5px;
 	margin-bottom:10px;
 }
 
 #main {
-	position:relative;
-	width:960px;
-	margin: 0 auto;
 }
 
 .box {
 	position:relative;
 	background-color: #eeeeee;
-	padding:10px;
-	border-radius:5px;
+	padding-left:10px;
 }
 
 #method_table {
@@ -30,7 +29,27 @@ body {
 	float:left;
 }
 
+#method_table a {
+	text-decoration:none;
+	color:inherit;
+}
+
 #method_description {
 	left:10px;
-	float:right;
+	width:710px;
+	float:left;
+}
+
+#method_description h5, h6 {
+	margin:0;
+	font-size:9pt;
+	display:inline;
+}
+
+#method_description h5 {
+	color:#85782C;
+}
+
+#method_description h6 {
+	color:#2C6285;
 }

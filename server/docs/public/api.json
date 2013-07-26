@@ -6,19 +6,23 @@
 		"functions" : [
 			{
 				"func_title" : "GET /events",
-				"func_desc" : "Get all events as a JSON array"	
+				"func_desc" : "Get all events",	
+				"returns" : "JSON Array of type events"
 			},
 			{
 				"func_title" : "GET /events/:id",
-				"func_desc" : "Get event with ID of :id"	
+				"func_desc" : "Get event with ID of :id",
+				"returns" : "JSON Object of type event"
 			},
 			{
 				"func_title" : "POST /events",
-				"func_desc" : "Add an event"	
+				"func_desc" : "Add an event",	
+				"params" : "JSON Object of type event"
 			},
 			{
 				"func_title" : "PUT /events/:id",
-				"func_desc" : "Update event with ID of :id"	
+				"func_desc" : "Update event with ID of :id",
+				"params" : "JSON Object of type event"
 			},
 			{
 				"func_title" : "DELETE /events/:id",
@@ -33,19 +37,23 @@
 		"functions" : [
 			{
 				"func_title" : "GET /users",
-				"func_desc" : "Get all users as a JSON array"	
+				"func_desc" : "Get all users",	
+				"returns" : "JSON Array of type users"
 			},
 			{
 				"func_title" : "GET /users/:id",
-				"func_desc" : "Get user with ID of :id"	
+				"func_desc" : "Get user with ID of :id",
+				"returns" : "JSON Object of type user"
 			},
 			{
 				"func_title" : "POST /users",
-				"func_desc" : "Add an user"	
+				"func_desc" : "Add an user",	
+				"params" : "JSON Object of type user"
 			},
 			{
 				"func_title" : "PUT /users/:id",
-				"func_desc" : "Update user with ID of :id"	
+				"func_desc" : "Update user with ID of :id",
+				"params" : "JSON Object of type user"
 			},
 			{
 				"func_title" : "DELETE /users/:id",
@@ -60,18 +68,21 @@
 		"functions" : [
 			{
 				"func_title" : "POST /getevents",
-				"func_desc" : "Send a json object with the user_id pass and receive back a JSON array of all events for that user"	
+				"func_desc" : "Send user_id & password and receive back an array of all events for that user",	
+				"params" : "JSON object {'_id' : 'the user's id', 'password' : 'the users's hashed password'}",
+				"returns" : "JSON array of type event OR error signifying incorrect user/pass combination"
 			}
 		]
 	},
 	{
-		"method_title" : "Vote/Respond",
+		"method_title" : "Respond",
 		"method_url" : "/response",
 		"method_desc" : "Respond to an event",
 		"functions" : [
 			{
 				"func_title" : "POST /response",
-				"func_desc" : "Send a JSON object with user_id, event_id, and response"
+				"func_desc" : "Send event id, user id, and response when a user responds to an event",
+				"params" : "JSON object {'_id' : 'the event id', 'user_id' : 'the user's id', 'response' : 'vote (-1,0,1)'}"
 			}
 		]
 	}
