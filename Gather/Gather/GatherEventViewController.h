@@ -10,8 +10,9 @@
 #import "GatherServerConnection.h"
 #import "GatherEventTopBar.h"
 #import "GatherEventData.h"
+#import "GatherEventCard.h"
 
-@interface GatherEventViewController : UIViewController
+@interface GatherEventViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic,strong) GatherServerConnection	*connection;
 
@@ -22,6 +23,11 @@
 
 @property (nonatomic,strong) UILabel* acceptButton;
 @property (nonatomic,strong) UILabel* rejectButton;
+
+@property (nonatomic,strong) UIScrollView* suggestionScroller;
+
+
+@property (nonatomic,strong) UIPageControl* pageControl;
 
 -(id)initWithEvent:(GatherEventData*)event;
 

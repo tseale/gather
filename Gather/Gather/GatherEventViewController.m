@@ -24,26 +24,19 @@
 	return self;
 }
 
+
 -(void)updateResponse
 {
 	int userResponse = [_eventData userResponse];
 	if (userResponse==1){
-		[_acceptButton setText:@"\u2713"];
 		[_acceptButton setBackgroundColor:GREEN_COLOR];
-		[_acceptButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
 		[_rejectButton setUserInteractionEnabled:NO];
 		[_rejectButton setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
-		[_rejectButton setText:@"Reject"];
-		[_rejectButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
 		[_rejectButton setUserInteractionEnabled:YES];
 	}else if (userResponse==-1){
-		[_rejectButton setText:@"X"];
 		[_rejectButton setBackgroundColor:RED_COLOR];
-		[_rejectButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
 		[_rejectButton setUserInteractionEnabled:NO];
 		[_acceptButton setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
-		[_acceptButton setText:@"Accept"];
-		[_acceptButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
 		[_acceptButton setUserInteractionEnabled:YES];
 	}
 }
@@ -57,6 +50,27 @@
 	[_topBar.eventName setText:_eventData.what];
 	[self.view addSubview:_topBar];
 	
+	_suggestionScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT+10, self.view.frame.size.width, self.view.frame.size.height-TOP_BAR_HEIGHT-40)];
+	[_suggestionScroller setBounces:YES];
+	[_suggestionScroller setShowsHorizontalScrollIndicator:NO];
+	[_suggestionScroller setPagingEnabled:YES];
+	[_suggestionScroller setUserInteractionEnabled:YES];
+	
+	for (int i=0; i<5; i++){
+		GatherEventCard* event = [[GatherEventCard alloc] initWithFrame:CGRectMake(10+(i*(20+self.view.frame.size.width-20)), 0, self.view.frame.size.width-20, self.view.frame.size.height-TOP_BAR_HEIGHT-40)];
+		[_suggestionScroller addSubview:event];
+	}
+	_suggestionScroller.delegate=self;
+	[_suggestionScroller setContentSize:CGSizeMake(5*(self.view.frame.size.width), self.view.frame.size.height-TOP_BAR_HEIGHT-40)];
+	[self.view addSubview:_suggestionScroller];
+	
+	_pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height-TOP_BAR_HEIGHT-40), self.view.frame.size.width, self.view.frame.size.height-(self.view.frame.size.height-TOP_BAR_HEIGHT-40))];
+	//[_pageControl setPageContro]
+	[self.view addSubview:_pageControl];
+	
+																			   
+	
+	/*
 	UIView *cardBackground = [[UIView alloc] initWithFrame:CGRectMake(10, TOP_BAR_HEIGHT+10, self.view.bounds.size.width-20, self.view.bounds.size.height-(2*TOP_BAR_HEIGHT)-10)];
 	[cardBackground setBackgroundColor:[UIColor colorWithRed:0.99f green:0.99f blue:0.99f alpha:1.00f]];
 	cardBackground.layer.borderColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f].CGColor;
@@ -99,8 +113,8 @@
 	
 	_acceptButton = [[UILabel alloc] initWithFrame:CGRectMake(10, self.view.bounds.size.height-(TOP_BAR_HEIGHT-20)-10, (self.view.bounds.size.width-30)/2, TOP_BAR_HEIGHT-20)];
 	[_acceptButton setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
-	[_acceptButton setText:@"Accept"];
-	[_acceptButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
+	[_acceptButton setText:@"\u2713"];
+	[_acceptButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
 	[_acceptButton setTextColor:[UIColor whiteColor]];
 	[_acceptButton setTextAlignment:NSTextAlignmentCenter];
 	[_acceptButton setUserInteractionEnabled:YES];
@@ -111,8 +125,8 @@
 	
 	_rejectButton = [[UILabel alloc] initWithFrame:CGRectMake((self.view.bounds.size.width-30)/2+20, self.view.bounds.size.height-(TOP_BAR_HEIGHT-20)-10, (self.view.bounds.size.width-30)/2, TOP_BAR_HEIGHT-20)];
 	[_rejectButton setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
-	[_rejectButton setText:@"Reject"];
-	[_rejectButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0f]];
+	[_rejectButton setText:@"x"];
+	[_rejectButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30.0f]];
 	[_rejectButton setTextColor:[UIColor whiteColor]];
 	[_rejectButton setTextAlignment:NSTextAlignmentCenter];
 	[_rejectButton setUserInteractionEnabled:YES];
@@ -122,6 +136,7 @@
 	[self.view addSubview:_rejectButton];
 	
 	[self updateResponse];
+	 */
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(backToEvents)
@@ -130,6 +145,13 @@
 	
 	
 
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = _suggestionScroller.frame.size.width;
+    int page = floor((_suggestionScroller.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    _pageControl.currentPage = page;
 }
 
 -(void)acceptEvent:(UILongPressGestureRecognizer*)recognizer

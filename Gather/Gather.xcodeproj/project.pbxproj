@@ -36,6 +36,7 @@
 		F93F6FD2179E14B1004C5F46 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F93F6FC9179E1225004C5F46 /* UIImageView+AFNetworking.m */; };
 		F93F6FD3179E1503004C5F46 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175121780FB4200E19869 /* MobileCoreServices.framework */; };
 		F9414F8C1787E495001A8AEF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175161780FB5500E19869 /* SystemConfiguration.framework */; };
+		F95EA12E17A351AF005A3042 /* GatherEventCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EA12D17A35073005A3042 /* GatherEventCard.m */; };
 		F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E41776B6B0005D957E /* GatherEventsTableView.m */; };
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
@@ -124,6 +125,8 @@
 		F93F6FE7179ED28C004C5F46 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		F93F6FE8179ED28C004C5F46 /* SBJsonWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		F93F6FE9179ED28C004C5F46 /* SBJsonWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		F95EA12C17A35073005A3042 /* GatherEventCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventCard.h; sourceTree = "<group>"; };
+		F95EA12D17A35073005A3042 /* GatherEventCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventCard.m; sourceTree = "<group>"; };
 		F95F53E31776B6B0005D957E /* GatherEventsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableView.h; sourceTree = "<group>"; };
 		F95F53E41776B6B0005D957E /* GatherEventsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventsTableView.m; sourceTree = "<group>"; };
 		F95F53E51776B6CE005D957E /* GatherEventsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventsTableViewCell.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				F93246D117A0E07C008B4135 /* GatherEventTopBar.m */,
 				F93246CD17A09AB4008B4135 /* GatherEventViewController.h */,
 				F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */,
+				F95EA12C17A35073005A3042 /* GatherEventCard.h */,
+				F95EA12D17A35073005A3042 /* GatherEventCard.m */,
 			);
 			name = "Event View Stuff";
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F95EA12E17A351AF005A3042 /* GatherEventCard.m in Sources */,
 				F93246D217A0E317008B4135 /* GatherEventTopBar.m in Sources */,
 				F93246CB179F5E8E008B4135 /* SBJsonWriter.m in Sources */,
 				F93246CA179F5E8A008B4135 /* SBJsonStreamWriterState.m in Sources */,

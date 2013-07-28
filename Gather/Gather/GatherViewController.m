@@ -25,13 +25,24 @@
 {
 	_connection = [[GatherServerConnection alloc] init];
 	[_connection getAllEventsForUser];
+	if(![self noData]){
+		[_eventsTable reloadData];
+	}
+}
+
+-(BOOL)noData
+{
+	if ([[TABLE_DATA objectForKey:@"Attending"] count]==0 && [[TABLE_DATA objectForKey:@"Not Attending"] count]==0 && [[TABLE_DATA objectForKey:@"No Response"] count]==0){
+		return YES;
+	}
+	return NO;
 }
 
 -(void)showTable:(NSNotification*)notification
 {
 	[_loadingView removeFromSuperview];
 	if ([[notification name] isEqualToString:@"dataLoadSuccess"]) {
-		if (TABLE_DATA.count!=0){
+		if (![self noData]){
 			[_eventsTable reloadData];
 			[_statusLabel setHidden:YES];
 		}else{
@@ -53,7 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+		
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
 	
