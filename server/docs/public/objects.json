@@ -1,0 +1,43 @@
+[
+	{
+		"object_title" : "Event",
+		"object_desc" : "Uh... duh?",
+		"examples" : [
+			{
+				"_id": "51e872bf8e20bf5518000001",
+				"what": "Dinner",
+				"when": "6:30pm Wednesday",
+				"where": "Ian's",
+				"group": "Interns",
+				"who": [
+				  {
+					"user_name": "Taylor Seale",
+					"user_id": "51ef39fc9e002afe1f00000c",
+					"response": "-1"
+				  },
+				  {
+					"user_name": "Chas Jhin",
+					"user_id": "a4ef42fc9e004gfe1e00920f",
+					"response": "0"
+				  }
+				],
+				"suggestions": [
+					{
+						"id" : "0",
+						"when" : "NULL",
+						"where" : "Lucky's"					
+					}
+				]
+			}
+		]
+	},
+	{
+		"object_title" : "User",
+		"object_desc" : "User in database duh?",
+		"examples" : [
+			{
+
+			}
+		]
+	}
+]

@@ -1,5 +1,23 @@
 $(document).ready( function() {
 
+	$.getJSON( "objects.json", function(data) {
+		$.each(data, function(method_i, method) { //for each method 
+	
+			var title = method["object_title"]; 
+			//populate the method_table
+			var html = 
+			'<div class="table_button" id="'+title+'">'+
+			title +
+			'</div>';
+
+			$("#method_table").append(html); //add the actual html element
+			$("#"+title).click( function() { //tie in the click to the loadInfo function
+				loadObject(title);
+			}); 
+		});
+		$("#method_table").append("<hr>");
+	});
+
 	$.getJSON( "api.json", function(data) {
 		$.each(data, function(method_i, method) { //for each method 
 	
@@ -12,17 +30,46 @@ $(document).ready( function() {
 
 			$("#method_table").append(html); //add the actual html element
 			$("#"+url).click( function() { //tie in the click to the loadInfo function
-				loadInfo(url);
+				loadMethod(url);
 			}); 
 		});
 	});
 });
 
-//called when a specific method is selected, populate the main method_description div with info
-function loadInfo(url) {
+//called when a specific object is selected, populate the main method_description div with info
+function loadObject(title) {
 
-	console.log(url);
-	
+	//TODO change to select all class="table_button"
+	//set all background colors back to normal
+	$("#method_table").children().css("backgroundColor", "#eee");
+
+	//darken the current selector in the table
+	var tar_str = "#"+title;
+	var tar_div = $(tar_str);
+	tar_div.css( "backgroundColor", "#ccc");
+
+	$.getJSON( "objects.json", function(data) {
+		$.each(data, function(object_i, object) { //for each object, find the correct one 
+			if(object["object_title"]==title) {
+				$("#method_description").empty();
+
+				var html = 
+				'<h2>'+object["object_title"]+'</h2>'+
+				'<h3>'+object["object_desc"]+'</h3>';
+
+				$.each(object["examples"], function(ex_i, ex) {
+					html +=  JSON.stringify(ex, null, '\t');
+				});
+
+				$("#method_description").append(html);
+			}
+		});
+	});
+}
+
+//called when a specific method is selected, populate the main method_description div with info
+function loadMethod(url) {
+
 	//set all background colors back to normal
 	$("#method_table").children().css("backgroundColor", "#eee");
 
