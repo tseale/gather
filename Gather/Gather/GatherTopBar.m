@@ -46,17 +46,6 @@
 		[_addEventButton addGestureRecognizer:addEvent];
 		[self addSubview:_addEventButton];
 		
-		/*
-		_alterViewButton = [[UILabel alloc] initWithFrame:CGRectMake(10,30,50,24)];
-		[_alterViewButton setText:@"\u2630"];
-		[_alterViewButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30.0f]];
-		[_alterViewButton setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
-		[_alterViewButton setBackgroundColor:[UIColor clearColor]];
-		[_alterViewButton setUserInteractionEnabled:YES];
-		[self addSubview:_alterViewButton];
-		 */
-		
-		//[self addSubview:_separatorLine];
     }
     return self;
 }

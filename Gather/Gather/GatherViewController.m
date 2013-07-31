@@ -104,7 +104,7 @@
 	[self.view addSubview:_loadingView];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(addEventToTable:)
+											 selector:@selector(addEvent)
 												 name:@"addEvent"
 											   object:nil];
 	
@@ -121,6 +121,11 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(showTable:)
 												 name:@"connectionFailure"
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(cancelAddEvent)
+												 name:@"cancelAddEvent"
 											   object:nil];
 }
 
@@ -142,7 +147,38 @@
 
 -(void)addEvent
 {
-	NSLog(@"Here");
+	_addEventView = [[GatherAddEventView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, self.view.bounds.size.height, self.view.bounds.size.height)];
+	[self.view addSubview:_addEventView];
+	CGRect addEventFrame = _addEventView.frame;
+	addEventFrame.origin.y=0;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 _addEventView.frame=addEventFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+}
+
+-(void)cancelAddEvent
+{
+	[_addEventView endEditing:YES];
+	CGRect addEventFrame = _addEventView.frame;
+	addEventFrame.origin.y=self.view.bounds.size.height;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationCurveLinear
+					 animations:^{
+						 _addEventView.frame=addEventFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+}
+
+-(void)doneAddEvent
+{
+	
 }
 
 -(NSString*)returnKey:(NSInteger)section

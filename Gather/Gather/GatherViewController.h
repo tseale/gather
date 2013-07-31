@@ -14,11 +14,14 @@
 #import "GatherServerConnection.h"
 #import "GatherEventViewController.h"
 
+#import "GatherAddEventView.h"
+
 @interface GatherViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) GatherTopBar *topBar;
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;
 @property (nonatomic,strong) GatherServerConnection	*connection;
+@property (nonatomic,strong) GatherAddEventView *addEventView;
 
 @property (nonatomic,strong) UIView *initialView;
 @property (nonatomic,strong) UILabel *statusLabel;

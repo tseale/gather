@@ -45,6 +45,11 @@
 		F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175101780FB3C00E19869 /* CoreData.framework */; };
 		F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F991751D1783CB4800E19869 /* GatherServerConnection.m */; };
 		F99175251783D6F700E19869 /* GatherGlobalData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99175241783D61200E19869 /* GatherGlobalData.m */; };
+		F99BEE3C17A591800059A056 /* GatherAddEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3917A590460059A056 /* GatherAddEventView.m */; };
+		F99BEE3D17A591850059A056 /* GatherAddEventTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */; };
+		F99BEE4017A5CEA40059A056 /* GatherAddEventForm.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */; };
+		F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */; };
+		F9D3ED1F17A8A49200925F5A /* GatherGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */; };
 		F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
 		F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1847176FF41800F08900 /* CoreGraphics.framework */; };
 		F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1849176FF41800F08900 /* UIKit.framework */; };
@@ -144,6 +149,16 @@
 		F991751D1783CB4800E19869 /* GatherServerConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherServerConnection.m; sourceTree = "<group>"; };
 		F99175231783D61200E19869 /* GatherGlobalData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGlobalData.h; sourceTree = "<group>"; };
 		F99175241783D61200E19869 /* GatherGlobalData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGlobalData.m; sourceTree = "<group>"; };
+		F99BEE3817A590460059A056 /* GatherAddEventView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAddEventView.h; sourceTree = "<group>"; };
+		F99BEE3917A590460059A056 /* GatherAddEventView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventView.m; sourceTree = "<group>"; };
+		F99BEE3A17A590560059A056 /* GatherAddEventTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAddEventTopBar.h; sourceTree = "<group>"; };
+		F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventTopBar.m; sourceTree = "<group>"; };
+		F99BEE3E17A5CE930059A056 /* GatherAddEventForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAddEventForm.h; sourceTree = "<group>"; };
+		F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventForm.m; sourceTree = "<group>"; };
+		F9D3ED1A17A76AA500925F5A /* GatherDatePickerLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherDatePickerLabel.h; sourceTree = "<group>"; };
+		F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherDatePickerLabel.m; sourceTree = "<group>"; };
+		F9D3ED1D17A8939400925F5A /* GatherGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupCell.h; sourceTree = "<group>"; };
+		F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGroupCell.m; sourceTree = "<group>"; };
 		F9FD1842176FF41800F08900 /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9FD1845176FF41800F08900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9FD1847176FF41800F08900 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -212,6 +227,7 @@
 		F919E2AE179304CB009FFE3E /* Main View Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				F99BEE3717A5902C0059A056 /* Add Event View */,
 				F9FD1882177011C600F08900 /* GatherTopBar.h */,
 				F9FD1883177011C600F08900 /* GatherTopBar.m */,
 				F95F53E31776B6B0005D957E /* GatherEventsTableView.h */,
@@ -307,6 +323,23 @@
 				F919E2A0178CDC74009FFE3E /* GatherSuggestionData.m */,
 			);
 			name = "Back End Stuff";
+			sourceTree = "<group>";
+		};
+		F99BEE3717A5902C0059A056 /* Add Event View */ = {
+			isa = PBXGroup;
+			children = (
+				F99BEE3817A590460059A056 /* GatherAddEventView.h */,
+				F99BEE3917A590460059A056 /* GatherAddEventView.m */,
+				F99BEE3A17A590560059A056 /* GatherAddEventTopBar.h */,
+				F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */,
+				F99BEE3E17A5CE930059A056 /* GatherAddEventForm.h */,
+				F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */,
+				F9D3ED1A17A76AA500925F5A /* GatherDatePickerLabel.h */,
+				F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */,
+				F9D3ED1D17A8939400925F5A /* GatherGroupCell.h */,
+				F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */,
+			);
+			name = "Add Event View";
 			sourceTree = "<group>";
 		};
 		F9FD1839176FF41800F08900 = {
@@ -442,6 +475,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = tseale;
 				TargetAttributes = {
+					F9FD1841176FF41800F08900 = {
+						DevelopmentTeam = Q58H65DQ64;
+					};
 					F9FD1862176FF41900F08900 = {
 						TestTargetID = F9FD1841176FF41800F08900;
 					};
@@ -491,6 +527,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D3ED1F17A8A49200925F5A /* GatherGroupCell.m in Sources */,
+				F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */,
+				F99BEE4017A5CEA40059A056 /* GatherAddEventForm.m in Sources */,
+				F99BEE3D17A591850059A056 /* GatherAddEventTopBar.m in Sources */,
+				F99BEE3C17A591800059A056 /* GatherAddEventView.m in Sources */,
 				F95EA12E17A351AF005A3042 /* GatherEventCard.m in Sources */,
 				F93246D217A0E317008B4135 /* GatherEventTopBar.m in Sources */,
 				F93246CB179F5E8E008B4135 /* SBJsonWriter.m in Sources */,
@@ -648,6 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gather/Gather-Prefix.pch";
 				INFOPLIST_FILE = "Gather/Gather-Info.plist";
@@ -661,6 +703,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Gather/Gather-Prefix.pch";
 				INFOPLIST_FILE = "Gather/Gather-Info.plist";

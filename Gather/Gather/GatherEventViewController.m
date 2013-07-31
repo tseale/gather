@@ -50,14 +50,14 @@
 	[_topBar.eventName setText:_eventData.what];
 	[self.view addSubview:_topBar];
 	
-	_suggestionScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT+10, self.view.frame.size.width, self.view.frame.size.height-TOP_BAR_HEIGHT-40)];
+	_suggestionScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT+10, self.view.frame.size.width, self.view.frame.size.height-TOP_BAR_HEIGHT-20)];
 	[_suggestionScroller setBounces:YES];
 	[_suggestionScroller setShowsHorizontalScrollIndicator:NO];
 	[_suggestionScroller setPagingEnabled:YES];
 	[_suggestionScroller setUserInteractionEnabled:YES];
 	
 	for (int i=0; i<5; i++){
-		GatherEventCard* event = [[GatherEventCard alloc] initWithFrame:CGRectMake(10+(i*(20+self.view.frame.size.width-20)), 0, self.view.frame.size.width-20, self.view.frame.size.height-TOP_BAR_HEIGHT-40)];
+		GatherEventCard* event = [[GatherEventCard alloc] initWithFrame:CGRectMake(10+(i*(20+self.view.frame.size.width-20)), 0, self.view.frame.size.width-20, self.view.frame.size.height-TOP_BAR_HEIGHT-20)];
 		[_suggestionScroller addSubview:event];
 	}
 	_suggestionScroller.delegate=self;
