@@ -12,10 +12,13 @@
 
 @interface GatherAddEventForm : UIView <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 
+@property (nonatomic,strong) UIView* eventNameBox;
 @property (nonatomic,strong) UITextField* eventName;
 
+@property (nonatomic,strong) UIView* eventLocationBox;
 @property (nonatomic,strong) UITextField* eventLocation;
 
+@property (nonatomic,strong) UIView* eventTimeDateBox;
 @property (nonatomic,strong) GatherDatePickerLabel* eventTimeDate;
 @property (nonatomic,strong) UIDatePicker* dateTimePicker;
 

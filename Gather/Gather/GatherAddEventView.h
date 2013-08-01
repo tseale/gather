@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "GatherAddEventTopBar.h"
 #import "GatherAddEventForm.h"
+#import "GatherGroupView.h"
 
 @interface GatherAddEventView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic,strong) GatherAddEventTopBar* topBar;
 @property (nonatomic,strong) GatherAddEventForm* form;
+@property (nonatomic,strong) GatherGroupView* groupView;
+@property (nonatomic,strong) UIScrollView* horizScroll;
 @property (nonatomic,strong) UIScrollView* formScroll;
+@property (nonatomic,strong) UIScrollView* groupScroll;
 
 @end

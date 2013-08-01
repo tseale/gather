@@ -22,6 +22,9 @@
 		[_preview setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f]];
 		[_preview setTextAlignment:NSTextAlignmentRight];
 		[_preview setHidden:YES];
+		[_preview setUserInteractionEnabled:YES];
+		UITapGestureRecognizer* showGroupPreview = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGroupPreview)];
+		[_preview addGestureRecognizer:showGroupPreview];
 		[self addSubview:_preview];
 		
 		CGSize expectedLabelSize = [groupName sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]
@@ -34,6 +37,13 @@
 		[self addSubview:_groupName];
     }
     return self;
+}
+
+-(void)showGroupPreview
+{
+	[[NSNotificationCenter defaultCenter]
+	 postNotificationName:@"showGroupPreview"
+	 object:self];
 }
 
 @end

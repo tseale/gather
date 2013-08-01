@@ -21,16 +21,14 @@
 		_tapHideKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
 		[self addGestureRecognizer:_tapHideKeyboard];
 		
-		_groups = [[NSArray alloc] initWithObjects:@"Epic Interns",
-														   @"Sorin Bros",
-														   @"CS Study Group",
-				   @"Twerk Team",
+		_groups = [[NSArray alloc] initWithObjects:@"Sorin Bros",
 														   nil];
 			
-		UIView *eventNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 36.5)];
-		[eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		_eventNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 36.5)];
+		[_eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[self addSubview:_eventNameBox];
 		_eventName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
-		[_eventName setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventName setBackgroundColor:[UIColor clearColor]];
 		[_eventName setPlaceholder:@"What"];
 		[_eventName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 		[_eventName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
@@ -38,29 +36,27 @@
 		[_eventName becomeFirstResponder];
 		[_eventName setTag:0];
 		[_eventName setReturnKeyType:UIReturnKeyNext];
-		[eventNameBox addSubview:_eventName];
+		[_eventNameBox addSubview:_eventName];
 		[_eventName addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
-		[self addSubview:eventNameBox];
 		
-		UIView *eventLocationBox = [[UIView alloc] initWithFrame:CGRectMake(10, 56.5, 280, 36.5)];
-		[eventLocationBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-		[self addSubview:eventLocationBox];
+		_eventLocationBox = [[UIView alloc] initWithFrame:CGRectMake(10, 56.5, 280, 36.5)];
+		[_eventLocationBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[self addSubview:_eventLocationBox];
 		_eventLocation = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
-		[_eventLocation setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventLocation setBackgroundColor:[UIColor clearColor]];
 		[_eventLocation setPlaceholder:@"Where"];
 		[_eventLocation setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 		[_eventLocation setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		[_eventLocation setDelegate:self];
 		[_eventLocation setTag:1];
 		[_eventLocation setReturnKeyType:UIReturnKeyNext];
-		[eventLocationBox addSubview:_eventLocation];
+		[_eventLocationBox addSubview:_eventLocation];
 		[_eventLocation addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
-		[self addSubview:eventLocationBox];
 		
-		UIView *eventTimeDateBox = [[UIView alloc] initWithFrame:CGRectMake(10, 103, 280, 36.5)];
-		[eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		_eventTimeDateBox = [[UIView alloc] initWithFrame:CGRectMake(10, 103, 280, 36.5)];
+		[_eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 		_eventTimeDate = [[GatherDatePickerLabel alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
-		[_eventTimeDate setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventTimeDate setBackgroundColor:[UIColor clearColor]];
 		[_eventTimeDate setPlaceholder:@"When"];
 		[_eventTimeDate setText:@""];
 		[_eventTimeDate setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
@@ -97,8 +93,8 @@
 		
 		[datePicker addSubview:_dateTimePicker];
 		[_eventTimeDate setInputView:datePicker];
-		[eventTimeDateBox addSubview:_eventTimeDate];
-		[self addSubview:eventTimeDateBox];
+		[_eventTimeDateBox addSubview:_eventTimeDate];
+		[self addSubview:_eventTimeDateBox];
 		
 		UIView* groupline = [[UIView alloc] initWithFrame:CGRectMake(10, 149.5, 280, 1)];
 		[groupline setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
@@ -116,6 +112,20 @@
     return self;
 }
 
+-(void)lightenTextFields
+{
+	[_eventNameBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
+	[_eventLocationBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
+	[_eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
+}
+
+-(void)darkenTextFields
+{
+	[_eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_eventLocationBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;    //count of section
@@ -131,9 +141,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	GatherGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	GatherGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 	
 	if (cell == nil)
 	{
@@ -189,18 +198,20 @@
 
 -(void)enableKeyboardHide
 {
+	[self darkenTextFields];
 	[_tapHideKeyboard setEnabled:YES];
 }
 
 -(void)hideKeyboard
 {
 	[_tapHideKeyboard setEnabled:NO];
+	[self lightenTextFields];
 	[self endEditing:YES];
 }
 
 -(void)donePickingDate
 {
-	[self endEditing:YES];
+	[self hideKeyboard];
 }
 
 -(void)setToDate
