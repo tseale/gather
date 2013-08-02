@@ -34,4 +34,6 @@
 	#define ACCEPTED_EVENTS [GatherGlobalData sharedInstance].acceptEvents
 	#define REJECTED_EVENTS [GatherGlobalData sharedInstance].rejectEvents
 
+	#define GROUPS [GatherGlobalData sharedInstance].groups
+
 #endif

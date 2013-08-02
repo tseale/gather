@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GatherDatePickerLabel.h"
 #import "GatherGroupCell.h"
+#import "GatherGlobalData.h"
 
 @interface GatherAddEventForm : UIView <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 

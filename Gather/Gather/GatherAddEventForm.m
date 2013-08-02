@@ -11,19 +11,17 @@
 
 @implementation GatherAddEventForm
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectMake(10, 10, 300, 159.5+(GROUPS.count+1)*44+10)];
     if (self) {
+		
         [self setBackgroundColor:[UIColor colorWithRed:0.99f green:0.99f blue:0.99f alpha:1.00f]];
 		self.layer.borderColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f].CGColor;
 		self.layer.borderWidth = 1.0f;
 		_tapHideKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
 		[self addGestureRecognizer:_tapHideKeyboard];
 		
-		_groups = [[NSArray alloc] initWithObjects:@"Sorin Bros",
-														   nil];
-			
 		_eventNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 36.5)];
 		[_eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
 		[self addSubview:_eventNameBox];
@@ -97,10 +95,10 @@
 		[self addSubview:_eventTimeDateBox];
 		
 		UIView* groupline = [[UIView alloc] initWithFrame:CGRectMake(10, 149.5, 280, 1)];
-		[groupline setBackgroundColor:[UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f]];
+		[groupline setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
 		[self addSubview:groupline];
 		
-		_groupTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 159.5, 280, ([_groups count]+1)*44)];
+		_groupTable = [[UITableView alloc] initWithFrame:CGRectMake(10, 159.5, 280, (GROUPS.count+1)*44)];
 		[_groupTable setBackgroundColor:[UIColor clearColor]];
 		_groupTable.delegate=self;
 		_groupTable.dataSource=self;
@@ -134,7 +132,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-    return _groups.count+1;    //count number of row from counting array hear cataGorry is An Array
+    return GROUPS.count+1;    //count number of row from counting array hear cataGorry is An Array
 }
 
 
@@ -146,8 +144,8 @@
 	
 	if (cell == nil)
 	{
-		if (indexPath.row<_groups.count){
-			cell = [[GatherGroupCell alloc] initWithGroupName:[_groups objectAtIndex:indexPath.row]];
+		if (indexPath.row<GROUPS.count){
+			cell = [[GatherGroupCell alloc] initWithGroupName:[[GROUPS allKeys] objectAtIndex:indexPath.row]];
 		}else{
 			cell = [[GatherGroupCell alloc] initWithGroupName:@"+ Create a New Group"];
 		}
@@ -177,7 +175,7 @@
 								 completion:^(BOOL finished){}
 				 ];
 			}else{
-				if (indexPath.row<_groups.count){
+				if (indexPath.row<GROUPS.count){
 					[selectedCell.preview setHidden:NO];
 					[selectedCell.groupName setBackgroundColor:[UIColor colorWithRed:0.99f green:0.99f blue:0.99f alpha:1.00f]];
 					CGRect cellLabelFrame = selectedCell.groupName.frame;
@@ -199,12 +197,14 @@
 -(void)enableKeyboardHide
 {
 	[self darkenTextFields];
+	[_groupTable setUserInteractionEnabled:NO];
 	[_tapHideKeyboard setEnabled:YES];
 }
 
 -(void)hideKeyboard
 {
 	[_tapHideKeyboard setEnabled:NO];
+	[_groupTable setUserInteractionEnabled:YES];
 	[self lightenTextFields];
 	[self endEditing:YES];
 }

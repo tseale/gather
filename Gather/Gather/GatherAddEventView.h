@@ -10,6 +10,7 @@
 #import "GatherAddEventTopBar.h"
 #import "GatherAddEventForm.h"
 #import "GatherGroupView.h"
+#import "GatherGlobalData.h"
 
 @interface GatherAddEventView : UIView <UIScrollViewDelegate>
 
@@ -19,5 +20,7 @@
 @property (nonatomic,strong) UIScrollView* horizScroll;
 @property (nonatomic,strong) UIScrollView* formScroll;
 @property (nonatomic,strong) UIScrollView* groupScroll;
+
+
 
 @end

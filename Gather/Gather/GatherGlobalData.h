@@ -19,4 +19,6 @@
 @property (nonatomic,strong) NSString *user_id;
 @property (nonatomic,strong) NSString *user_password;
 
+@property (nonatomic,strong) NSMutableDictionary *groups;
+
 @end

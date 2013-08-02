@@ -41,9 +41,11 @@
 
 -(void)showGroupPreview
 {
+	NSDictionary* groupName = [[NSDictionary alloc] initWithObjects:@[_groupName.text] forKeys:@[@"group_name"]];
 	[[NSNotificationCenter defaultCenter]
 	 postNotificationName:@"showGroupPreview"
-	 object:self];
+	 object:self
+	 userInfo:groupName];
 }
 
 @end
