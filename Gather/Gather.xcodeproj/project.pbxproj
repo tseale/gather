@@ -41,6 +41,8 @@
 		F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */; };
 		F95F53EA177957C4005D957E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95F53E9177957C4005D957E /* QuartzCore.framework */; };
 		F96B4DBC17A1F17B00372857 /* GatherEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */; };
+		F96D41DC17AB4A61004C3D0F /* GatherGroupMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96D41DB17AB472D004C3D0F /* GatherGroupMemberCell.m */; };
+		F96D41DF17AB6320004C3D0F /* GatherGroupPreviewTable.m in Sources */ = {isa = PBXBuildFile; fileRef = F96D41DE17AB6293004C3D0F /* GatherGroupPreviewTable.m */; };
 		F99174DB177D331000E19869 /* GatherEventData.m in Sources */ = {isa = PBXBuildFile; fileRef = F99174DA177D30CA00E19869 /* GatherEventData.m */; };
 		F99175111780FB3C00E19869 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99175101780FB3C00E19869 /* CoreData.framework */; };
 		F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = F991751D1783CB4800E19869 /* GatherServerConnection.m */; };
@@ -139,6 +141,10 @@
 		F95F53E61776B6CE005D957E /* GatherEventsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GatherEventsTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F95F53E9177957C4005D957E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F96B4DBB17A1F17B00372857 /* GatherEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatherEventViewController.m; sourceTree = "<group>"; };
+		F96D41DA17AB472D004C3D0F /* GatherGroupMemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupMemberCell.h; sourceTree = "<group>"; };
+		F96D41DB17AB472D004C3D0F /* GatherGroupMemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGroupMemberCell.m; sourceTree = "<group>"; };
+		F96D41DD17AB6293004C3D0F /* GatherGroupPreviewTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupPreviewTable.h; sourceTree = "<group>"; };
+		F96D41DE17AB6293004C3D0F /* GatherGroupPreviewTable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGroupPreviewTable.m; sourceTree = "<group>"; };
 		F99174D9177D30CA00E19869 /* GatherEventData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherEventData.h; sourceTree = "<group>"; };
 		F99174DA177D30CA00E19869 /* GatherEventData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherEventData.m; sourceTree = "<group>"; };
 		F991750E1780FB2800E19869 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -343,6 +349,10 @@
 				F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */,
 				F9D3ED2017A9EBCB00925F5A /* GatherGroupView.h */,
 				F9D3ED2117A9EBCB00925F5A /* GatherGroupView.m */,
+				F96D41DA17AB472D004C3D0F /* GatherGroupMemberCell.h */,
+				F96D41DB17AB472D004C3D0F /* GatherGroupMemberCell.m */,
+				F96D41DD17AB6293004C3D0F /* GatherGroupPreviewTable.h */,
+				F96D41DE17AB6293004C3D0F /* GatherGroupPreviewTable.m */,
 			);
 			name = "Add Event View";
 			sourceTree = "<group>";
@@ -532,6 +542,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96D41DF17AB6320004C3D0F /* GatherGroupPreviewTable.m in Sources */,
+				F96D41DC17AB4A61004C3D0F /* GatherGroupMemberCell.m in Sources */,
 				F9D3ED2217A9EDCB00925F5A /* GatherGroupView.m in Sources */,
 				F9D3ED1F17A8A49200925F5A /* GatherGroupCell.m in Sources */,
 				F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */,

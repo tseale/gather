@@ -11,6 +11,7 @@
 #import "GatherAddEventForm.h"
 #import "GatherGroupView.h"
 #import "GatherGlobalData.h"
+#import "GatherGroupCell.h"
 
 @interface GatherAddEventView : UIView <UIScrollViewDelegate>
 

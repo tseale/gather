@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GatherGlobalData.h"
+#import "GatherGroupMemberCell.h"
 
 @interface GatherGroupView : UIView <UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 

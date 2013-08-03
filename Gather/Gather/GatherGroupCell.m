@@ -35,17 +35,38 @@
 		[_groupName setText:groupName];
 		[_groupName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 		[self addSubview:_groupName];
+		
+		_groupInfo = [[GatherGroupPreviewTable alloc] initWithGroup:groupName];
+		[_groupInfo setBackgroundColor:[UIColor clearColor]];
+		[_groupInfo setBounces:NO];
+		[self addSubview:_groupInfo];
+		
+		[self setClipsToBounds:YES];
+		
+		_previewShown=NO;
+		
     }
     return self;
 }
 
 -(void)showGroupPreview
 {
-	NSDictionary* groupName = [[NSDictionary alloc] initWithObjects:@[_groupName.text] forKeys:@[@"group_name"]];
-	[[NSNotificationCenter defaultCenter]
-	 postNotificationName:@"showGroupPreview"
-	 object:self
-	 userInfo:groupName];
+	if (!_previewShown){
+		NSDictionary* expanded_cell = [[NSDictionary alloc] initWithObjects:@[self,_groupName.text] forKeys:@[@"expanded_cell",@"group"]];
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"showGroupPreview"
+		 object:self
+		 userInfo:expanded_cell];
+		[_preview setText:@"Hide"];
+		_previewShown=YES;
+	}else{
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"hideGroupPreview"
+		 object:self
+		 ];
+		[_preview setText:@"preview"];
+		_previewShown=NO;
+	}
 }
 
 @end

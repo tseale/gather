@@ -102,7 +102,7 @@
 	[_loadingView setFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
 	[_loadingView startAnimating];
 	[self.view addSubview:_loadingView];
-	
+		
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(addEvent)
 												 name:@"addEvent"
@@ -153,7 +153,7 @@
 	addEventFrame.origin.y=0;
 	[UIView animateWithDuration:0.3f
 						  delay:0.0
-						options:UIViewAnimationCurveLinear
+						options:UIViewAnimationOptionCurveLinear
 					 animations:^{
 						 _addEventView.frame=addEventFrame;
 					 }
@@ -168,7 +168,7 @@
 	addEventFrame.origin.y=self.view.bounds.size.height;
 	[UIView animateWithDuration:0.3f
 						  delay:0.0
-						options:UIViewAnimationCurveLinear
+						options:UIViewAnimationOptionCurveLinear
 					 animations:^{
 						 _addEventView.frame=addEventFrame;
 					 }

@@ -29,6 +29,7 @@
 		[_searchContacts setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 		[_searchContacts setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		[_searchContacts setDelegate:self];
+		[_searchContacts setUserInteractionEnabled:NO];
 		[_searchContacts setReturnKeyType:UIReturnKeyJoin];
 		[_searchContactsBox addSubview:_searchContacts];
 		//[_eventName addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
@@ -66,18 +67,20 @@
 {
 	static NSString *MyIdentifier = @"MyIdentifier";
 	
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	GatherGroupMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
 	
 	if (cell == nil)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-									   reuseIdentifier:MyIdentifier];
+		cell = [[GatherGroupMemberCell alloc] initWithName:[_group objectAtIndex:indexPath.row]];
 	}
 	
-	// Here we use the provided setImageWithURL: method to load the web image
-	// Ensure you use a placeholder image otherwise cells will be initialized with no image
-	cell.textLabel.text = [_group objectAtIndex:indexPath.row];
+	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+	[cell setUserInteractionEnabled:YES];
 	return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
 }
 
 @end

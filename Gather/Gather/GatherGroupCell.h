@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GatherGroupPreviewTable.h"
 
 @interface GatherGroupCell : UITableViewCell
 
 @property (nonatomic,strong) UILabel* groupName;
 @property (nonatomic,strong) UILabel* preview;
+@property (nonatomic,strong) GatherGroupPreviewTable* groupInfo;
+
+@property (nonatomic,assign) BOOL previewShown;
 
 - (id)initWithGroupName:(NSString*)groupName;
+-(void)showGroupPreview;
 
 @end

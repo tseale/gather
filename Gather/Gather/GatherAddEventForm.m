@@ -106,8 +106,50 @@
 		[_groupTable setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 		[self addSubview:_groupTable];
 		
+
+		_expandedCell=nil;
+		_expandedCellHeight=0.0;
+
+		
     }
     return self;
+}
+
+-(void)showGroupPreview:(GatherGroupCell*)cell
+{
+	CGRect formFrame = self.frame;
+	formFrame.size.height=159.5+(GROUPS.count+1)*44+10+[[GROUPS objectForKey:cell.groupName.text] count]*44;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationOptionCurveLinear
+					 animations:^{
+						 self.frame=formFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+	[_groupTable setFrame:CGRectMake(10, 159.5, 280, (GROUPS.count+1)*44+[[GROUPS objectForKey:cell.groupName.text] count]*44)];
+	_expandedCellHeight=44+[[GROUPS objectForKey:cell.groupName.text] count]*44;
+	_expandedCell = [_groupTable indexPathForCell:cell];
+	[_groupTable beginUpdates];
+	[_groupTable endUpdates];
+	
+}
+
+-(void)hideGroupPreview
+{
+	CGRect formFrame = self.frame;
+	formFrame.size.height=159.5+(GROUPS.count+1)*44+10;
+	[UIView animateWithDuration:0.3f
+						  delay:0.0
+						options:UIViewAnimationOptionCurveLinear
+					 animations:^{
+						 self.frame=formFrame;
+					 }
+					 completion:^(BOOL finished){}
+	 ];
+	_expandedCell=nil;
+	[_groupTable beginUpdates];
+	[_groupTable endUpdates];
 }
 
 -(void)lightenTextFields
@@ -132,7 +174,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-    return GROUPS.count+1;    //count number of row from counting array hear cataGorry is An Array
+    return GROUPS.count+1;    
 }
 
 
@@ -156,7 +198,44 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GatherGroupCell *selectedCell = (GatherGroupCell*)[tableView cellForRowAtIndexPath:indexPath];
+	 GatherGroupCell *selectedCell = (GatherGroupCell*)[tableView cellForRowAtIndexPath:indexPath];
+	GatherGroupCell* expanded = (GatherGroupCell*)[_groupTable cellForRowAtIndexPath:_expandedCell];
+	if (_expandedCell){
+		[expanded showGroupPreview];
+	}
+	
+	if ([selectedCell isEqual:expanded]){
+			[expanded.preview setHidden:YES];
+			[expanded.groupName setTextColor:[UIColor blackColor]];
+			[expanded.groupName setBackgroundColor:[UIColor clearColor]];
+			CGRect cellLabelFrame = expanded.groupName.frame;
+			cellLabelFrame.origin.x=280-expanded.groupName.frame.size.width-10;
+			[UIView animateWithDuration:0.3f
+								  delay:0.0
+								options:UIViewAnimationOptionCurveEaseIn
+							 animations:^{
+								 expanded.groupName.frame=cellLabelFrame;
+							 }
+							 completion:^(BOOL finished){}
+			 ];
+		return;
+	}else if (!selectedCell.preview.hidden){
+		[selectedCell.preview setHidden:YES];
+		[selectedCell.groupName setTextColor:[UIColor blackColor]];
+		[selectedCell.groupName setBackgroundColor:[UIColor clearColor]];
+		CGRect cellLabelFrame = selectedCell.groupName.frame;
+		cellLabelFrame.origin.x=280-selectedCell.groupName.frame.size.width-10;
+		[UIView animateWithDuration:0.3f
+							  delay:0.0
+							options:UIViewAnimationOptionCurveEaseIn
+						 animations:^{
+							 selectedCell.groupName.frame=cellLabelFrame;
+						 }
+						 completion:^(BOOL finished){}
+		 ];
+		return;
+	}
+	
 	[selectedCell.groupName setTextColor:[UIColor colorWithRed:0.00f green:0.48f blue:0.99f alpha:1.00f]];
 	
 		for (GatherGroupCell* cell in [tableView visibleCells]){
@@ -192,6 +271,14 @@
 						
 			}
 		}
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (_expandedCell && _expandedCell.row==indexPath.row){
+		return _expandedCellHeight;
+	}
+    return 44;
 }
 
 -(void)enableKeyboardHide
@@ -244,14 +331,5 @@
 	}
 	return YES;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

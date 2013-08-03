@@ -31,4 +31,10 @@
 
 @property (nonatomic,strong) UITapGestureRecognizer* tapHideKeyboard;
 
+@property (nonatomic,strong) NSIndexPath* expandedCell;
+@property (nonatomic,assign) CGFloat expandedCellHeight;
+
+-(void)showGroupPreview:(GatherGroupCell*)cell;
+-(void)hideGroupPreview;
+
 @end
