@@ -54,7 +54,14 @@
 -(void)hideGroupPreview
 {
 	[_form hideGroupPreview];
-	[_formScroll setContentSize:CGSizeMake(320, 159.5+(GROUPS.count+1)*44+30)];
+	//[_formScroll setContentSize:CGSizeMake(320, 159.5+(GROUPS.count+1)*44+30)];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	if (_formScroll.contentOffset.y==0){
+		[_formScroll setContentSize:CGSizeMake(320, _form.frame.size.height+20)];
+	}
 }
 
 

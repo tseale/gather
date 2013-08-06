@@ -114,9 +114,6 @@
 {
 	// ensure connection can be made before we do anything, leave if it cannot
 	if (![self connectionMade]){
-		[[NSNotificationCenter defaultCenter]
-		 postNotificationName:@"connectionFailure"
-		 object:self];
 		return NO;
 	}
 	

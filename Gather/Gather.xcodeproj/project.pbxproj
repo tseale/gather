@@ -178,7 +178,6 @@
 		F9FD1853176FF41800F08900 /* Gather-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gather-Prefix.pch"; sourceTree = "<group>"; };
 		F9FD1854176FF41800F08900 /* GatherAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAppDelegate.h; sourceTree = "<group>"; };
 		F9FD1855176FF41800F08900 /* GatherAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAppDelegate.m; sourceTree = "<group>"; };
-		F9FD1858176FF41800F08900 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9FD185A176FF41800F08900 /* GatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherViewController.h; sourceTree = "<group>"; };
 		F9FD185B176FF41800F08900 /* GatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherViewController.m; sourceTree = "<group>"; };
 		F9FD185D176FF41900F08900 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -414,7 +413,6 @@
 			children = (
 				F9FD1854176FF41800F08900 /* GatherAppDelegate.h */,
 				F9FD1855176FF41800F08900 /* GatherAppDelegate.m */,
-				F9FD1857176FF41800F08900 /* Main.storyboard */,
 				F9FD184D176FF41800F08900 /* Gather-Info.plist */,
 				F9FD184E176FF41800F08900 /* InfoPlist.strings */,
 				F9FD1851176FF41800F08900 /* main.m */,
@@ -613,14 +611,6 @@
 				F9FD184F176FF41800F08900 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F9FD1857176FF41800F08900 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F9FD1858176FF41800F08900 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		F9FD186D176FF41900F08900 /* InfoPlist.strings */ = {

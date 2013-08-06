@@ -20,7 +20,7 @@
 		self.layer.borderColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f].CGColor;
 		self.layer.borderWidth = 1.0f;
 		_tapHideKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-		[self addGestureRecognizer:_tapHideKeyboard];
+		//[self addGestureRecognizer:_tapHideKeyboard];
 		
 		_eventNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 36.5)];
 		[_eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
@@ -31,7 +31,7 @@
 		[_eventName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 		[_eventName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		[_eventName setDelegate:self];
-		[_eventName becomeFirstResponder];
+		//[_eventName becomeFirstResponder];
 		[_eventName setTag:0];
 		[_eventName setReturnKeyType:UIReturnKeyNext];
 		[_eventNameBox addSubview:_eventName];

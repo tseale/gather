@@ -44,19 +44,28 @@
 	if ([[notification name] isEqualToString:@"dataLoadSuccess"]) {
 		if (![self noData]){
 			[_eventsTable reloadData];
-			[_statusLabel setHidden:YES];
 		}else{
-			[_statusLabel setText:@"No Events"];
-			[_statusLabel setHidden:NO];
-			[_eventsTable reloadData];
+			//[_eventsTable reloadData];
 		}
 	}else if ([[notification name] isEqualToString:@"dataLoadFailure"]){
-		[_statusLabel setText:@"Data Retrieval Failure"];
-		[_statusLabel setHidden:NO];
+		UIAlertView* dataLoadFailureAlert = [[UIAlertView alloc]
+											 initWithTitle:@"Data load failure"
+											 message:nil
+											 delegate:nil
+											 cancelButtonTitle:@"OK"
+											 otherButtonTitles:nil
+											 ];
+		[dataLoadFailureAlert show];
 		[_eventsTable reloadData];
 	}else if ([[notification name] isEqualToString:@"connectionFailure"]){
-		[_statusLabel setText:@"Connection Failure :("];
-		[_statusLabel setHidden:NO];
+		UIAlertView* connectionFailureAlert = [[UIAlertView alloc]
+											 initWithTitle:@"Could not connect..."
+											 message:nil
+											 delegate:nil
+											 cancelButtonTitle:@"OK"
+											 otherButtonTitles:nil
+											 ];
+		[connectionFailureAlert show];
 		[_eventsTable reloadData];
 	}
 }
@@ -67,10 +76,6 @@
 		
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
-	
-	_initialView = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
-	[_initialView setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	[self.view addSubview:_initialView];
 	
 	_loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[_loadingView setBackgroundColor:[UIColor clearColor]];
@@ -88,15 +93,7 @@
 	[_pullToRefresh addTarget:self action:@selector(refreshFromConnection) forControlEvents:UIControlEventValueChanged];
 	[_eventsTable addSubview:_pullToRefresh];
 	[self.view addSubview:_eventsTable];
-	
-	_statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0-self.view.bounds.size.width/4.0, self.view.bounds.size.height/2.0-150, self.view.bounds.size.width/2.0, 100)];
-	[_statusLabel setBackgroundColor:[UIColor lightGrayColor]];
-	[_statusLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0f]];
-	[_statusLabel setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
-	[_statusLabel setTextAlignment:NSTextAlignmentCenter];
-	[_statusLabel setHidden:YES];
-	[_eventsTable addSubview:_statusLabel];
-	
+		
 	_loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[_loadingView setBackgroundColor:[UIColor clearColor]];
 	[_loadingView setFrame:CGRectMake(0, TOP_BAR_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-TOP_BAR_HEIGHT)];
