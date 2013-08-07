@@ -37,6 +37,11 @@ exports.getUserEvents = function(req, res) {
 					db.collection('events', function(err, events_collection) {
 						var userEvents = [];
 						var counter = 0; //keeps track of how many events have been found and added to userEvents so far
+					/*	
+						events_collection.find({'_id': { $in: event_ids }}, function (err, event_obj) {
+							res.send(event_obj);	
+						});
+*/
 
 						for(var i=0; i<event_ids.length; i++) {  //for all events in the user's "event array", find corresponding event in events_collection
 							events_collection.findOne({'_id':new BSON.ObjectID(event_ids[i])}, function (err, event_obj) {
@@ -50,6 +55,7 @@ exports.getUserEvents = function(req, res) {
 								}
 							});
 						}
+
 					});
 				}
 				else {
