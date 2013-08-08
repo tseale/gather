@@ -37,29 +37,20 @@ exports.getUserEvents = function(req, res) {
 					db.collection('events', function(err, events_collection) {
 						var userEvents = [];
 						var counter = 0; //keeps track of how many events have been found and added to userEvents so far
-					/*	
-						events_collection.find({'_id': { $in: event_ids }}, function (err, event_obj) {
-							res.send(event_obj);	
-						});
-*/
 
-						for(var i=0; i<event_ids.length; i++) {  //for all events in the user's "event array", find corresponding event in events_collection
-							events_collection.findOne({'_id':new BSON.ObjectID(event_ids[i])}, function (err, event_obj) {
-								userEvents.push(event_obj); //add the item to an array to be returned at end
-								counter++;
-
-								//this is necessary to wait till we finish finding all the events and then return everything...
-								//seems kinda janky though... and possibly dangerous?
-								if(counter==event_ids.length) {
-									res.send(userEvents);
-								}
-							});
+						//first translate the contents of event_ids, doesn't work otherwise
+						for(var i=0; i<event_ids.length; i++) {
+							event_ids[i] = BSON.ObjectID(event_ids[i]);
 						}
-
+						
+						//now try to find all events for the user and return
+						events_collection.find({'_id': { $in: event_ids }}).toArray(function(err, event_obj) {
+							res.send(event_obj);
+						});
 					});
 				}
 				else {
-					res.send({'error':'no user'});
+					res.send({'error':'no user or invalid password'});
 				}
 			}
 		});
