@@ -23,16 +23,16 @@ exports.findUserID = function(req, res) {
 
 	//first check if user_phone & user_pass combination is in database
     db.collection('users', function(err, user_collection) {
-		user_collection.findOne({'phone_number': user_phone, 'password':user_pass}, function(err, user_obj) {
+		user_collection.findOne({'phone_number': user_phone, 'password': user_pass}, function(err, user_obj) {
 			if(err) {
 				res.send({'error':'An error has occurred - ' + err});
 			}	
-			else { //user verification success, so open connection to events collection
-				if(user_obj) {
-					res.send(user_obj);
+			else { 
+				if(!user_obj) {
+					res.send({'error':'invalid phone number / password combination'});
 				}
-				else {
-					res.send({'error':'no user or invalid password'});
+				else { //success!
+					res.send(user_obj);
 				}
 			}
 		});

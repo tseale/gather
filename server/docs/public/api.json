@@ -85,5 +85,18 @@
 				"params" : "JSON object {'_id' : 'the event id', 'user_id' : 'the user's id', 'response' : 'vote (-1,0,1)'}"
 			}
 		]
+	},
+	{
+		"method_title" : "Login",
+		"method_url" : "/login",
+		"method_desc" : "user_id is necessary for identification within the app. So, use the user login info (phone number and password) to grab the user_id",
+		"functions" : [
+			{
+				"func_title" : "POST /login",
+				"func_desc" : "Send phone number & password and receive user_object (from which the user_id can be grabbed)",
+				"params" : "JSON object {'phone_number' : '1234567891', 'password' : 'hashed user password'}",
+				"returns" : "JSON object of type user"
+			}
+		]
 	}
 ]
