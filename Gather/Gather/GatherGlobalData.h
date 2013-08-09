@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface GatherGlobalData : NSObject
 
@@ -18,6 +20,7 @@
 @property (nonatomic,strong) NSMutableArray *noResponseEvents;
 @property (nonatomic,strong) NSString *user_id;
 @property (nonatomic,strong) NSString *user_password;
+@property (nonatomic,assign) ABAddressBookRef addressBook;
 
 @property (nonatomic,strong) NSMutableDictionary *groups;
 

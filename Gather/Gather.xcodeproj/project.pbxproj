@@ -50,6 +50,7 @@
 		F99BEE3C17A591800059A056 /* GatherAddEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3917A590460059A056 /* GatherAddEventView.m */; };
 		F99BEE3D17A591850059A056 /* GatherAddEventTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */; };
 		F99BEE4017A5CEA40059A056 /* GatherAddEventForm.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */; };
+		F9BA59A417B3EE6300917912 /* GatherLoginSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BA59A317B3EE6300917912 /* GatherLoginSignupViewController.m */; };
 		F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */; };
 		F9D3ED1F17A8A49200925F5A /* GatherGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */; };
 		F9D3ED2217A9EDCB00925F5A /* GatherGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED2117A9EBCB00925F5A /* GatherGroupView.m */; };
@@ -162,6 +163,8 @@
 		F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventTopBar.m; sourceTree = "<group>"; };
 		F99BEE3E17A5CE930059A056 /* GatherAddEventForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherAddEventForm.h; sourceTree = "<group>"; };
 		F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventForm.m; sourceTree = "<group>"; };
+		F9BA59A217B3EE6300917912 /* GatherLoginSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatherLoginSignupViewController.h; sourceTree = "<group>"; };
+		F9BA59A317B3EE6300917912 /* GatherLoginSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatherLoginSignupViewController.m; sourceTree = "<group>"; };
 		F9D3ED1A17A76AA500925F5A /* GatherDatePickerLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherDatePickerLabel.h; sourceTree = "<group>"; };
 		F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherDatePickerLabel.m; sourceTree = "<group>"; };
 		F9D3ED1D17A8939400925F5A /* GatherGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupCell.h; sourceTree = "<group>"; };
@@ -228,6 +231,8 @@
 				F919E3331794E1D9009FFE3E /* SSKeychain.m */,
 				F919E2AA1792FF41009FFE3E /* GatherLoginViewController.h */,
 				F919E2AB1792FF41009FFE3E /* GatherLoginViewController.m */,
+				F9BA59A217B3EE6300917912 /* GatherLoginSignupViewController.h */,
+				F9BA59A317B3EE6300917912 /* GatherLoginSignupViewController.m */,
 			);
 			name = "Login Stuff";
 			sourceTree = "<group>";
@@ -547,6 +552,7 @@
 				F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */,
 				F99BEE4017A5CEA40059A056 /* GatherAddEventForm.m in Sources */,
 				F99BEE3D17A591850059A056 /* GatherAddEventTopBar.m in Sources */,
+				F9BA59A417B3EE6300917912 /* GatherLoginSignupViewController.m in Sources */,
 				F99BEE3C17A591800059A056 /* GatherAddEventView.m in Sources */,
 				F95EA12E17A351AF005A3042 /* GatherEventCard.m in Sources */,
 				F93246D217A0E317008B4135 /* GatherEventTopBar.m in Sources */,

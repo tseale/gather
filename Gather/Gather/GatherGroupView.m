@@ -57,17 +57,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-    return _group.count;    //count number of row from counting array hear cataGorry is An Array
+    return _group.count+1;
 }
-
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *MyIdentifier = @"MyIdentifier";
-	
-	GatherGroupMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+	GatherGroupMemberCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 	
 	if (cell == nil)
 	{

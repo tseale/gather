@@ -16,6 +16,8 @@
     @synchronized(self) {
         if (sharedInstance == nil)
 		{
+			sharedInstance.addressBook=ABAddressBookCreateWithOptions(NULL, NULL);
+			
 			sharedInstance = [[GatherGlobalData alloc] init];
 			sharedInstance.user_id=@"";
 			sharedInstance.user_password=@"";

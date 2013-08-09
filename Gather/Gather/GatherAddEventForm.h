@@ -22,6 +22,7 @@
 @property (nonatomic,strong) UIView* eventTimeDateBox;
 @property (nonatomic,strong) GatherDatePickerLabel* eventTimeDate;
 @property (nonatomic,strong) UIDatePicker* dateTimePicker;
+@property (nonatomic,strong) NSDate* chosenDate;
 
 @property (nonatomic,strong) NSDateFormatter* formatter;
 

@@ -8,8 +8,6 @@
 
 #import "GatherViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import <AddressBook/AddressBook.h>
-#import <AddressBookUI/AddressBookUI.h>
 
 #import "SSKeychain.h"
 
@@ -45,7 +43,7 @@
 		if (![self noData]){
 			[_eventsTable reloadData];
 		}else{
-			//[_eventsTable reloadData];
+			[_eventsTable reloadData];
 		}
 	}else if ([[notification name] isEqualToString:@"dataLoadFailure"]){
 		UIAlertView* dataLoadFailureAlert = [[UIAlertView alloc]
@@ -73,7 +71,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-		
+	
 	_topBar = [[GatherTopBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, TOP_BAR_HEIGHT)];
 	[self.view addSubview:_topBar];
 	

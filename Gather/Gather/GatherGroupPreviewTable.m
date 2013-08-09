@@ -13,7 +13,7 @@
 - (id)initWithGroup:(NSString*)group
 {
 	_group=[GROUPS objectForKey:group];
-    self = [super initWithFrame:CGRectMake(0, 44, 280,_group.count*44)];
+    self = [super initWithFrame:CGRectMake(0, 44, 280,(_group.count+1)*44)];
     if (self) {
 		[self setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 		self.delegate=self;
@@ -30,7 +30,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	return _group.count;    //count number of row from counting array hear cataGorry is An Array
+	return _group.count + 1;    //count number of row from counting array hear cataGorry is An Array
 }
 
 
@@ -42,7 +42,12 @@
 	
 	if (cell == nil)
 	{
-		cell = [[GatherGroupMemberCell alloc] initWithName:[_group objectAtIndex:indexPath.row]];
+		if (indexPath.row<_group.count){
+			cell = [[GatherGroupMemberCell alloc] initWithName:[_group objectAtIndex:indexPath.row]];
+		}else{
+			cell = [[GatherGroupMemberCell alloc] initWithName:@"+ Add Person to Event"];
+
+		}
 	}
 	
 	[cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -51,7 +56,22 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	GatherGroupMemberCell *cell = (GatherGroupMemberCell*)[tableView cellForRowAtIndexPath:indexPath];
 	
+	if (indexPath.row<_group.count){
+		if (!cell.removed){
+			[cell.name setTextColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+			[cell.deleteButton setTextColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+			cell.removed=YES;
+		}else{
+			[cell.name setTextColor:[UIColor blackColor]];
+			[cell.deleteButton setTextColor:GREEN_COLOR];
+			cell.removed=NO;
+		}
+	}else{
+		
+	}
+
 }
 
 @end

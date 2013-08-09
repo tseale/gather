@@ -27,4 +27,6 @@
 -(void)respondToEvent:(NSString*)eventID
 			 response:(NSNumber*)reponse;
 
+-(void)attemptLogin:(NSDictionary*)loginInfo;
+
 @end

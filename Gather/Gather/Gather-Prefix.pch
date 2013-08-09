@@ -25,6 +25,8 @@
 	#define GREEN_COLOR [UIColor colorWithRed:0.16f green:0.77f blue:0.09f alpha:1.00f]
 	#define RED_COLOR [UIColor colorWithRed:1.00f green:0.23f blue:0.19f alpha:1.00f]
 
+	#define CORNER_RADIUS 2.0f
+
 	#define USER_ID [GatherGlobalData sharedInstance].user_id
 	#define USER_PASSWORD [GatherGlobalData sharedInstance].user_password
 	#define USER_AUTHENTICATION @{@"password":USER_PASSWORD,@"_id":USER_ID}

@@ -16,42 +16,30 @@
     if (self) {
 		[self setBackgroundColor:[UIColor clearColor]];
 		
-		_deleteButton = [[UILabel alloc] initWithFrame:CGRectMake(280-120, 0, 100, 44)];
-		[_deleteButton setText:@"\u2713"];
-		[_deleteButton setTextColor:GREEN_COLOR];
-		[_deleteButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
-		[_deleteButton setTextAlignment:NSTextAlignmentRight];
-		[_deleteButton setHidden:NO];
-		[_deleteButton setUserInteractionEnabled:YES];
-		UITapGestureRecognizer* removePerson = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removePerson)];
-		[_deleteButton addGestureRecognizer:removePerson];
-		[self addSubview:_deleteButton];
-		
 		_nameSize = [name sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]
-										 constrainedToSize:CGSizeMake(280, 44)
-											 lineBreakMode:NSLineBreakByTruncatingTail];
+					 constrainedToSize:CGSizeMake(280, 44)
+						 lineBreakMode:NSLineBreakByTruncatingTail];
+
 		
-        _name = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, _nameSize.width, 44)];
+		_name = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, _nameSize.width, 44)];
 		[_name setText:name];
 		[_name setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
 		[self addSubview:_name];
 		
+		if (![name isEqualToString:@"+ Add Person to Event"]){
+			_deleteButton = [[UILabel alloc] initWithFrame:CGRectMake(280-120, 0, 100, 44)];
+			[_deleteButton setText:@"\u2713"];
+			[_deleteButton setTextColor:GREEN_COLOR];
+			[_deleteButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:22.0f]];
+			[_deleteButton setTextAlignment:NSTextAlignmentRight];
+			[_deleteButton setHidden:NO];
+			[_deleteButton setUserInteractionEnabled:YES];
+			[self addSubview:_deleteButton];
+		}
+		
 		_removed=NO;
     }
     return self;
-}
-
--(void)removePerson
-{
-	if (!_removed){
-		[_name setTextColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-		[_deleteButton setTextColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-		_removed=YES;
-	}else{
-		[_name setTextColor:[UIColor blackColor]];
-		[_deleteButton setTextColor:GREEN_COLOR];
-		_removed=NO;
-	}
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

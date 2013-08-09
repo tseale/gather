@@ -47,7 +47,7 @@
 -(void)showGroupPreview:(NSNotification*)notification
 {
 	GatherGroupCell* group = [[notification userInfo] objectForKey:@"expanded_cell"];
-	[_formScroll setContentSize:CGSizeMake(320, 159.5+(GROUPS.count+1)*44+95+[[GROUPS objectForKey:group.groupName.text] count]*44)];
+	[_formScroll setContentSize:CGSizeMake(320, 159.5+(GROUPS.count+1)*44+95+([[GROUPS objectForKey:group.groupName.text] count]+1)*44)];
 	[_form showGroupPreview:group];
 }
 
@@ -59,7 +59,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-	if (_formScroll.contentOffset.y==0){
+	if (_formScroll.contentOffset.y==0 && _form.expandedCell==nil){
 		[_formScroll setContentSize:CGSizeMake(320, _form.frame.size.height+20)];
 	}
 }

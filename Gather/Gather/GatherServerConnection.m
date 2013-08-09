@@ -47,9 +47,17 @@
 	[REJECTED_EVENTS removeAllObjects];
 }
 
--(void)parseEventsJSON:(NSArray*)eventsJSON
+-(BOOL)parseEventsJSON:(id)eventsJSON
 {
 	[self flushGlobalData];
+	
+	if ([eventsJSON isKindOfClass:NSDictionary.class]){
+		NSDictionary* event = eventsJSON;
+		if ([[event allKeys] containsObject:@"error"]){
+			return NO;
+		}
+	}
+	
 	for (NSDictionary* event in eventsJSON){
 		// new event data object
 		GatherEventData *eventObject = [[GatherEventData alloc] init];
@@ -108,6 +116,7 @@
 	[[NSNotificationCenter defaultCenter]
 	 postNotificationName:@"dataLoadSuccess"
 	 object:self];
+	return YES;
 }
 
 -(BOOL)getAllEventsForUser
@@ -117,6 +126,7 @@
 		return NO;
 	}
 	
+	__block BOOL success=YES;
 	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
 	[httpClient setParameterEncoding:AFJSONParameterEncoding];
 	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
@@ -127,13 +137,13 @@
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 		// need to add code to handle login verification
 		SBJsonParser *parser = [[SBJsonParser alloc] init];
-		NSArray *userEvents = [parser objectWithData:responseObject];
-		[self parseEventsJSON:userEvents];
+		if (![self parseEventsJSON:[parser objectWithData:responseObject]]){success=NO;}
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
+		success=NO;
 	}];
 	[operation start];
-	return YES;
+	return success;
 }
 
 -(void)respondToEvent:(NSString*)eventID
@@ -141,9 +151,6 @@
 {
 	// ensure connection can be made before we do anything, leave if it cannot
 	if (![self connectionMade]){
-		[[NSNotificationCenter defaultCenter]
-		 postNotificationName:@"connectionFailure"
-		 object:self];
 		return;
 	}
 	
@@ -160,6 +167,47 @@
 	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);
+	}];
+	[operation start];
+}
+
+-(void)parseLoginResponseInfo:(id)response
+{
+	if ([[response allKeys] containsObject:@"error"]){
+		NSLog(@"invalid");
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"invalidLogin"
+		 object:self];
+	}else{
+		USER_ID=[response objectForKey:@"_id"];
+		USER_PASSWORD=[response objectForKey:@"password"];
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults removePersistentDomainForName:SERVICE_NAME];
+		[defaults setObject:USER_ID forKey:@"user_id"];
+		[defaults setObject:USER_PASSWORD forKey:@"password"];
+		[defaults setObject:[response objectForKey:@"phone_number"] forKey:@"phone_number"];
+		[SSKeychain setPassword:USER_PASSWORD forService:SERVICE_NAME account:USER_ID];
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"validLogin"
+		 object:self];
+	}
+}
+
+-(void)attemptLogin:(NSDictionary*)loginInfo
+{
+	AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:BASE_URL]];
+	[httpClient setParameterEncoding:AFJSONParameterEncoding];
+	NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST"
+															path:[BASE_URL stringByAppendingString:@"login/"]
+													  parameters:@{@"password":[loginInfo objectForKey:@"password"],
+																   @"phone_number":[loginInfo objectForKey:@"phone_number"]}];
+	AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+	[httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
+	[operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+		SBJsonParser *parser = [[SBJsonParser alloc] init];
+		[self parseLoginResponseInfo:[parser objectWithData:responseObject]];
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		//NSLog(@"Error: %@", error);
 	}];
 	[operation start];
 }

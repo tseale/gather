@@ -20,10 +20,11 @@
 		self.layer.borderColor = [UIColor colorWithRed:0.83f green:0.83f blue:0.83f alpha:1.00f].CGColor;
 		self.layer.borderWidth = 1.0f;
 		_tapHideKeyboard = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-		//[self addGestureRecognizer:_tapHideKeyboard];
+		[self addGestureRecognizer:_tapHideKeyboard];
+		[_tapHideKeyboard setEnabled:NO];
 		
 		_eventNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 280, 36.5)];
-		[_eventNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventNameBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
 		[self addSubview:_eventNameBox];
 		_eventName = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
 		[_eventName setBackgroundColor:[UIColor clearColor]];
@@ -31,14 +32,13 @@
 		[_eventName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
 		[_eventName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
 		[_eventName setDelegate:self];
-		//[_eventName becomeFirstResponder];
 		[_eventName setTag:0];
 		[_eventName setReturnKeyType:UIReturnKeyNext];
 		[_eventNameBox addSubview:_eventName];
 		[_eventName addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
 		
 		_eventLocationBox = [[UIView alloc] initWithFrame:CGRectMake(10, 56.5, 280, 36.5)];
-		[_eventLocationBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventLocationBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
 		[self addSubview:_eventLocationBox];
 		_eventLocation = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
 		[_eventLocation setBackgroundColor:[UIColor clearColor]];
@@ -52,7 +52,7 @@
 		[_eventLocation addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
 		
 		_eventTimeDateBox = [[UIView alloc] initWithFrame:CGRectMake(10, 103, 280, 36.5)];
-		[_eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+		[_eventTimeDateBox setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];
 		_eventTimeDate = [[GatherDatePickerLabel alloc] initWithFrame:CGRectMake(10, 0, 260, 36.5)];
 		[_eventTimeDate setBackgroundColor:[UIColor clearColor]];
 		[_eventTimeDate setPlaceholder:@"When"];
@@ -118,7 +118,7 @@
 -(void)showGroupPreview:(GatherGroupCell*)cell
 {
 	CGRect formFrame = self.frame;
-	formFrame.size.height=159.5+(GROUPS.count+1)*44+10+[[GROUPS objectForKey:cell.groupName.text] count]*44;
+	formFrame.size.height=159.5+(GROUPS.count+1)*44+10+([[GROUPS objectForKey:cell.groupName.text] count]+1)*44;
 	[UIView animateWithDuration:0.3f
 						  delay:0.0
 						options:UIViewAnimationOptionCurveLinear
@@ -127,8 +127,8 @@
 					 }
 					 completion:^(BOOL finished){}
 	 ];
-	[_groupTable setFrame:CGRectMake(10, 159.5, 280, (GROUPS.count+1)*44+[[GROUPS objectForKey:cell.groupName.text] count]*44)];
-	_expandedCellHeight=44+[[GROUPS objectForKey:cell.groupName.text] count]*44;
+	[_groupTable setFrame:CGRectMake(10, 159.5, 280, (GROUPS.count+1)*44+([[GROUPS objectForKey:cell.groupName.text] count]+1)*44)];
+	_expandedCellHeight=44+([[GROUPS objectForKey:cell.groupName.text] count]+1)*44;
 	_expandedCell = [_groupTable indexPathForCell:cell];
 	[_groupTable beginUpdates];
 	[_groupTable endUpdates];
@@ -298,6 +298,7 @@
 
 -(void)donePickingDate
 {
+	_chosenDate=_dateTimePicker.date;
 	[self hideKeyboard];
 }
 
@@ -307,8 +308,7 @@
 	if ([_eventTimeDate.text isEqualToString:@""]){
 		[_eventTimeDate setText:[_formatter stringFromDate:[NSDate date]]];
 	}else{
-		NSDate* currentDate = [_formatter dateFromString:_eventTimeDate.text];
-		[_dateTimePicker setDate:currentDate];
+		[_dateTimePicker setDate:_chosenDate];
 	}
 }
 
@@ -316,6 +316,7 @@
 {
 	_eventTimeDate.text=@"";
 	[_eventTimeDate setText:[_formatter stringFromDate:_dateTimePicker.date]];
+	_chosenDate=_dateTimePicker.date;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

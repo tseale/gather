@@ -35,6 +35,8 @@
 {
 	
     [super viewDidLoad];
+	_connection = [[GatherServerConnection alloc] init];
+	
 	[self.view setBackgroundColor:[UIColor colorWithRed:0.99f green:0.99f blue:0.99f alpha:1.00f]];
 	
 	_logo = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -328,7 +330,17 @@
 	if (passwordFromKeychain!=nil){
 		USER_ID=[defaults objectForKey:@"user_id"];
 		USER_PASSWORD=[defaults objectForKey:@"password"];
-		return YES;
+		
+		if ([_connection getAllEventsForUser]){
+			return YES;
+		}else{
+			UIAlertView *invalidLogin = [[UIAlertView alloc] initWithTitle:@"Invalid Login"
+																   message:@"Please reenter username/password or create an account"
+																  delegate:nil
+														 cancelButtonTitle:@"OK"
+														  otherButtonTitles: nil];
+			[invalidLogin show];
+		}
 	}
 	return NO;
 }
@@ -337,12 +349,6 @@
 {
 	GatherViewController *viewController = [[GatherViewController alloc] init];
     [self.navigationController pushViewController:viewController animated:YES];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

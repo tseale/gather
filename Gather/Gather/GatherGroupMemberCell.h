@@ -13,8 +13,6 @@
 @property (nonatomic,strong) UILabel* name;
 @property (nonatomic,strong) UILabel* deleteButton;
 
-@property (nonatomic,strong) UIView* strikeOut;
-
 @property (nonatomic,assign) BOOL removed;
 
 @property (nonatomic,assign) CGSize nameSize;
