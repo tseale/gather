@@ -36,6 +36,9 @@
 		[self addSubview:line1];
 		[self addSubview:line2];
 		[self addSubview:_gatherLogo];
+		UITapGestureRecognizer *showSettings = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSettings:)];
+		[_gatherLogo addGestureRecognizer:showSettings];
+		
 		_addEventButton = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width-34,30,50,24)];
 		[_addEventButton setText:@"+"];
 		[_addEventButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:40.0f]];
@@ -60,13 +63,14 @@
 	}
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+-(void)showSettings:(UIGestureRecognizer*)recognizer
 {
-    // Drawing code
+	if (recognizer.state==UIGestureRecognizerStateEnded)
+	{
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:@"showSettings"
+		 object:self];
+	}
 }
-*/
 
 @end

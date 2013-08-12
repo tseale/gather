@@ -13,6 +13,8 @@
 #import "GatherEventData.h"
 #import "GatherServerConnection.h"
 #import "GatherEventViewController.h"
+#import "GatherSettingsViewController.h"
+
 
 #import "GatherAddEventView.h"
 
@@ -22,6 +24,7 @@
 @property (nonatomic,strong) GatherEventsTableView *eventsTable;
 @property (nonatomic,strong) GatherServerConnection	*connection;
 @property (nonatomic,strong) GatherAddEventView *addEventView;
+@property (nonatomic,strong) GatherSettingsViewController *settings;
 
 @property (nonatomic,strong) UIActivityIndicatorView *loadingView;
 @property (nonatomic,strong) UIRefreshControl *pullToRefresh;

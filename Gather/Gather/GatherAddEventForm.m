@@ -35,6 +35,9 @@
 		[_eventName setTag:0];
 		[_eventName setReturnKeyType:UIReturnKeyNext];
 		[_eventNameBox addSubview:_eventName];
+		_eventNameBox.layer.cornerRadius=CORNER_RADIUS;
+		_eventNameBox.layer.borderWidth=1.0;
+		_eventNameBox.layer.borderColor=[UIColor colorWithRed:0.9*1.05*0.90f green:0.9*1.05*0.90f blue:0.9*1.05*0.90f alpha:1.00f].CGColor;
 		[_eventName addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
 		
 		_eventLocationBox = [[UIView alloc] initWithFrame:CGRectMake(10, 56.5, 280, 36.5)];
@@ -49,6 +52,9 @@
 		[_eventLocation setTag:1];
 		[_eventLocation setReturnKeyType:UIReturnKeyNext];
 		[_eventLocationBox addSubview:_eventLocation];
+		_eventLocationBox.layer.cornerRadius=CORNER_RADIUS;
+		_eventLocationBox.layer.borderWidth=1.0;
+		_eventLocationBox.layer.borderColor=[UIColor colorWithRed:0.9*1.05*0.90f green:0.9*1.05*0.90f blue:0.9*1.05*0.90f alpha:1.00f].CGColor;
 		[_eventLocation addTarget:self action:@selector(enableKeyboardHide) forControlEvents:UIControlEventEditingDidBegin];
 		
 		_eventTimeDateBox = [[UIView alloc] initWithFrame:CGRectMake(10, 103, 280, 36.5)];
@@ -93,6 +99,9 @@
 		[_eventTimeDate setInputView:datePicker];
 		[_eventTimeDateBox addSubview:_eventTimeDate];
 		[self addSubview:_eventTimeDateBox];
+		_eventTimeDateBox.layer.cornerRadius=CORNER_RADIUS;
+		_eventTimeDateBox.layer.borderWidth=1.0;
+		_eventTimeDateBox.layer.borderColor=[UIColor colorWithRed:0.9*1.05*0.90f green:0.9*1.05*0.90f blue:0.9*1.05*0.90f alpha:1.00f].CGColor;
 		
 		UIView* groupline = [[UIView alloc] initWithFrame:CGRectMake(10, 149.5, 280, 1)];
 		[groupline setBackgroundColor:[UIColor colorWithRed:1.05*0.90f green:1.05*0.90f blue:1.05*0.90f alpha:1.00f]];

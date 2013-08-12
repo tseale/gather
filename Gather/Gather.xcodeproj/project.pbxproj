@@ -51,9 +51,13 @@
 		F99BEE3D17A591850059A056 /* GatherAddEventTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3B17A590560059A056 /* GatherAddEventTopBar.m */; };
 		F99BEE4017A5CEA40059A056 /* GatherAddEventForm.m in Sources */ = {isa = PBXBuildFile; fileRef = F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */; };
 		F9BA59A417B3EE6300917912 /* GatherLoginSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BA59A317B3EE6300917912 /* GatherLoginSignupViewController.m */; };
+		F9BA59A817B7EE8200917912 /* GatherSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9BA59A717B7EE8200917912 /* GatherSettingsViewController.m */; };
 		F9D3ED1C17A76AEB00925F5A /* GatherDatePickerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */; };
 		F9D3ED1F17A8A49200925F5A /* GatherGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */; };
 		F9D3ED2217A9EDCB00925F5A /* GatherGroupView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D3ED2117A9EBCB00925F5A /* GatherGroupView.m */; };
+		F9DDDEC817B8A22300C2F815 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DDDEC317B8A22300C2F815 /* IISideController.m */; };
+		F9DDDEC917B8A22300C2F815 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DDDEC517B8A22300C2F815 /* IIViewDeckController.m */; };
+		F9DDDECA17B8A22300C2F815 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9DDDEC717B8A22300C2F815 /* IIWrapController.m */; };
 		F9FD1846176FF41800F08900 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1845176FF41800F08900 /* Foundation.framework */; };
 		F9FD1848176FF41800F08900 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1847176FF41800F08900 /* CoreGraphics.framework */; };
 		F9FD184A176FF41800F08900 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FD1849176FF41800F08900 /* UIKit.framework */; };
@@ -165,12 +169,20 @@
 		F99BEE3F17A5CE930059A056 /* GatherAddEventForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherAddEventForm.m; sourceTree = "<group>"; };
 		F9BA59A217B3EE6300917912 /* GatherLoginSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatherLoginSignupViewController.h; sourceTree = "<group>"; };
 		F9BA59A317B3EE6300917912 /* GatherLoginSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatherLoginSignupViewController.m; sourceTree = "<group>"; };
+		F9BA59A617B7EE8200917912 /* GatherSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatherSettingsViewController.h; sourceTree = "<group>"; };
+		F9BA59A717B7EE8200917912 /* GatherSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatherSettingsViewController.m; sourceTree = "<group>"; };
 		F9D3ED1A17A76AA500925F5A /* GatherDatePickerLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherDatePickerLabel.h; sourceTree = "<group>"; };
 		F9D3ED1B17A76AA500925F5A /* GatherDatePickerLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherDatePickerLabel.m; sourceTree = "<group>"; };
 		F9D3ED1D17A8939400925F5A /* GatherGroupCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupCell.h; sourceTree = "<group>"; };
 		F9D3ED1E17A8939400925F5A /* GatherGroupCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGroupCell.m; sourceTree = "<group>"; };
 		F9D3ED2017A9EBCB00925F5A /* GatherGroupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GatherGroupView.h; sourceTree = "<group>"; };
 		F9D3ED2117A9EBCB00925F5A /* GatherGroupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GatherGroupView.m; sourceTree = "<group>"; };
+		F9DDDEC217B8A22300C2F815 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		F9DDDEC317B8A22300C2F815 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		F9DDDEC417B8A22300C2F815 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		F9DDDEC517B8A22300C2F815 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		F9DDDEC617B8A22300C2F815 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		F9DDDEC717B8A22300C2F815 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		F9FD1842176FF41800F08900 /* Gather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9FD1845176FF41800F08900 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9FD1847176FF41800F08900 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -361,6 +373,28 @@
 			name = "Add Event View";
 			sourceTree = "<group>";
 		};
+		F9BA59A517B7ED9F00917912 /* Settings Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F9BA59A617B7EE8200917912 /* GatherSettingsViewController.h */,
+				F9BA59A717B7EE8200917912 /* GatherSettingsViewController.m */,
+			);
+			name = "Settings Stuff";
+			sourceTree = "<group>";
+		};
+		F9DDDECB17B8A22B00C2F815 /* Side Panel Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				F9DDDEC217B8A22300C2F815 /* IISideController.h */,
+				F9DDDEC317B8A22300C2F815 /* IISideController.m */,
+				F9DDDEC417B8A22300C2F815 /* IIViewDeckController.h */,
+				F9DDDEC517B8A22300C2F815 /* IIViewDeckController.m */,
+				F9DDDEC617B8A22300C2F815 /* IIWrapController.h */,
+				F9DDDEC717B8A22300C2F815 /* IIWrapController.m */,
+			);
+			name = "Side Panel Stuff";
+			sourceTree = "<group>";
+		};
 		F9FD1839176FF41800F08900 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +438,7 @@
 		F9FD184B176FF41800F08900 /* Gather */ = {
 			isa = PBXGroup;
 			children = (
+				F9BA59A517B7ED9F00917912 /* Settings Stuff */,
 				F99175221783D30F00E19869 /* Back End Stuff */,
 				F919E2AD179304BA009FFE3E /* Login Stuff */,
 				F919E2AE179304CB009FFE3E /* Main View Stuff */,
@@ -416,6 +451,7 @@
 		F9FD184C176FF41800F08900 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9DDDECB17B8A22B00C2F815 /* Side Panel Stuff */,
 				F9FD1854176FF41800F08900 /* GatherAppDelegate.h */,
 				F9FD1855176FF41800F08900 /* GatherAppDelegate.m */,
 				F9FD184D176FF41800F08900 /* Gather-Info.plist */,
@@ -573,6 +609,8 @@
 				F93F6FCF179E14A3004C5F46 /* AFPropertyListRequestOperation.m in Sources */,
 				F93F6FCE179E149A004C5F46 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				F93F6FCD179E1495004C5F46 /* AFJSONRequestOperation.m in Sources */,
+				F9DDDEC917B8A22300C2F815 /* IIViewDeckController.m in Sources */,
+				F9DDDECA17B8A22300C2F815 /* IIWrapController.m in Sources */,
 				F93F6FCC179E1491004C5F46 /* AFImageRequestOperation.m in Sources */,
 				F93F6FCB179E1485004C5F46 /* AFHTTPRequestOperation.m in Sources */,
 				F93F6FCA179E147D004C5F46 /* AFHTTPClient.m in Sources */,
@@ -583,11 +621,13 @@
 				F991751E1783CC1900E19869 /* GatherServerConnection.m in Sources */,
 				F919E3341794E1D9009FFE3E /* SSKeychain.m in Sources */,
 				F99174DB177D331000E19869 /* GatherEventData.m in Sources */,
+				F9DDDEC817B8A22300C2F815 /* IISideController.m in Sources */,
 				F95F53E81776B8BB005D957E /* GatherEventsTableViewCell.m in Sources */,
 				F95F53E71776B8B7005D957E /* GatherEventsTableView.m in Sources */,
 				F9FD18841770151D00F08900 /* GatherTopBar.m in Sources */,
 				F9FD1852176FF41800F08900 /* main.m in Sources */,
 				F9FD185C176FF41800F08900 /* GatherViewController.m in Sources */,
+				F9BA59A817B7EE8200917912 /* GatherSettingsViewController.m in Sources */,
 				F9FD1856176FF41800F08900 /* GatherAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

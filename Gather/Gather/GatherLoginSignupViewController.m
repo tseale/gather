@@ -68,12 +68,12 @@
 	_loginForm = [[UIView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height-216-_logo.frame.size.height)];
 	_loginForm.alpha=0;
 	
-	UIView *phoneNumberBox = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, 36.5)];
-	[phoneNumberBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	phoneNumberBox.layer.cornerRadius=CORNER_RADIUS;
-	phoneNumberBox.layer.borderWidth=1.0f;
-	phoneNumberBox.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
-	[_loginForm addSubview:phoneNumberBox];
+	_loginPhoneNumberBox = [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-20, 36.5)];
+	[_loginPhoneNumberBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	_loginPhoneNumberBox.layer.cornerRadius=CORNER_RADIUS;
+	_loginPhoneNumberBox.layer.borderWidth=1.0f;
+	_loginPhoneNumberBox.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
+	[_loginForm addSubview:_loginPhoneNumberBox];
 	
 	UIView *passwordBox = [[UIView alloc] initWithFrame:CGRectMake(10, 46.5, self.view.frame.size.width-20, 36.5)];
 	[passwordBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
@@ -82,55 +82,60 @@
 	passwordBox.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
 	[_loginForm addSubview:passwordBox];
 	
-	_phoneNumber= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-30, 36.5)];
-	[_phoneNumber setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	[_phoneNumber setPlaceholder:@"Phone Number"];
-	[_phoneNumber setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[_phoneNumber setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
-	[_phoneNumber setDelegate:self];
-	[_phoneNumber setTag:2];
-	[_phoneNumber setKeyboardType:UIKeyboardTypeNumberPad];
-	[_phoneNumber addTarget:self action:@selector(numberFormatAssist) forControlEvents:UIControlEventEditingChanged];
-	[phoneNumberBox addSubview:_phoneNumber];
+	_loginPhoneNumber= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-30, 36.5)];
+	[_loginPhoneNumber setPlaceholder:@"Phone Number"];
+	[_loginPhoneNumber setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_loginPhoneNumber setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_loginPhoneNumber setDelegate:self];
+	[_loginPhoneNumber setTag:2];
+	[_loginPhoneNumber setKeyboardType:UIKeyboardTypeNumberPad];
+	[_loginPhoneNumber addTarget:self action:@selector(numberFormatAssist) forControlEvents:UIControlEventEditingChanged];
+	[_loginPhoneNumberBox addSubview:_loginPhoneNumber];
 	
-	_password= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-30, 36.5)];
-	[_password setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	[_password setPlaceholder:@"Password"];
-	[_password setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[_password setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
-	[_password setDelegate:self];
-	[_password setTag:3];
-	[_password setSecureTextEntry:YES];
-	[_password setReturnKeyType:UIReturnKeyGo];
-	[passwordBox addSubview:_password];
+	_loginCorrectNumberFormat = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width-50, 0, 30, 36.5)];
+	[_loginCorrectNumberFormat setText:@"\u2713"];
+	[_loginCorrectNumberFormat setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f]];
+	[_loginCorrectNumberFormat setTextColor:[UIColor colorWithRed:0.8*0.90f green:0.8*0.90f blue:0.8*0.90f alpha:1.00f]];
+	[_loginCorrectNumberFormat setHidden:YES];
+	[_loginPhoneNumberBox addSubview:_loginCorrectNumberFormat];
 	
-	UILabel *backButton = [[UILabel alloc] initWithFrame:CGRectMake(10, 93, (self.view.frame.size.width-30)/2, 50)];
-	[backButton setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	[backButton setText:@"back"];
-	[backButton setTextColor:RED_COLOR];
-	[backButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[backButton setTextAlignment:NSTextAlignmentCenter];
-	backButton.layer.cornerRadius=CORNER_RADIUS;
-	backButton.layer.borderWidth=1.0f;
-	backButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
-	[backButton setUserInteractionEnabled:YES];
+	_loginPassword= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, self.view.frame.size.width-30, 36.5)];
+	[_loginPassword setPlaceholder:@"Password"];
+	[_loginPassword setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_loginPassword setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_loginPassword setDelegate:self];
+	[_loginPassword setTag:3];
+	[_loginPassword setSecureTextEntry:YES];
+	[_loginPassword setReturnKeyType:UIReturnKeyGo];
+	[passwordBox addSubview:_loginPassword];
+	
+	_backButton = [[UILabel alloc] initWithFrame:CGRectMake(10, 93, (self.view.frame.size.width-30)/2, 50)];
+	[_backButton setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_backButton setText:@"back"];
+	[_backButton setTextColor:RED_COLOR];
+	[_backButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_backButton setTextAlignment:NSTextAlignmentCenter];
+	_backButton.layer.cornerRadius=CORNER_RADIUS;
+	_backButton.layer.borderWidth=1.0f;
+	_backButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
+	[_backButton setUserInteractionEnabled:YES];
 	UITapGestureRecognizer* leaveLogin = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leaveLoginForm)];
-	[backButton addGestureRecognizer:leaveLogin];
-	[_loginForm addSubview:backButton];
+	[_backButton addGestureRecognizer:leaveLogin];
+	[_loginForm addSubview:_backButton];
 	
-	UILabel *loginButton = [[UILabel alloc] initWithFrame:CGRectMake(20+(self.view.frame.size.width-30)/2, 93, (self.view.frame.size.width-30)/2, 50)];
-	[loginButton setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
-	[loginButton setText:@"login"];
-	[loginButton setTextColor:GREEN_COLOR];
-	[loginButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[loginButton setTextAlignment:NSTextAlignmentCenter];
-	loginButton.layer.cornerRadius=CORNER_RADIUS;
-	loginButton.layer.borderWidth=1.0f;
-	loginButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
-	[loginButton setUserInteractionEnabled:YES];
+	_attemptLoginButton = [[UILabel alloc] initWithFrame:CGRectMake(20+(self.view.frame.size.width-30)/2, 93, (self.view.frame.size.width-30)/2, 50)];
+	[_attemptLoginButton setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_attemptLoginButton setText:@"login"];
+	[_attemptLoginButton setTextColor:GREEN_COLOR];
+	[_attemptLoginButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_attemptLoginButton setTextAlignment:NSTextAlignmentCenter];
+	_attemptLoginButton.layer.cornerRadius=CORNER_RADIUS;
+	_attemptLoginButton.layer.borderWidth=1.0f;
+	_attemptLoginButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
+	[_attemptLoginButton setUserInteractionEnabled:YES];
 	UITapGestureRecognizer* attemptLogin = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(processLogin)];
-	[loginButton addGestureRecognizer:attemptLogin];
-	[_loginForm addSubview:loginButton];
+	[_attemptLoginButton addGestureRecognizer:attemptLogin];
+	[_loginForm addSubview:_attemptLoginButton];
 	
 	UILabel *forgotPassword = [[UILabel alloc] initWithFrame:CGRectMake(10, 139.5, self.view.frame.size.width-20, 36.5)];
 	[forgotPassword setText:@"Forgot your password?"];
@@ -139,11 +144,95 @@
 	[forgotPassword setTextAlignment:NSTextAlignmentCenter];
 	[_loginForm addSubview:forgotPassword];
 	[self.view addSubview:_loginForm];
-
-	_signupForm = [[UIView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height-216-_logo.frame.size.height)];
+	
+	/*
+	_signupScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 80, self.view.frame.size.width, self.view.frame.size.height-216-_logo.frame.size.height)];
+	[_signupScroll setShowsVerticalScrollIndicator:NO];
+	_signupForm = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 256)];
 	_signupForm.alpha=0;
-	[_signupForm setBackgroundColor:RED_COLOR];
-	[self.view addSubview:_signupForm];
+	
+	
+	UIView *firstNameBox = [[UIView alloc] initWithFrame:CGRectMake(10, 0, (self.view.frame.size.width-30)/2, 36.5)];
+	[firstNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_signupForm addSubview:firstNameBox];
+	
+	UIView *lastNameBox	= [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width-30)/2+20, 0, (self.view.frame.size.width-30)/2, 36.5)];
+	[lastNameBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_signupForm addSubview:lastNameBox];
+	
+	UIView *loginPhoneNumberBox = [[UITextField alloc] initWithFrame:CGRectMake(10, 46.5, self.view.frame.size.width-20, 36.5)];
+	[loginPhoneNumberBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_signupForm addSubview:loginPhoneNumberBox];
+	
+	
+	UIView *passwordBox = [[UIView alloc] initWithFrame:CGRectMake(0, 93, self.view.frame.size.width-20, 36.5)];
+	[passwordBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_signupForm addSubview:passwordBox];
+	
+	
+	UIView *confirmPasswordBox = [[UIView alloc] initWithFrame:CGRectMake(10, 139.5, self.view.frame.size.width-20, 36.5)];
+	[confirmPasswordBox setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_signupForm addSubview:confirmPasswordBox];
+	
+	_firstName	= [[UITextField alloc] initWithFrame:CGRectMake(10, 0, (self.view.frame.size.width-30)/2-20, 36.5)];
+	[_firstName setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_firstName setPlaceholder:@"First Name"];
+	[_firstName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_firstName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_firstName setDelegate:self];
+	[_firstName setTag:0];
+	[_firstName setReturnKeyType:UIReturnKeyGo];
+	[firstNameBox addSubview:_firstName];
+	
+	_lastName	= [[UITextField alloc] initWithFrame:CGRectMake((self.view.frame.size.width-30)/2+20, 0, (self.view.frame.size.width-30)/2-20, 36.5)];
+	[_lastName setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_lastName setPlaceholder:@"Last Name"];
+	[_lastName setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_lastName setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_lastName setDelegate:self];
+	[_lastName setTag:1];
+	[_lastName setReturnKeyType:UIReturnKeyGo];
+	[lastNameBox addSubview:_lastName];
+	
+	_loginPhoneNumber= [[UITextField alloc] initWithFrame:CGRectMake(10, 46.5, self.view.frame.size.width-30, 36.5)];
+	[_loginPhoneNumber setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_loginPhoneNumber setPlaceholder:@"Phone Number"];
+	[_loginPhoneNumber setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_loginPhoneNumber setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_loginPhoneNumber setDelegate:self];
+	[_loginPhoneNumber setTag:2];
+	[_loginPhoneNumber setKeyboardType:UIKeyboardTypeNumberPad];
+	[_loginPhoneNumber setReturnKeyType:UIReturnKeyGo];
+	[loginPhoneNumberBox addSubview:_loginPhoneNumber];
+	
+	_loginPassword= [[UITextField alloc] initWithFrame:CGRectMake(10, 93, self.view.frame.size.width-30, 36.5)];
+	[_loginPassword setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_loginPassword setPlaceholder:@"Password"];
+	[_loginPassword setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_loginPassword setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_loginPassword setDelegate:self];
+	[_loginPassword setTag:3];
+	[_loginPassword setSecureTextEntry:YES];
+	[_loginPassword setReturnKeyType:UIReturnKeyGo];
+	[_signupForm addSubview:_loginPassword];
+	
+	_confirmPassword= [[UITextField alloc] initWithFrame:CGRectMake(10, 139.5, self.view.frame.size.width-30, 36.5)];
+	[_confirmPassword setBackgroundColor:[UIColor colorWithRed:0.90f green:0.90f blue:0.90f alpha:1.00f]];
+	[_confirmPassword setPlaceholder:@"Confirm Password"];
+	[_confirmPassword setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
+	[_confirmPassword setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_confirmPassword setDelegate:self];
+	[_confirmPassword setTag:4];
+	[_confirmPassword setSecureTextEntry:YES];
+	[_confirmPassword setReturnKeyType:UIReturnKeyGo];
+	[confirmPasswordBox addSubview:_confirmPassword];
+
+	
+	
+	[_signupScroll setContentSize:CGSizeMake(self.view.frame.size.width, 256)];
+	[_signupScroll addSubview:_signupForm];
+	[self.view addSubview:_signupScroll];
+	*/
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(loginSuccess)
@@ -165,17 +254,24 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (textField==_password){
+	if (textField==_loginPassword){
 		[self processLogin];
 	}
     return NO;
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+	[self numberFormatAssist];
+}
+
 - (void)numberFormatAssist {
-	if (_phoneNumber.text.length==10){
-		[_phoneNumber setTextColor:[UIColor colorWithRed:0.00f green:0.48f blue:0.99f alpha:1.00f]];
+	if (_loginPhoneNumber.text.length==10){
+		_loginPhoneNumberBox.layer.borderColor=[UIColor colorWithRed:0.00f green:0.48f blue:0.99f alpha:1.00f].CGColor;
+		_loginCorrectNumberFormat.hidden=NO;
 	}else{
-		[_phoneNumber setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+		_loginPhoneNumberBox.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
+		_loginCorrectNumberFormat.hidden=YES;
 	}
 }
 
@@ -201,7 +297,7 @@
 	[_loginButton setText:@"login"];
 	[_loginButton setTextAlignment:NSTextAlignmentCenter];
 	[_loginButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[_loginButton setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_loginButton setTextColor:[UIColor colorWithRed:0.7*0.90f green:0.7*0.90f blue:0.7*0.90f alpha:1.00f]];
 	_loginButton.layer.cornerRadius=CORNER_RADIUS;
 	_loginButton.layer.borderWidth=1.0f;
 	_loginButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
@@ -215,7 +311,7 @@
 	[_signupButton setText:@"sign up"];
 	[_signupButton setTextAlignment:NSTextAlignmentCenter];
 	[_signupButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]];
-	[_signupButton setTextColor:[UIColor colorWithRed:0.10f green:0.10f blue:0.10f alpha:1.00f]];
+	[_signupButton setTextColor:[UIColor colorWithRed:0.7*0.90f green:0.7*0.90f blue:0.7*0.90f alpha:1.00f]];
 	_signupButton.layer.cornerRadius=CORNER_RADIUS;
 	_signupButton.layer.borderWidth=1.0f;
 	_signupButton.layer.borderColor=[UIColor colorWithRed:0.9*0.90f green:0.9*0.90f blue:0.9*0.90f alpha:1.00f].CGColor;
@@ -240,7 +336,7 @@
 	_signupButton.alpha = 0;
 	[UIView commitAnimations];
 	
-	[_phoneNumber becomeFirstResponder];
+	[_loginPhoneNumber becomeFirstResponder];
 	
 	CGRect shiftLogoFrame = _logo.frame;
 	shiftLogoFrame.origin.y=20;
@@ -268,13 +364,13 @@
 	[UIView beginAnimations:@"" context:nil];
 	_loginForm.alpha=0;
 	[UIView commitAnimations];
-	if (_phoneNumber.editing==YES){
-		[_phoneNumber resignFirstResponder];
+	if (_loginPhoneNumber.editing==YES){
+		[_loginPhoneNumber resignFirstResponder];
 	}else{
-		[_password resignFirstResponder];
+		[_loginPassword resignFirstResponder];
 	}
-	_phoneNumber.text=@"";
-	_password.text=@"";
+	_loginPhoneNumber.text=@"";
+	_loginPassword.text=@"";
 	[self.view endEditing:YES];
 	
 	CGRect shiftLogoFrame = _logo.frame;
@@ -293,12 +389,12 @@
 
 -(void)processLogin
 {
-	_phoneNumberText=_phoneNumber.text;
-	_passwordText=_password.text;
+	_phoneNumberText=_loginPhoneNumber.text;
+	_passwordText=_loginPassword.text;
 	BOOL formFillSuccess = YES;
 	BOOL wrongNumLength = NO;
 	if (_phoneNumberText.length==0){
-		_phoneNumber.text=@"";
+		_loginPhoneNumber.text=@"";
 		formFillSuccess=NO;
 	}else if (_phoneNumberText.length!=10){
 		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Pro-Tip"
@@ -307,14 +403,14 @@
 												  cancelButtonTitle:@"OK"
 												  otherButtonTitles:nil];
 		[alertView show];
-		_phoneNumber.text=@"";
+		_loginPhoneNumber.text=@"";
 		wrongNumLength=YES;
 		formFillSuccess=NO;
-		[_phoneNumber becomeFirstResponder];
+		[_loginPhoneNumber becomeFirstResponder];
 	}
 	
 	if (_passwordText.length==0){
-		_password.text=@"";
+		_loginPassword.text=@"";
 		formFillSuccess=NO;
 	}
 	
@@ -324,6 +420,12 @@
 		[_connection attemptLogin:[[NSDictionary alloc] initWithObjects:@[[self sha1:_passwordText],_phoneNumberText]
 																forKeys:@[@"password",@"phone_number"]]
 		 ];
+		_attemptLoginButton.hidden=YES;
+		_backButton.hidden=YES;
+		[_loginPhoneNumber setUserInteractionEnabled:NO];
+		[_loginPassword setUserInteractionEnabled:NO];
+		[_loadingView setFrame:CGRectMake(0, 173, self.view.bounds.size.width,50)];
+		[_loadingView startAnimating];
 	}else{
 		if (!wrongNumLength){
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Incomplete Fields"
@@ -344,9 +446,15 @@
 											  cancelButtonTitle:@"OK"
 											  otherButtonTitles:nil];
 	[alertView show];
-	_phoneNumber.text=@"";
-	_password.text=@"";
-	[_phoneNumber becomeFirstResponder];
+	_loginPhoneNumber.text=@"";
+	[self numberFormatAssist];
+	_loginPassword.text=@"";
+	[_loginPhoneNumber setUserInteractionEnabled:YES];
+	[_loginPassword setUserInteractionEnabled:YES];
+	_attemptLoginButton.hidden=NO;
+	_backButton.hidden=NO;
+	[_loadingView stopAnimating];
+	[_loginPhoneNumber becomeFirstResponder];
 }
 
 -(void)loginSuccess
@@ -362,8 +470,6 @@
 	
 	_signupButton.alpha = 0;
 	[UIView commitAnimations];
-	
-	//[_phoneNumber becomeFirstResponder];
 	
 	CGRect shiftLogoFrame = _logo.frame;
 	shiftLogoFrame.origin.y=20;

@@ -104,6 +104,11 @@
 											   object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(showSettings)
+												 name:@"showSettings"
+											   object:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(showTable:)
 												 name:@"dataLoadSuccess"
 											   object:nil];
@@ -122,6 +127,11 @@
 											 selector:@selector(cancelAddEvent)
 												 name:@"cancelAddEvent"
 											   object:nil];
+}
+
+-(void)showSettings
+{
+	[self.viewDeckController toggleLeftViewAnimated:YES];
 }
 
 - (void) addEventToTable:(NSNotification *) notification

@@ -30,10 +30,12 @@
 																			forKeys:@[@"No Response",
 																					  @"Attending",
 																					  @"Not Attending"]];
-			sharedInstance.groups=[[NSMutableDictionary alloc] initWithObjects:@[@[@"Jimmy Antoniotti",@"Dan Bettencourt",@"Mike O'Connor",@"Ka Hin Lee",@"Ryan Shea"],
+			sharedInstance.groups=[[NSMutableDictionary alloc] initWithObjects:@[@[@"Mom",@"Dad",@"Aimee Seale",@"Nathan Seale"],
+																				 @[@"Jimmy Antoniotti",@"Dan Bettencourt",@"Mike O'Connor",@"Ka Hin Lee",@"Ryan Shea"],
 																				 @[@"Akum Gill",@"Brendan Ryan",@"Chas Jhin",@"Jeremy Vercillo"],
 																				 @[@"Chas Jhin",@"Ryan Shea",@"Ashley Taylor",@"Pat Raycroft",@"Justin Bartlett"]]
-																	   forKeys:@[@"Sorin Bros",
+																	   forKeys:@[@"Family",
+																				 @"Sorin Bros",
 																				 @"Twerk Team",
 																				 @"CS Study Group"]];
 		}

@@ -10,11 +10,14 @@
 #import "GatherLoginSignupViewController.h"
 #import "GatherViewController.h"
 #import "GatherGlobalData.h"
+#import "IIViewDeckController.h"
 
 @interface GatherAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) IIViewDeckController *sidePanelController;
 @property (strong, nonatomic) GatherLoginSignupViewController *loginController;
-@property (strong, nonatomic) GatherViewController *viewController;
+
+@property (strong, nonatomic) UIViewController *sidePanel;
 
 @end

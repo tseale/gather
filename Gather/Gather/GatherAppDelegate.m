@@ -15,7 +15,17 @@
 	_loginController = [[GatherLoginSignupViewController alloc] init];
 	UINavigationController * navigationController = [[UINavigationController alloc]initWithRootViewController:_loginController];
 	[navigationController setNavigationBarHidden:YES];
-	_window.rootViewController = navigationController;
+	
+	_sidePanel = [[UIViewController alloc] init];
+	_sidePanel.view.backgroundColor=[UIColor whiteColor];
+	
+	IIViewDeckController *viewDeckController =  [[IIViewDeckController alloc] initWithCenterViewController:navigationController leftViewController:_sidePanel
+																   rightViewController:nil];
+	[viewDeckController setPanningMode:IIViewDeckNoPanning];
+	[viewDeckController setCenterhiddenInteractivity:IIViewDeckCenterHiddenNotUserInteractiveWithTapToClose];
+	
+	_window.rootViewController = viewDeckController;
+	
     return YES;
 }
 							
